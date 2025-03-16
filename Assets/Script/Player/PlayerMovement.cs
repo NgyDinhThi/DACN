@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class NewMonoBehaviourScript : MonoBehaviour
 {
@@ -7,9 +8,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
     [SerializeField] private int jump;
 
 
+    private readonly int moveX = Animator.StringToHash("Move_X");
+    private readonly int moveY = Animator.StringToHash("Move_Y");
+
     private PlayerAction action;
     private Rigidbody2D rb2d;
-    
+    private Animator animator;
     private Vector2 moveDirection;
 
 
@@ -18,6 +22,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         action = new PlayerAction();
         rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
@@ -27,8 +32,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private void Update()
     {
         ReadMovement();
-       
-
     }
 
     private void move()
@@ -39,6 +42,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private void ReadMovement()
     { 
         moveDirection = action.Movement.Move.ReadValue<Vector2>().normalized;
+        if (moveDirection == Vector2.zero)
+        {
+            return;
+        }
+        animator.SetFloat(moveX, moveDirection.x);
+        animator.SetFloat(moveY, moveDirection.y);
     }    
 
     private void OnEnable()
