@@ -1,2 +1,3 @@
 # DACN
-Đang dính lỗi trượt xuống dưới 
+Tìm hiểu về Scriptable object
+nhân vật có thể nhận st, nhận biết về scriptable object, có chỉ số health cơ bản
