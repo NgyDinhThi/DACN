@@ -5,6 +5,13 @@ public class PlayerHealth : MonoBehaviour, IdamageAble
     [Header("Config")] // Hiển thị tiêu đề "Config" trong Inspector
     [SerializeField] private PlayerStats stats; // Tham chiếu đến thông tin chỉ số của nhân vật
 
+    private PlayerAnimation playerAnimation;
+
+    private void Awake()
+    {
+        playerAnimation = GetComponent<PlayerAnimation>();
+    }
+
     private void Update()
     {
         // Kiểm tra nếu phím P được nhấn, nhân vật sẽ nhận 2 sát thương
@@ -26,7 +33,7 @@ public class PlayerHealth : MonoBehaviour, IdamageAble
 
     private void PlayerDeath()
     {
-        // In ra console thông báo nhân vật đã chết
-        Debug.Log("chet me may di");
+        // Hoạt ảnh dead hiện lên
+            playerAnimation.SetDeadAni();
     }
 }

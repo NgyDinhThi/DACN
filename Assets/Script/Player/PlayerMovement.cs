@@ -7,21 +7,18 @@ public class NewMonoBehaviourScript : MonoBehaviour
     [SerializeField] private float speed; // Tốc độ di chuyển của nhân vật
     [SerializeField] private int jump; // Số lần nhảy (chưa được sử dụng trong code)
 
-    // Hash các tham số Animator để tối ưu hiệu suất
-    private readonly int moveX = Animator.StringToHash("Move_X");
-    private readonly int moveY = Animator.StringToHash("Move_Y");
-    private readonly int diChuyen = Animator.StringToHash("DiChuyen");
-
     private PlayerAction action; // Đối tượng xử lý input của người chơi
     private Rigidbody2D rb2d; // Thành phần vật lý Rigidbody2D để di chuyển nhân vật
-    private Animator animator; // Điều khiển Animator của nhân vật
+    private PlayerAnimation playerAnimation;
+    private Player player;
     private Vector2 moveDirection; // Hướng di chuyển của nhân vật
 
     private void Awake()
     {
         action = new PlayerAction(); // Khởi tạo hệ thống nhập liệu của người chơi
         rb2d = GetComponent<Rigidbody2D>(); // Lấy thành phần Rigidbody2D từ GameObject
-        animator = GetComponent<Animator>(); // Lấy thành phần Animator từ GameObject
+        playerAnimation = GetComponent<PlayerAnimation>();
+        player = GetComponent<Player>();
     }
 
     private void FixedUpdate()
@@ -36,6 +33,10 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     private void move()
     {
+        if (player.Stats.health <= 0)
+        {
+            return;
+        }
         // Di chuyển nhân vật bằng cách thay đổi vị trí Rigidbody2D dựa trên hướng di chuyển
         rb2d.MovePosition(rb2d.position + moveDirection * (speed * Time.fixedDeltaTime));
     }
@@ -47,13 +48,13 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         if (moveDirection == Vector2.zero) // Nếu không có input
         {
-            animator.SetBool(diChuyen, false); // Dừng animation di chuyển
+            // Dừng animation di chuyển
+            playerAnimation.SetMoveBoolTransition(false);
             return;
         }
 
-        animator.SetBool(diChuyen, true); // Kích hoạt animation di chuyển
-        animator.SetFloat(moveX, moveDirection.x); // Cập nhật giá trị X cho Animator
-        animator.SetFloat(moveY, moveDirection.y); // Cập nhật giá trị Y cho Animator
+        playerAnimation.SetMoveBoolTransition(true); // Kích hoạt animation di chuyển
+        playerAnimation.SetMoveAni(moveDirection);// Cập nhật hướng di chuyển
     }
 
     private void OnEnable()
