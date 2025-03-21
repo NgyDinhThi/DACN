@@ -20,6 +20,6 @@ public class PlayerStats : ScriptableObject
     {
         health = Max_health;
         mana = Max_mana;    
-        //lệnh để có thể reset mana và máu
+        //lệnh để có thể reset mana và máux     
     }    
 }
