@@ -12,8 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797f5057f9d4cfc4e8641898e77d176b, type: 3}
   m_Name: PlayerStats
   m_EditorClassIdentifier: 
-  level: 1
-  health: 4
-  Max_health: 10
+  level: 3
+  health: 18
+  Max_health: 20
   mana: 20
   Max_mana: 20
+  CurrentExp: 150
+  NextLevelUp: 225
+  InitialNextLevelExp: 100
+  ExpMultiplier: 50

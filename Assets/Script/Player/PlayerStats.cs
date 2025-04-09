@@ -16,10 +16,19 @@ public class PlayerStats : ScriptableObject
     public float mana;   // Mana hiện tại của nhân vật
     public float Max_mana;  // Mana hiện tại của nhân vật
 
+    [Header("Exp  info:")]
+    public float CurrentExp;
+    public float NextLevelUp;
+    public float InitialNextLevelExp;
+    [Range(1f, 100f)]public float ExpMultiplier;
+
     public void ResetPlayer()
     {
         health = Max_health;
-        mana = Max_mana;    
-        //lệnh để có thể reset mana và máux     
+        mana = Max_mana;
+        level = 1;
+        CurrentExp = 0f;
+        NextLevelUp = InitialNextLevelExp;
+        //lệnh để có thể reset mana, máu và exp
     }    
 }
