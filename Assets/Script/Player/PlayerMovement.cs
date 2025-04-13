@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class PlayerMovements : MonoBehaviour
 {
     [Header("Config")] // Hiển thị tiêu đề "Config" trong Inspector
     [SerializeField] private float speed; // Tốc độ di chuyển của nhân vật
