@@ -9,17 +9,17 @@ public class Player : MonoBehaviour
     // Thuộc tính cho phép truy xuất chỉ số của nhân vật từ bên ngoài
     public PlayerStats Stats => stats;
 
-    private PlayerAnimation playerAnimation;
+    private PlayerAnimation playerAnimation; // Tham chiếu đến script điều khiển animation của nhân vật
 
     private void Awake()
     {
-        playerAnimation = GetComponent<PlayerAnimation>();
+        playerAnimation = GetComponent<PlayerAnimation>(); // Lấy component PlayerAnimation từ GameObject
     }
 
     public void ResetPlayer()
     {
-        //reset lại mọi thứ
-        stats.ResetPlayer();
-        playerAnimation.ResetPlayer();
+        // Reset lại chỉ số và trạng thái animation của nhân vật
+        stats.ResetPlayer(); // Gọi hàm reset stats trong ScriptableObject PlayerStats
+        playerAnimation.ResetPlayer(); // Gọi hàm reset animation trạng thái trong PlayerAnimation
     }
 }

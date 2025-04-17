@@ -14,21 +14,21 @@ public class PlayerStats : ScriptableObject
 
     [Header("Mana info:")]
     public float mana;   // Mana hiện tại của nhân vật
-    public float Max_mana;  // Mana hiện tại của nhân vật
+    public float Max_mana;  // Mana tối đa của nhân vật
 
     [Header("Exp  info:")]
-    public float CurrentExp;
-    public float NextLevelUp;
-    public float InitialNextLevelExp;
-    [Range(1f, 100f)]public float ExpMultiplier;
+    public float CurrentExp; // EXP hiện tại của nhân vật
+    public float NextLevelUp; // Ngưỡng EXP cần đạt để lên cấp
+    public float InitialNextLevelExp; // Giá trị EXP ban đầu cần để lên cấp
+    [Range(1f, 100f)] public float ExpMultiplier; // Tỷ lệ tăng EXP cần thiết mỗi cấp
 
+    // Hàm reset lại các chỉ số của nhân vật về trạng thái ban đầu
     public void ResetPlayer()
     {
-        health = Max_health;
-        mana = Max_mana;
-        level = 1;
-        CurrentExp = 0f;
-        NextLevelUp = InitialNextLevelExp;
-        //lệnh để có thể reset mana, máu và exp
-    }    
+        health = Max_health; // Hồi đầy máu
+        mana = Max_mana; // Hồi đầy mana
+        level = 1; // Đặt lại cấp độ
+        CurrentExp = 0f; // Xóa EXP hiện tại
+        NextLevelUp = InitialNextLevelExp; // Reset lại mức EXP cần thiết cho cấp 2
+    }
 }
