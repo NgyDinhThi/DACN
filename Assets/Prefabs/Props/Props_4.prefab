@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8523372274510676022}
   - component: {fileID: 2673020403309010137}
   - component: {fileID: 4477179870530521693}
+  - component: {fileID: -3218153263517151127}
   m_Layer: 0
   m_Name: Props_4
   m_TagString: Untagged
@@ -134,3 +135,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.875, y: 0.64931273}
   m_EdgeRadius: 0
+--- !u!50 &-3218153263517151127
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156982300552187545}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

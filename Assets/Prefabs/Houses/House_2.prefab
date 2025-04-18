@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3054207320224358959}
   - component: {fileID: 2359664714350513054}
   - component: {fileID: 32893796504307968}
+  - component: {fileID: -428593290614322169}
   m_Layer: 0
-  m_Name: Second house
+  m_Name: House_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,3 +135,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.875, y: 2.75}
   m_EdgeRadius: 0
+--- !u!50 &-428593290614322169
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6136622885413538604}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
