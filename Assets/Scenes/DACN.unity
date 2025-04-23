@@ -1412,7 +1412,7 @@ GameObject:
   - component: {fileID: 409272726}
   - component: {fileID: 409272731}
   - component: {fileID: 409272730}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_4 (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -2217,7 +2217,7 @@ GameObject:
   - component: {fileID: 636353448}
   - component: {fileID: 636353453}
   - component: {fileID: 636353452}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_1 (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3142,7 +3142,7 @@ GameObject:
   - component: {fileID: 827808985}
   - component: {fileID: 827808990}
   - component: {fileID: 827808989}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_4
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -7051,7 +7051,8 @@ GameObject:
   - component: {fileID: 1344505210}
   - component: {fileID: 1344505212}
   - component: {fileID: 1344505211}
-  m_Layer: 0
+  - component: {fileID: 1344505213}
+  m_Layer: 6
   m_Name: Enemy_1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -7249,6 +7250,19 @@ MonoBehaviour:
     - Quyetdinh: {fileID: 0}
       TrueState: 
       FalseState: 
+--- !u!114 &1344505213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344505205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f21dfd500005214db67ac0a8b5304d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diadiem: []
 --- !u!1001 &1347021397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7734,7 +7748,7 @@ GameObject:
   - component: {fileID: 1455788404}
   - component: {fileID: 1455788409}
   - component: {fileID: 1455788408}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -8023,7 +8037,7 @@ GameObject:
   - component: {fileID: 1461405676}
   - component: {fileID: 1461405681}
   - component: {fileID: 1461405680}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_2 (2)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -8422,7 +8436,7 @@ GameObject:
   - component: {fileID: 1545672764}
   - component: {fileID: 1545672769}
   - component: {fileID: 1545672768}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_2 (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -9808,7 +9822,7 @@ GameObject:
   - component: {fileID: 1732412217}
   - component: {fileID: 1732412222}
   - component: {fileID: 1732412221}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -16058,7 +16072,7 @@ GameObject:
   - component: {fileID: 1905228850}
   - component: {fileID: 1905228855}
   - component: {fileID: 1905228854}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy_3 (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
