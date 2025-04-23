@@ -1415,6 +1415,8 @@ GameObject:
   - component: {fileID: 409272733}
   - component: {fileID: 409272732}
   - component: {fileID: 409272734}
+  - component: {fileID: 409272735}
+  - component: {fileID: 409272736}
   m_Layer: 6
   m_Name: Enemy_4 (1)
   m_TagString: Enemy
@@ -1614,11 +1616,21 @@ MonoBehaviour:
       TrueState: Chase
       FalseState: 
   - id: Chase
-    actions: []
+    actions:
+    - {fileID: 409272735}
     transitions:
     - Quyetdinh: {fileID: 409272734}
       TrueState: 
-      FalseState: Patrol
+      FalseState: Wander
+    - Quyetdinh: {fileID: 409272736}
+      TrueState: Attack
+      FalseState: 
+  - id: Attack
+    actions: []
+    transitions:
+    - Quyetdinh: {fileID: 409272736}
+      TrueState: 
+      FalseState: Chase
 --- !u!114 &409272732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1661,10 +1673,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e229c065d8c134399ff812eb57d812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  khoangcach: 0
+  khoangcach: 4
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+--- !u!114 &409272735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409272724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1c889e8daa32642820c2f2f167404e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tocdoduoi: 2
+--- !u!114 &409272736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409272724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffa00cea74bb9845aeddc4660ba5dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  khoangcachtancong: 2.5
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &415620250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2275,6 +2316,8 @@ GameObject:
   - component: {fileID: 636353455}
   - component: {fileID: 636353454}
   - component: {fileID: 636353456}
+  - component: {fileID: 636353457}
+  - component: {fileID: 636353458}
   m_Layer: 6
   m_Name: Enemy_1 (1)
   m_TagString: Enemy
@@ -2470,15 +2513,25 @@ MonoBehaviour:
     actions:
     - {fileID: 636353452}
     transitions:
-    - Quyetdinh: {fileID: 1344505216}
+    - Quyetdinh: {fileID: 636353456}
       TrueState: Chase
       FalseState: 
   - id: Chase
-    actions: []
+    actions:
+    - {fileID: 636353457}
     transitions:
     - Quyetdinh: {fileID: 636353456}
       TrueState: 
       FalseState: Wander
+    - Quyetdinh: {fileID: 636353458}
+      TrueState: Attack
+      FalseState: 
+  - id: Attack
+    actions: []
+    transitions:
+    - Quyetdinh: {fileID: 636353458}
+      TrueState: 
+      FalseState: Chase
 --- !u!114 &636353454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2517,10 +2570,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e229c065d8c134399ff812eb57d812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  khoangcach: 0
+  khoangcach: 4
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+--- !u!114 &636353457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636353446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1c889e8daa32642820c2f2f167404e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tocdoduoi: 2
+--- !u!114 &636353458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636353446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffa00cea74bb9845aeddc4660ba5dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  khoangcachtancong: 2.5
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &686023271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3251,6 +3333,8 @@ GameObject:
   - component: {fileID: 827808992}
   - component: {fileID: 827808991}
   - component: {fileID: 827808993}
+  - component: {fileID: 827808994}
+  - component: {fileID: 827808995}
   m_Layer: 6
   m_Name: Enemy_4
   m_TagString: Enemy
@@ -3450,11 +3534,21 @@ MonoBehaviour:
       TrueState: Chase
       FalseState: 
   - id: Chase
-    actions: []
+    actions:
+    - {fileID: 827808994}
     transitions:
     - Quyetdinh: {fileID: 827808993}
       TrueState: 
-      FalseState: Patrol
+      FalseState: Wander
+    - Quyetdinh: {fileID: 827808995}
+      TrueState: Attack
+      FalseState: 
+  - id: Attack
+    actions: []
+    transitions:
+    - Quyetdinh: {fileID: 827808995}
+      TrueState: 
+      FalseState: Chase
 --- !u!114 &827808991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3497,10 +3591,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e229c065d8c134399ff812eb57d812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  khoangcach: 0
+  khoangcach: 4
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+--- !u!114 &827808994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827808983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1c889e8daa32642820c2f2f167404e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tocdoduoi: 2
+--- !u!114 &827808995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827808983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffa00cea74bb9845aeddc4660ba5dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  khoangcachtancong: 2.5
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &842307883
 GameObject:
   m_ObjectHideFlags: 0
@@ -3655,11 +3778,10 @@ Transform:
   m_GameObject: {fileID: 842307883}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5.05, y: -0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1884932524}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &842307889
@@ -7215,6 +7337,8 @@ GameObject:
   - component: {fileID: 1344505212}
   - component: {fileID: 1344505215}
   - component: {fileID: 1344505216}
+  - component: {fileID: 1344505217}
+  - component: {fileID: 1344505218}
   m_Layer: 6
   m_Name: Enemy_1
   m_TagString: Enemy
@@ -7399,11 +7523,21 @@ MonoBehaviour:
       TrueState: Chase
       FalseState: 
   - id: Chase
-    actions: []
+    actions:
+    - {fileID: 1344505217}
     transitions:
     - Quyetdinh: {fileID: 1344505216}
       TrueState: 
       FalseState: Wander
+    - Quyetdinh: {fileID: 1344505218}
+      TrueState: Attack
+      FalseState: 
+  - id: Attack
+    actions: []
+    transitions:
+    - Quyetdinh: {fileID: 1344505218}
+      TrueState: 
+      FalseState: Chase
 --- !u!114 &1344505213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7458,6 +7592,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   khoangcach: 4
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &1344505217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344505205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1c889e8daa32642820c2f2f167404e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tocdoduoi: 2
+--- !u!114 &1344505218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344505205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffa00cea74bb9845aeddc4660ba5dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  khoangcachtancong: 2.5
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128
@@ -7949,6 +8112,8 @@ GameObject:
   - component: {fileID: 1455788411}
   - component: {fileID: 1455788410}
   - component: {fileID: 1455788412}
+  - component: {fileID: 1455788413}
+  - component: {fileID: 1455788414}
   m_Layer: 6
   m_Name: Enemy_2
   m_TagString: Enemy
@@ -8148,11 +8313,21 @@ MonoBehaviour:
       TrueState: Chase
       FalseState: 
   - id: Chase
-    actions: []
+    actions:
+    - {fileID: 1455788413}
     transitions:
     - Quyetdinh: {fileID: 1455788412}
       TrueState: 
-      FalseState: Patrol
+      FalseState: Wander
+    - Quyetdinh: {fileID: 1455788414}
+      TrueState: Attack
+      FalseState: 
+  - id: Attack
+    actions: []
+    transitions:
+    - Quyetdinh: {fileID: 1455788414}
+      TrueState: 
+      FalseState: Chase
 --- !u!114 &1455788410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8195,10 +8370,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e229c065d8c134399ff812eb57d812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  khoangcach: 0
+  khoangcach: 4
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+--- !u!114 &1455788413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455788402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1c889e8daa32642820c2f2f167404e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tocdoduoi: 2
+--- !u!114 &1455788414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455788402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffa00cea74bb9845aeddc4660ba5dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  khoangcachtancong: 2.5
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1460086853
 GameObject:
   m_ObjectHideFlags: 0
@@ -8293,6 +8497,8 @@ GameObject:
   - component: {fileID: 1461405683}
   - component: {fileID: 1461405682}
   - component: {fileID: 1461405684}
+  - component: {fileID: 1461405685}
+  - component: {fileID: 1461405686}
   m_Layer: 6
   m_Name: Enemy_2 (2)
   m_TagString: Enemy
@@ -8492,11 +8698,21 @@ MonoBehaviour:
       TrueState: Chase
       FalseState: 
   - id: Chase
-    actions: []
+    actions:
+    - {fileID: 1461405685}
     transitions:
     - Quyetdinh: {fileID: 1461405684}
       TrueState: 
-      FalseState: Patrol
+      FalseState: Wander
+    - Quyetdinh: {fileID: 1461405686}
+      TrueState: Attack
+      FalseState: 
+  - id: Attack
+    actions: []
+    transitions:
+    - Quyetdinh: {fileID: 1461405686}
+      TrueState: 
+      FalseState: Chase
 --- !u!114 &1461405682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8539,10 +8755,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e229c065d8c134399ff812eb57d812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  khoangcach: 0
+  khoangcach: 4
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+--- !u!114 &1461405685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461405674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1c889e8daa32642820c2f2f167404e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tocdoduoi: 2
+--- !u!114 &1461405686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461405674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffa00cea74bb9845aeddc4660ba5dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  khoangcachtancong: 2.5
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &1501904903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8747,6 +8992,8 @@ GameObject:
   - component: {fileID: 1545672771}
   - component: {fileID: 1545672770}
   - component: {fileID: 1545672772}
+  - component: {fileID: 1545672773}
+  - component: {fileID: 1545672774}
   m_Layer: 6
   m_Name: Enemy_2 (1)
   m_TagString: Enemy
@@ -8946,11 +9193,21 @@ MonoBehaviour:
       TrueState: Chase
       FalseState: 
   - id: Chase
-    actions: []
+    actions:
+    - {fileID: 1545672773}
     transitions:
     - Quyetdinh: {fileID: 1545672772}
       TrueState: 
-      FalseState: Patrol
+      FalseState: Wander
+    - Quyetdinh: {fileID: 1545672774}
+      TrueState: Attack
+      FalseState: 
+  - id: Attack
+    actions: []
+    transitions:
+    - Quyetdinh: {fileID: 1545672774}
+      TrueState: 
+      FalseState: Chase
 --- !u!114 &1545672770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8993,10 +9250,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e229c065d8c134399ff812eb57d812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  khoangcach: 0
+  khoangcach: 4
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+--- !u!114 &1545672773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545672762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1c889e8daa32642820c2f2f167404e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tocdoduoi: 2
+--- !u!114 &1545672774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545672762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffa00cea74bb9845aeddc4660ba5dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  khoangcachtancong: 2.5
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1553208999
 GameObject:
   m_ObjectHideFlags: 0
@@ -9402,6 +9688,113 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2125001860023851137, guid: 05b448a843c3c5747ac3642f3342bc89, type: 3}
   m_PrefabInstance: {fileID: 1591221406}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1605288916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1605288919}
+  - component: {fileID: 1605288918}
+  - component: {fileID: 1605288917}
+  m_Layer: 0
+  m_Name: CinemachineCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1605288917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605288916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraDistance: 10
+  DeadZoneDepth: 0
+  Composition:
+    ScreenPosition: {x: 0, y: 0}
+    DeadZone:
+      Enabled: 0
+      Size: {x: 0.2, y: 0.2}
+    HardLimits:
+      Enabled: 0
+      Size: {x: 0.8, y: 0.8}
+      Offset: {x: 0, y: 0}
+  CenterOnActivate: 1
+  TargetOffset: {x: 0, y: 0, z: 0}
+  Damping: {x: 1, y: 1, z: 1}
+  Lookahead:
+    Enabled: 0
+    Time: 0
+    Smoothing: 0
+    IgnoreY: 0
+--- !u!114 &1605288918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605288916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Priority:
+    Enabled: 0
+    m_Value: 0
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 842307888}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 60
+    OrthographicSize: 6
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 0
+--- !u!4 &1605288919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605288916}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.05, y: -0.12, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1619640062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10188,6 +10581,8 @@ GameObject:
   - component: {fileID: 1732412224}
   - component: {fileID: 1732412223}
   - component: {fileID: 1732412225}
+  - component: {fileID: 1732412226}
+  - component: {fileID: 1732412227}
   m_Layer: 6
   m_Name: Enemy_3
   m_TagString: Enemy
@@ -10387,11 +10782,21 @@ MonoBehaviour:
       TrueState: Chase
       FalseState: 
   - id: Chase
-    actions: []
+    actions:
+    - {fileID: 1732412226}
     transitions:
     - Quyetdinh: {fileID: 1732412225}
       TrueState: 
       FalseState: Wander
+    - Quyetdinh: {fileID: 1732412227}
+      TrueState: Attack
+      FalseState: 
+  - id: Attack
+    actions: []
+    transitions:
+    - Quyetdinh: {fileID: 1732412227}
+      TrueState: 
+      FalseState: Chase
 --- !u!114 &1732412223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10430,10 +10835,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e229c065d8c134399ff812eb57d812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  khoangcach: 0
+  khoangcach: 4
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+--- !u!114 &1732412226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732412215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1c889e8daa32642820c2f2f167404e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tocdoduoi: 2
+--- !u!114 &1732412227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732412215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffa00cea74bb9845aeddc4660ba5dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  khoangcachtancong: 2.5
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1754258060
 GameObject:
   m_ObjectHideFlags: 0
@@ -16289,6 +16723,7 @@ GameObject:
   - component: {fileID: 1884932523}
   - component: {fileID: 1884932522}
   - component: {fileID: 1884932521}
+  - component: {fileID: 1884932525}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -16408,12 +16843,44 @@ Transform:
   m_GameObject: {fileID: 1884932520}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 0.2, z: -10}
+  m_LocalPosition: {x: 5.05, y: -0.12, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 842307888}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1884932525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884932520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowDebugText: 0
+  ShowCameraFrustum: 1
+  IgnoreTimeScale: 0
+  WorldUpOverride: {fileID: 0}
+  ChannelMask: -1
+  UpdateMethod: 2
+  BlendUpdateMethod: 1
+  LensModeOverride:
+    Enabled: 0
+    DefaultMode: 2
+  DefaultBlend:
+    Style: 1
+    Time: 2
+    CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  CustomBlends: {fileID: 0}
 --- !u!1001 &1895381100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16489,6 +16956,8 @@ GameObject:
   - component: {fileID: 1905228857}
   - component: {fileID: 1905228856}
   - component: {fileID: 1905228858}
+  - component: {fileID: 1905228859}
+  - component: {fileID: 1905228860}
   m_Layer: 6
   m_Name: Enemy_3 (1)
   m_TagString: Enemy
@@ -16688,11 +17157,21 @@ MonoBehaviour:
       TrueState: Chase
       FalseState: 
   - id: Chase
-    actions: []
+    actions:
+    - {fileID: 1905228859}
     transitions:
     - Quyetdinh: {fileID: 1905228858}
       TrueState: 
       FalseState: Wander
+    - Quyetdinh: {fileID: 1905228860}
+      TrueState: Attack
+      FalseState: 
+  - id: Attack
+    actions: []
+    transitions:
+    - Quyetdinh: {fileID: 1905228860}
+      TrueState: 
+      FalseState: Chase
 --- !u!114 &1905228856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16731,10 +17210,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e229c065d8c134399ff812eb57d812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  khoangcach: 0
+  khoangcach: 4
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+--- !u!114 &1905228859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905228848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1c889e8daa32642820c2f2f167404e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tocdoduoi: 2
+--- !u!114 &1905228860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905228848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffa00cea74bb9845aeddc4660ba5dbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  khoangcachtancong: 2.5
+  playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &1914046761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54208,3 +54716,5 @@ SceneRoots:
   - {fileID: 1575159018}
   - {fileID: 1419694634}
   - {fileID: 1754258061}
+  - {fileID: 1884932524}
+  - {fileID: 1605288919}
