@@ -8,6 +8,7 @@ public class EnemyBrain : MonoBehaviour
    
 
     public FSMstate CurrentState { get; set; }
+    public Transform nguoichoi {  get; set; }
 
     private void Start()
     {
