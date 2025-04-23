@@ -14,7 +14,13 @@ public class WayPoint : MonoBehaviour
     private void Start()
     {
         entitypPosition = transform.position;
+        khoidonggame = true;
     }
+
+    public Vector3 Layvitri(int diadiemIndex)
+    {
+        return entitypPosition + diadiem[diadiemIndex];
+    }    
 
     private void OnDrawGizmos()
     {
