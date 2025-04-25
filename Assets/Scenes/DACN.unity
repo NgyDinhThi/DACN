@@ -1417,6 +1417,7 @@ GameObject:
   - component: {fileID: 409272734}
   - component: {fileID: 409272735}
   - component: {fileID: 409272736}
+  - component: {fileID: 409272737}
   m_Layer: 6
   m_Name: Enemy_4 (1)
   m_TagString: Enemy
@@ -1706,6 +1707,20 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &409272737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409272724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad79e726e47e764ebb925900688c33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dmg: 2
+  TimeDmg: 1
 --- !u!1001 &415620250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2318,6 +2333,7 @@ GameObject:
   - component: {fileID: 636353456}
   - component: {fileID: 636353457}
   - component: {fileID: 636353458}
+  - component: {fileID: 636353459}
   m_Layer: 6
   m_Name: Enemy_1 (1)
   m_TagString: Enemy
@@ -2603,6 +2619,20 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &636353459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636353446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad79e726e47e764ebb925900688c33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dmg: 2
+  TimeDmg: 1
 --- !u!1001 &686023271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3335,6 +3365,7 @@ GameObject:
   - component: {fileID: 827808993}
   - component: {fileID: 827808994}
   - component: {fileID: 827808995}
+  - component: {fileID: 827808996}
   m_Layer: 6
   m_Name: Enemy_4
   m_TagString: Enemy
@@ -3624,6 +3655,20 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &827808996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827808983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad79e726e47e764ebb925900688c33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dmg: 2
+  TimeDmg: 1
 --- !u!1 &842307883
 GameObject:
   m_ObjectHideFlags: 0
@@ -6863,7 +6908,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100/100
+  m_text: 20/20
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 671c45858b5559247a83cc93a89a7660, type: 2}
   m_sharedMaterial: {fileID: -5920154114919826857, guid: 671c45858b5559247a83cc93a89a7660, type: 2}
@@ -7339,6 +7384,7 @@ GameObject:
   - component: {fileID: 1344505216}
   - component: {fileID: 1344505217}
   - component: {fileID: 1344505218}
+  - component: {fileID: 1344505219}
   m_Layer: 6
   m_Name: Enemy_1
   m_TagString: Enemy
@@ -7624,6 +7670,20 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &1344505219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1344505205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad79e726e47e764ebb925900688c33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dmg: 2
+  TimeDmg: 1
 --- !u!1001 &1347021397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8114,6 +8174,7 @@ GameObject:
   - component: {fileID: 1455788412}
   - component: {fileID: 1455788413}
   - component: {fileID: 1455788414}
+  - component: {fileID: 1455788415}
   m_Layer: 6
   m_Name: Enemy_2
   m_TagString: Enemy
@@ -8403,6 +8464,20 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &1455788415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455788402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad79e726e47e764ebb925900688c33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dmg: 2
+  TimeDmg: 1
 --- !u!1 &1460086853
 GameObject:
   m_ObjectHideFlags: 0
@@ -8499,6 +8574,7 @@ GameObject:
   - component: {fileID: 1461405684}
   - component: {fileID: 1461405685}
   - component: {fileID: 1461405686}
+  - component: {fileID: 1461405687}
   m_Layer: 6
   m_Name: Enemy_2 (2)
   m_TagString: Enemy
@@ -8788,6 +8864,20 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &1461405687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461405674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad79e726e47e764ebb925900688c33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dmg: 2
+  TimeDmg: 1
 --- !u!1001 &1501904903
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8994,6 +9084,7 @@ GameObject:
   - component: {fileID: 1545672772}
   - component: {fileID: 1545672773}
   - component: {fileID: 1545672774}
+  - component: {fileID: 1545672775}
   m_Layer: 6
   m_Name: Enemy_2 (1)
   m_TagString: Enemy
@@ -9283,6 +9374,20 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &1545672775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545672762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad79e726e47e764ebb925900688c33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dmg: 2
+  TimeDmg: 1
 --- !u!1 &1553208999
 GameObject:
   m_ObjectHideFlags: 0
@@ -10583,6 +10688,7 @@ GameObject:
   - component: {fileID: 1732412225}
   - component: {fileID: 1732412226}
   - component: {fileID: 1732412227}
+  - component: {fileID: 1732412228}
   m_Layer: 6
   m_Name: Enemy_3
   m_TagString: Enemy
@@ -10868,6 +10974,20 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &1732412228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732412215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad79e726e47e764ebb925900688c33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dmg: 2
+  TimeDmg: 1
 --- !u!1 &1754258060
 GameObject:
   m_ObjectHideFlags: 0
@@ -16958,6 +17078,7 @@ GameObject:
   - component: {fileID: 1905228858}
   - component: {fileID: 1905228859}
   - component: {fileID: 1905228860}
+  - component: {fileID: 1905228861}
   m_Layer: 6
   m_Name: Enemy_3 (1)
   m_TagString: Enemy
@@ -17243,6 +17364,20 @@ MonoBehaviour:
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &1905228861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905228848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ad79e726e47e764ebb925900688c33b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dmg: 2
+  TimeDmg: 1
 --- !u!1001 &1914046761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54708,6 +54843,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 842307888}
+  - {fileID: 1605288919}
+  - {fileID: 1884932524}
   - {fileID: 162332583}
   - {fileID: 1687174261}
   - {fileID: 112802102}
@@ -54716,5 +54853,3 @@ SceneRoots:
   - {fileID: 1575159018}
   - {fileID: 1419694634}
   - {fileID: 1754258061}
-  - {fileID: 1884932524}
-  - {fileID: 1605288919}
