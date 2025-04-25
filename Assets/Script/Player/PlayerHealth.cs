@@ -28,7 +28,12 @@ public class PlayerHealth : MonoBehaviour, IdamageAble
 
         // Nếu máu giảm xuống 0 hoặc thấp hơn, gọi hàm xử lý cái chết của nhân vật
         if (stats.health <= 0f)
+        {   
+            
+            stats.health = 0f;  
             PlayerDeath();
+        
+        }
     }
 
     private void PlayerDeath()

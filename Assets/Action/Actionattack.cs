@@ -19,18 +19,19 @@ public class Actionattack : FSMaction
 
     public override void Act()
     {
-        throw new System.NotImplementedException();
+        tancongngchoi();
     }
 
-    private void AtkPlayer()
+    private void tancongngchoi()
     {
         if (enemy.nguoichoi == null)
             return;
 
-        timer -= Time.time;
+        timer -= Time.deltaTime;
         if (timer <=0f)
         {
             IdamageAble player = enemy.nguoichoi.GetComponent<IdamageAble>();
+            
             player.TakeDamage(Dmg);
             timer = TimeDmg;
         }
