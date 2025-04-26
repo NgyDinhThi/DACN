@@ -14,17 +14,19 @@ public class PlayerHealth : MonoBehaviour, IdamageAble
 
     private void Update()
     {
-        // Kiểm tra nếu phím P được nhấn, nhân vật sẽ nhận 2 sát thương
-        if (Input.GetKeyDown(KeyCode.P))
+        if (stats.health <= 0f)
         {
-            TakeDamage(2f);
+            PlayerDeath();
         }
     }
 
     public void TakeDamage(float amount)
     {
+        if(stats.health <=0f) return;
         // Giảm máu của nhân vật theo lượng sát thương nhận được
         stats.health -= amount;
+
+        DmgManager.instance.hienSatthuong(amount, transform);
 
         // Nếu máu giảm xuống 0 hoặc thấp hơn, gọi hàm xử lý cái chết của nhân vật
         if (stats.health <= 0f)
