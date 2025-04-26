@@ -1627,7 +1627,8 @@ MonoBehaviour:
       TrueState: Attack
       FalseState: 
   - id: Attack
-    actions: []
+    actions:
+    - {fileID: 409272737}
     transitions:
     - Quyetdinh: {fileID: 409272736}
       TrueState: 
@@ -2543,7 +2544,8 @@ MonoBehaviour:
       TrueState: Attack
       FalseState: 
   - id: Attack
-    actions: []
+    actions:
+    - {fileID: 636353459}
     transitions:
     - Quyetdinh: {fileID: 636353458}
       TrueState: 
@@ -3575,7 +3577,8 @@ MonoBehaviour:
       TrueState: Attack
       FalseState: 
   - id: Attack
-    actions: []
+    actions:
+    - {fileID: 827808996}
     transitions:
     - Quyetdinh: {fileID: 827808995}
       TrueState: 
@@ -7579,7 +7582,8 @@ MonoBehaviour:
       TrueState: Attack
       FalseState: 
   - id: Attack
-    actions: []
+    actions:
+    - {fileID: 1344505219}
     transitions:
     - Quyetdinh: {fileID: 1344505218}
       TrueState: 
@@ -8384,7 +8388,8 @@ MonoBehaviour:
       TrueState: Attack
       FalseState: 
   - id: Attack
-    actions: []
+    actions:
+    - {fileID: 1455788415}
     transitions:
     - Quyetdinh: {fileID: 1455788414}
       TrueState: 
@@ -8784,7 +8789,8 @@ MonoBehaviour:
       TrueState: Attack
       FalseState: 
   - id: Attack
-    actions: []
+    actions:
+    - {fileID: 1461405687}
     transitions:
     - Quyetdinh: {fileID: 1461405686}
       TrueState: 
@@ -9294,7 +9300,8 @@ MonoBehaviour:
       TrueState: Attack
       FalseState: 
   - id: Attack
-    actions: []
+    actions:
+    - {fileID: 1545672775}
     transitions:
     - Quyetdinh: {fileID: 1545672774}
       TrueState: 
@@ -10898,7 +10905,8 @@ MonoBehaviour:
       TrueState: Attack
       FalseState: 
   - id: Attack
-    actions: []
+    actions:
+    - {fileID: 1732412228}
     transitions:
     - Quyetdinh: {fileID: 1732412227}
       TrueState: 
@@ -17288,7 +17296,8 @@ MonoBehaviour:
       TrueState: Attack
       FalseState: 
   - id: Attack
-    actions: []
+    actions:
+    - {fileID: 1905228861}
     transitions:
     - Quyetdinh: {fileID: 1905228860}
       TrueState: 
