@@ -16,7 +16,7 @@ chỉ dùng được với class kế thừa từ ScriptableObject
  */
 
 public class Weapon : ScriptableObject
-{
+{ 
     [Header("Config")]
 
     public Sprite icon;
