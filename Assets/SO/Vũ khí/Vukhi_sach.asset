@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 461cc59d2724be24e9d349a50e35e7fb, type: 3}
+  m_Name: Vukhi_sach
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 6019e96afb2057f45930762b66648a64, type: 3}
+  loaiVK: 0
+  dmg: 3
+  projectilesPrefab: {fileID: 8116636682622341660, guid: 3908984a2533be741b47a323c8771bf7, type: 3}
+  luongMana: 10
