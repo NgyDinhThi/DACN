@@ -3491,6 +3491,7 @@ GameObject:
   - component: {fileID: 842307892}
   - component: {fileID: 842307891}
   - component: {fileID: 842307894}
+  - component: {fileID: 842307896}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -3749,6 +3750,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.009404123, y: 0.0014929175}
   m_Size: {x: 1.0188082, y: 1.0322796}
   m_Direction: 0
+--- !u!114 &842307896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842307883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f5bd70848175b48a59a2027361df5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &844552628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53672,6 +53685,10 @@ PrefabInstance:
     - target: {fileID: 1077315866331300576, guid: e5781b975cf6b2443bdf6a239271d450, type: 3}
       propertyPath: m_Name
       value: Enemy_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3244657053272845300, guid: e5781b975cf6b2443bdf6a239271d450, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7621512257964165409, guid: e5781b975cf6b2443bdf6a239271d450, type: 3}
       propertyPath: m_LocalPosition.x
