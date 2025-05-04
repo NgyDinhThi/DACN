@@ -3,8 +3,11 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    [Header("Config")] // Hiển thị tiêu đề "Config" trong Inspector
+    [Header("Config")] 
     [SerializeField] private PlayerStats stats; // Tham chiếu đến thông tin chỉ số của nhân vật
+
+    public PlayerMana playerMana {  get; private set; }
+
 
     // Thuộc tính cho phép truy xuất chỉ số của nhân vật từ bên ngoài
     public PlayerStats Stats => stats;
@@ -14,6 +17,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         playerAnimation = GetComponent<PlayerAnimation>(); // Lấy component PlayerAnimation từ GameObject
+        playerMana = GetComponent<PlayerMana>();
     }
 
     public void ResetPlayer()
@@ -21,5 +25,7 @@ public class Player : MonoBehaviour
         // Reset lại chỉ số và trạng thái animation của nhân vật
         stats.ResetPlayer(); // Gọi hàm reset stats trong ScriptableObject PlayerStats
         playerAnimation.ResetPlayer(); // Gọi hàm reset animation trạng thái trong PlayerAnimation
+        playerMana.ResetMana();
+    
     }
 }

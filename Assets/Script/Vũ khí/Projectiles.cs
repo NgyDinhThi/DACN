@@ -8,6 +8,8 @@ public class Projectiles : MonoBehaviour
     // Hướng bay của đạn, được set từ bên ngoài khi khởi tạo
     public Vector3 huongbay { get; set; }
 
+    public float dmg { get; set; }  
+
     private void Update()
     {
         // Di chuyển đạn theo hướng đã chỉ định, với tốc độ cố định mỗi frame
@@ -16,6 +18,7 @@ public class Projectiles : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        collision.GetComponent<IdamageAble>()?.TakeDamage(dmg);
         // Khi đạn va chạm với bất kỳ collider nào, nó sẽ tự hủy
         Destroy(gameObject);
     }

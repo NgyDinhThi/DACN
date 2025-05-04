@@ -31,11 +31,12 @@ public class SelectionManager : MonoBehaviour
             if (hit.collider != null)
             {
                 EnemyBrain enemy = hit.collider.GetComponent<EnemyBrain>();
-                if (enemy != null)
-                {
-
+                EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+                if (enemy == null) return;
+                if (enemyHealth.mauhientai <= 0f) return;
                     OnEnemySelectEvent?.Invoke(enemy);
-                }
+                
+               
             }
             else
             {

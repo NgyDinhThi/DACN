@@ -28,7 +28,7 @@ public class EnemySelect : MonoBehaviour
 
     }    
 
-    private void NoSelectedCallback()
+    public void NoSelectedCallback()
     {
         selectorSpritel.SetActive(false);
     }    
