@@ -1357,7 +1357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34fec6d4ae261945a2a9504ed57427a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
 --- !u!1001 &304399261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1574,7 +1574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34fec6d4ae261945a2a9504ed57427a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
 --- !u!1001 &415620250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3189,7 +3189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34fec6d4ae261945a2a9504ed57427a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
 --- !u!1 &842307883
 GameObject:
   m_ObjectHideFlags: 0
@@ -3482,7 +3482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f5bd70848175b48a59a2027361df5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cacvukhi: {fileID: 11400000, guid: 863558cb88f31d34785cb44d75987798, type: 2}
+  stats: {fileID: 11400000, guid: 75c99caee7e29b54383037e3be5bd95f, type: 2}
+  cacvukhi: {fileID: 11400000, guid: e07b0e0c76bae3c47a26f019564d37aa, type: 2}
   vitritancong:
   - {fileID: 1270883410}
   - {fileID: 1393798287}
@@ -3902,7 +3903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34fec6d4ae261945a2a9504ed57427a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
 --- !u!1001 &937775901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5397,7 +5398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34fec6d4ae261945a2a9504ed57427a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
 --- !u!1001 &1041212058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6825,7 +6826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34fec6d4ae261945a2a9504ed57427a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
 --- !u!1001 &1320097009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7034,7 +7035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34fec6d4ae261945a2a9504ed57427a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
 --- !u!1001 &1347021397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7553,7 +7554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34fec6d4ae261945a2a9504ed57427a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
 --- !u!1 &1457960945
 GameObject:
   m_ObjectHideFlags: 0
@@ -8870,7 +8871,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -20113,7 +20114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34fec6d4ae261945a2a9504ed57427a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 20
 --- !u!1001 &1914046761
 PrefabInstance:
   m_ObjectHideFlags: 0
