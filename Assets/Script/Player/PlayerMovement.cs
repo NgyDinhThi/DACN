@@ -7,6 +7,10 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] private float speed; // Tốc độ di chuyển của nhân vật
     [SerializeField] private int jump; // Số lần nhảy (chưa được sử dụng trong code)
 
+    public Vector2 MoveDirection => moveDirection;
+
+
+
     private PlayerAction action; // Đối tượng xử lý input của người chơi
     private Rigidbody2D rb2d; // Thành phần vật lý Rigidbody2D để di chuyển nhân vật
     private PlayerAnimation playerAnimation;
