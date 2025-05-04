@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         playerAnimation = GetComponent<PlayerAnimation>(); // Lấy component PlayerAnimation từ GameObject
-        playerMana = GetComponent<PlayerMana>();
+        playerMana = GetComponent<PlayerMana>();  // Lấy script quản lý mana
     }
 
     public void ResetPlayer()
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
         // Reset lại chỉ số và trạng thái animation của nhân vật
         stats.ResetPlayer(); // Gọi hàm reset stats trong ScriptableObject PlayerStats
         playerAnimation.ResetPlayer(); // Gọi hàm reset animation trạng thái trong PlayerAnimation
-        playerMana.ResetMana();
-    
+        playerMana.ResetMana(); // Hồi đầy mana cho nhân vật
+
     }
 }
