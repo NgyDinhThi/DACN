@@ -7,11 +7,7 @@ public class PlayerMana : MonoBehaviour
 
     private void Update()
     {
-        // Kiểm tra nếu phím M được nhấn, nhân vật sẽ trừ 2 mana
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            UseMana(2f);
-        }
+       
     }
 
     public void UseMana(float amount)

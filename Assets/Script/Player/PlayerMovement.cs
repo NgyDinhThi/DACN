@@ -7,67 +7,70 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] private float speed; // Tốc độ di chuyển của nhân vật
     [SerializeField] private int jump; // Số lần nhảy (chưa được sử dụng trong code)
 
-    public Vector2 MoveDirection => moveDirection;
+    public Vector2 MoveDirection => moveDirection; // Property trả về hướng di chuyển hiện tại
 
-
-
-    private PlayerAction action; // Đối tượng xử lý input của người chơi
-    private Rigidbody2D rb2d; // Thành phần vật lý Rigidbody2D để di chuyển nhân vật
-    private PlayerAnimation playerAnimation;
-    private Player player;
-    private Vector2 moveDirection; // Hướng di chuyển của nhân vật
+    private PlayerAction action; // Đối tượng xử lý input của người chơi (Input System)
+    private Rigidbody2D rb2d; // Thành phần vật lý Rigidbody2D để xử lý di chuyển vật lý
+    private PlayerAnimation playerAnimation; // Điều khiển animation của nhân vật
+    private Player player; // Script chứa thông tin nhân vật (máu, năng lượng...)
+    private Vector2 moveDirection; // Biến lưu hướng di chuyển (từ Input System)
 
     private void Awake()
     {
-        action = new PlayerAction(); // Khởi tạo hệ thống nhập liệu của người chơi
-        rb2d = GetComponent<Rigidbody2D>(); // Lấy thành phần Rigidbody2D từ GameObject
-        playerAnimation = GetComponent<PlayerAnimation>();
-        player = GetComponent<Player>();
+        action = new PlayerAction(); // Khởi tạo input action (sử dụng Unity Input System)
+        rb2d = GetComponent<Rigidbody2D>(); // Lấy component Rigidbody2D từ GameObject
+        playerAnimation = GetComponent<PlayerAnimation>(); // Lấy script animation
+        player = GetComponent<Player>(); // Lấy script thông tin nhân vật
     }
 
     private void FixedUpdate()
     {
-        move(); // Gọi hàm di chuyển mỗi frame vật lý
+        move(); // Gọi hàm di chuyển trong mỗi frame vật lý
     }
 
     private void Update()
     {
-        ReadMovement(); // Đọc input mỗi frame
+        ReadMovement(); // Đọc input từ người chơi mỗi frame
     }
 
+    // Hàm xử lý logic di chuyển
     private void move()
     {
+        // Nếu nhân vật đã chết (máu <= 0), không cho phép di chuyển nữa
         if (player.Stats.health <= 0)
         {
             return;
         }
-        // Di chuyển nhân vật bằng cách thay đổi vị trí Rigidbody2D dựa trên hướng di chuyển
+
+        // Di chuyển bằng cách cập nhật vị trí của Rigidbody2D dựa trên hướng di chuyển
         rb2d.MovePosition(rb2d.position + moveDirection * (speed * Time.fixedDeltaTime));
     }
 
+    // Hàm đọc hướng di chuyển từ input
     private void ReadMovement()
     {
-        // Đọc giá trị từ hệ thống nhập liệu và chuẩn hóa hướng di chuyển
+        // Đọc giá trị hướng di chuyển từ PlayerAction (Input System) và chuẩn hóa
         moveDirection = action.Movement.Move.ReadValue<Vector2>().normalized;
 
-        if (moveDirection == Vector2.zero) // Nếu không có input
+        if (moveDirection == Vector2.zero) // Nếu không có input nào
         {
-            // Dừng animation di chuyển
-            playerAnimation.SetMoveBoolTransition(false);
+            playerAnimation.SetMoveBoolTransition(false); // Dừng animation di chuyển
             return;
         }
 
-        playerAnimation.SetMoveBoolTransition(true); // Kích hoạt animation di chuyển
-        playerAnimation.SetMoveAni(moveDirection);// Cập nhật hướng di chuyển
+        playerAnimation.SetMoveBoolTransition(true); // Bật animation di chuyển
+        playerAnimation.SetMoveAni(moveDirection);   // Cập nhật hướng cho animation
     }
 
+    // Kích hoạt hệ thống nhập liệu khi GameObject được bật
     private void OnEnable()
     {
-        action.Enable(); // Bật hệ thống nhập liệu khi GameObject được kích hoạt
+        action.Enable();
     }
 
+    // Tắt hệ thống nhập liệu khi GameObject bị vô hiệu hóa
     private void OnDisable()
     {
-        action?.Disable(); // Vô hiệu hóa hệ thống nhập liệu khi GameObject bị tắt
+        action?.Disable(); // Kiểm tra null trước khi gọi Disable
     }
 }
