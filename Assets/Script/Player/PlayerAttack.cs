@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerAttack : MonoBehaviour
 {
     [Header("Config")]
+    [SerializeField] private PlayerStats stats;
     [SerializeField] private Weapon cacvukhi; // Vũ khí hiện tại của người chơi
     [SerializeField] private Transform[] vitritancong; // Mảng vị trí tấn công theo hướng (0: lên, 1: phải, 2: xuống, 3: trái)
 
@@ -92,7 +94,7 @@ public class PlayerAttack : MonoBehaviour
         float denkethu = Vector3.Distance(enemyTrget.transform.position, transform.position);
         if (denkethu <=khoangcachCt)
         {
-            enemyTrget.GetComponent<IdamageAble>().TakeDamage(1f);
+            enemyTrget.GetComponent<IdamageAble>().TakeDamage(GetAtkdmg());
         }
     }    
      
@@ -107,10 +109,22 @@ public class PlayerAttack : MonoBehaviour
         // Thiết lập hướng bay cho đạn là hướng lên (sẽ xoay theo xoayhuong)
         projectiles.huongbay = Vector3.up;
 
-        projectiles.dmg = currentWp.dmg;
+        projectiles.dmg = GetAtkdmg();
 
         // Trừ mana sau khi bắn
         playerMana.UseMana(currentWp.luongMana);
+    }    
+
+    private float GetAtkdmg()
+    {
+        float dmg = stats.BaseDmg;
+        dmg += currentWp.dmg;
+        float randomPerc = Random.Range(0f, 100);
+        if (randomPerc <= stats.CritChance)
+        {
+            dmg += dmg * (stats.CritDmg / 100f);
+        }
+        return dmg;
     }    
 
     private void GetFirePosition()

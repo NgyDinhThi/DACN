@@ -22,6 +22,10 @@ public class PlayerStats : ScriptableObject
     public float InitialNextLevelExp; // Giá trị EXP ban đầu cần để lên cấp
     [Range(1f, 100f)] public float ExpMultiplier; // Tỷ lệ tăng EXP cần thiết mỗi cấp
 
+    [Header("Attack")]
+    public float BaseDmg;
+    public float CritChance;
+    public float CritDmg;
     // Hàm reset lại các chỉ số của nhân vật về trạng thái ban đầu
     public void ResetPlayer()
     {
