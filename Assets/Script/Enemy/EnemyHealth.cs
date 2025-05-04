@@ -4,6 +4,8 @@ using UnityEngine;
 // Script quản lý máu và sát thương của enemy
 public class EnemyHealth : MonoBehaviour, IdamageAble
 {
+    public static event Action OnEnemyDeathEvent;
+
     [Header("Config")]
     [SerializeField] private float health; // Máu ban đầu của enemy
 
@@ -49,6 +51,8 @@ public class EnemyHealth : MonoBehaviour, IdamageAble
 
             // Đổi layer để tránh bị chọn lại (Raycast sẽ bỏ qua)
             gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+
+            OnEnemyDeathEvent?.Invoke();
         }
         else
         {

@@ -8,6 +8,12 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Weapon cacvukhi; // Vũ khí hiện tại của người chơi
     [SerializeField] private Transform[] vitritancong; // Mảng vị trí tấn công theo hướng (0: lên, 1: phải, 2: xuống, 3: trái)
 
+    [Header("Cận chiến config")]
+    [SerializeField] private ParticleSystem slashFx;
+    [SerializeField] private float khoangcachCt;
+
+    public Weapon currentWp { get; private set; }
+
     private PlayerAction action; // Script chứa input actions (được tạo bằng Input System)
     private PlayerAnimation playerAnimation; // Điều khiển animation của người chơi
     private EnemyBrain enemyTrget; // Đối tượng kẻ địch đang bị chọn
@@ -28,6 +34,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
+        currentWp = cacvukhi;
+
         // Đăng ký sự kiện khi nhấn nút tấn công
         action.Attack.ClickAttack.performed += ctx => Attack();
     }
@@ -56,24 +64,17 @@ public class PlayerAttack : MonoBehaviour
        // dungf IEnum nên không dùng return được
 
     {
-        if (noitancong != null)
+        if (noitancong == null) yield break;
+       
+
+        if (currentWp.loaiVK == LoaiVK.Phep)
         {
-
-            if (playerMana.luongmn < cacvukhi.luongMana) yield break;
-           
-            // Tạo hướng xoay cho đạn
-            quaternion rotation = quaternion.Euler(new Vector3(0f, 0f, xoayhuong));
-
-            // Khởi tạo đạn từ prefab tại vị trí tấn công và góc xoay
-            Projectiles projectiles = Instantiate(cacvukhi.projectilesPrefab, noitancong.position, rotation);
-
-            // Thiết lập hướng bay cho đạn là hướng lên (sẽ xoay theo xoayhuong)
-            projectiles.huongbay = Vector3.up;
-
-            projectiles.dmg = cacvukhi.dmg;
-
-            // Trừ mana sau khi bắn
-            playerMana.UseMana(cacvukhi.luongMana);
+            if (playerMana.luongmn < currentWp.luongMana) yield break;
+            MagicAtk();
+        }
+        else
+        {
+            Canchien();
         }
 
         // Kích hoạt animation tấn công
@@ -83,6 +84,34 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         playerAnimation.setAttackani(false);
     }
+
+    private void Canchien()
+    {
+        slashFx.transform.position = noitancong.position;
+        slashFx.Play();
+        float denkethu = Vector3.Distance(enemyTrget.transform.position, transform.position);
+        if (denkethu <=khoangcachCt)
+        {
+            enemyTrget.GetComponent<IdamageAble>().TakeDamage(1f);
+        }
+    }    
+     
+    private void MagicAtk()
+    {
+        // Tạo hướng xoay cho đạn
+        quaternion rotation = quaternion.Euler(new Vector3(0f, 0f, xoayhuong));
+
+        // Khởi tạo đạn từ prefab tại vị trí tấn công và góc xoay
+        Projectiles projectiles = Instantiate(currentWp.projectilesPrefab, noitancong.position, rotation);
+
+        // Thiết lập hướng bay cho đạn là hướng lên (sẽ xoay theo xoayhuong)
+        projectiles.huongbay = Vector3.up;
+
+        projectiles.dmg = currentWp.dmg;
+
+        // Trừ mana sau khi bắn
+        playerMana.UseMana(currentWp.luongMana);
+    }    
 
     private void GetFirePosition()
     {
@@ -123,7 +152,7 @@ public class PlayerAttack : MonoBehaviour
     }
 
     // Gọi khi người chơi bỏ chọn kẻ địch
-    private void NoenemySelectionCallback()
+    private void NoEnemySelectionCallback()
     {
         enemyTrget = null;
     }
@@ -132,13 +161,17 @@ public class PlayerAttack : MonoBehaviour
     {
         action.Enable(); // Bật input system
         SelectionManager.OnEnemySelectEvent += EnemySelectedCallback;
-        SelectionManager.OnnoselectionEvent += NoenemySelectionCallback;
+        SelectionManager.OnnoselectionEvent += NoEnemySelectionCallback;
+        EnemyHealth.OnEnemyDeathEvent += NoEnemySelectionCallback;
+
+
     }
 
     private void OnDisable()
     {
         action.Disable(); // Tắt input system
         SelectionManager.OnEnemySelectEvent -= EnemySelectedCallback;
-        SelectionManager.OnnoselectionEvent -= NoenemySelectionCallback;
+        SelectionManager.OnnoselectionEvent -= NoEnemySelectionCallback;
+        EnemyHealth.OnEnemyDeathEvent -= NoEnemySelectionCallback;
     }
 }
