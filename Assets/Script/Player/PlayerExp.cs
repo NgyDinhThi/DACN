@@ -33,6 +33,7 @@ public class PlayerExp : MonoBehaviour
     private void NewLevelGrow()
     {
         stats.level++; // Tăng cấp độ nhân vật
+        stats.AttributePoint++;
 
         float currentExpRequired = stats.NextLevelUp; // Lưu EXP cần thiết hiện tại
 
