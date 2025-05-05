@@ -16,9 +16,10 @@ public class PlayerExp : MonoBehaviour
     }
 
     // Hàm thêm kinh nghiệm cho nhân vật
-    public void AddExp(float Quantity)
+    public void AddExp(float amount)
     {
-        stats.CurrentExp += Quantity; // Cộng thêm lượng EXP vào chỉ số hiện tại
+        stats.CurrentExp += amount;
+        stats.TotalExp += amount; // Cộng thêm lượng EXP vào chỉ số hiện tại
 
         // Nếu đủ EXP để lên cấp, thực hiện quá trình lên cấp
         while (stats.CurrentExp >= stats.NextLevelUp)

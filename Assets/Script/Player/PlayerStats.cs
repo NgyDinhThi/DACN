@@ -25,7 +25,10 @@ public class PlayerStats : ScriptableObject
     [Header("Attack")] // Thông tin tấn công
     public float BaseDmg; // Sát thương cơ bản
     public float CritChance; // Tỉ lệ chí mạng (0–100%)
-    public float CritDmg; // Hệ số sát thương khi chí mạng (VD: 2.0x)
+    public float CritDmg; // Hệ số sát thương khi chí mạng 
+
+    [HideInInspector] public float TotalExp;
+    [HideInInspector] public float TotalDmg;
 
     // Hàm dùng để reset lại nhân vật về trạng thái ban đầu khi bắt đầu lại game hoặc revive
     public void ResetPlayer()
@@ -35,5 +38,6 @@ public class PlayerStats : ScriptableObject
         level = 1; // Trở về cấp độ 1
         CurrentExp = 0f; // Xóa kinh nghiệm hiện tại
         NextLevelUp = InitialNextLevelExp; // Thiết lập lại ngưỡng EXP ban đầu để lên cấp
+        TotalExp = 0f;
     }
 }

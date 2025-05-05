@@ -19,10 +19,28 @@ public class UImanager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI manaTMP;   // Text hiển thị mana
     [SerializeField] private TextMeshProUGUI expTMP;    // Text hiển thị kinh nghiệm
 
+    [Header("stats panel")]
+    [SerializeField] private GameObject statsPanel;
+    [SerializeField] private TextMeshProUGUI statslv;
+    [SerializeField] private TextMeshProUGUI statsdmg;
+    [SerializeField] private TextMeshProUGUI statscritc;
+    [SerializeField] private TextMeshProUGUI statcritdmg;
+    [SerializeField] private TextMeshProUGUI statstotalexp;
+    [SerializeField] private TextMeshProUGUI statscurrentexp;
+    [SerializeField] private TextMeshProUGUI statsreqExp;
+
     private void Update()
     {
         UpdatePlayerUI(); // Cập nhật giao diện người chơi mỗi frame
     }
+
+    public void OpenCloseStsPanel()
+    {
+        statsPanel.SetActive(!statsPanel.activeSelf);
+        if (statsPanel.activeSelf)
+            UpdateStatsPanel();
+
+    }    
 
     private void UpdatePlayerUI()
     {
@@ -41,4 +59,17 @@ public class UImanager : MonoBehaviour
         manaTMP.text = $"{stats.mana}/{stats.Max_mana}";
         expTMP.text = $"{stats.CurrentExp}/{stats.NextLevelUp}";
     }
+    
+    private void UpdateStatsPanel()
+    {
+        statslv.text = stats.level.ToString();
+        statsdmg.text = stats.TotalDmg.ToString();
+        statscritc.text = stats.CritChance.ToString();
+        statcritdmg.text = stats.CritDmg.ToString();
+        statstotalexp.text = stats.TotalExp.ToString();
+        statscurrentexp.text = stats.CurrentExp.ToString();
+        statsreqExp.text = stats.NextLevelUp.ToString();
+
+
+    }    
 }

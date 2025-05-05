@@ -36,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        currentWp = cacvukhi;
+       EquipWeapon(cacvukhi);
 
         // Đăng ký sự kiện khi nhấn nút tấn công
         action.Attack.ClickAttack.performed += ctx => Attack();
@@ -127,6 +127,12 @@ public class PlayerAttack : MonoBehaviour
         return dmg;
     }    
 
+    public void EquipWeapon(Weapon vukhimoi)
+    {
+
+        currentWp = vukhimoi;
+        stats.TotalDmg = stats.BaseDmg + currentWp.dmg;
+    }    
     private void GetFirePosition()
     {
         // Lấy hướng di chuyển của người chơi
