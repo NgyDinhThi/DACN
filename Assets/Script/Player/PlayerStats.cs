@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using System;
 
+public enum Attribute
+{
+    Strength,
+    Dexterity,
+    Intelligence
+}
+
 // Cho phép tạo ScriptableObject từ menu Unity
 [CreateAssetMenu(fileName = "PlayerStats", menuName = "Scriptable Objects/PlayerStats")]
 public class PlayerStats : ScriptableObject
@@ -27,6 +34,14 @@ public class PlayerStats : ScriptableObject
     public float CritChance; // Tỉ lệ chí mạng (0–100%)
     public float CritDmg; // Hệ số sát thương khi chí mạng 
 
+    [Header("Attribute")]
+    public int Strength; 
+    public int Dexterity; 
+    public int Intelligence;
+    public int AttributePoint;
+
+
+
     [HideInInspector] public float TotalExp;
     [HideInInspector] public float TotalDmg;
 
@@ -39,5 +54,14 @@ public class PlayerStats : ScriptableObject
         CurrentExp = 0f; // Xóa kinh nghiệm hiện tại
         NextLevelUp = InitialNextLevelExp; // Thiết lập lại ngưỡng EXP ban đầu để lên cấp
         TotalExp = 0f;
+        BaseDmg = 3f;
+        CritChance = 10;
+        CritDmg = 50;
+        Strength = 0;
+        Dexterity = 0;
+        Intelligence = 0;
+        AttributePoint =0;
+
+
     }
 }
