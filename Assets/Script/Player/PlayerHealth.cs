@@ -38,6 +38,18 @@ public class PlayerHealth : MonoBehaviour, IdamageAble
         }
     }
 
+
+    public bool CanRestoreHealth()
+    {
+        return stats.health >= 0f && stats.health < stats.Max_health;
+    }    
+
+    public void RestoredHealth(float amount)
+    {
+        stats.health += amount;
+       stats.mana = Mathf.Min(stats.health, stats.Max_health);
+
+    }    
     private void PlayerDeath()
     {
         // Hoạt ảnh dead hiện lên

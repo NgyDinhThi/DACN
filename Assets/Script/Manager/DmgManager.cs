@@ -1,19 +1,15 @@
 ﻿using System;
 using UnityEngine;
 
-public class DmgManager : MonoBehaviour
+public class DmgManager : Singleton<DmgManager>
 {
     // Singleton: cho phép gọi DmgManager.instance từ nơi khác trong game
-    public static DmgManager instance;
+   
 
     [Header("Config")]
     [SerializeField] private DmgText dmgTextPrefab; // Prefab dùng để hiển thị số sát thương trên màn hình
 
-    private void Awake()
-    {
-        // Khởi tạo Singleton: đảm bảo chỉ có một DmgManager duy nhất
-        instance = this;
-    }
+    
 
     /* 
      <summary>

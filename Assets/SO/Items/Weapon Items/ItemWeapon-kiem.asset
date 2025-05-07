@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02a89c7b005fca94b8ab2d2c6ca9dcfd, type: 3}
-  m_Name: ItemWeapon-stick
+  m_Name: ItemWeapon-kiem
   m_EditorClassIdentifier: 
-  id: Weaponwand
-  name: Magic wand
-  icon: {fileID: 21300000, guid: 3e647f6e233b720428ad75fbf1041bd0, type: 3}
-  mieuta: a wand have a speel to shot magic
+  id: Weaponsword
+  name: Swprd
+  icon: {fileID: 21300000, guid: f1f97fa2202d81c4f973cd060d061d52, type: 3}
+  mieuta: a trustworthy sword
   itemtype: 0
   IsComsumable: 0
   IsStackable: 0
   MaxStack: 1
   Quantity: 0
-  weapon: {fileID: 11400000, guid: 9eb1cf8db2b5eaa40a01a73422009d39, type: 2}
+  weapon: {fileID: 11400000, guid: 863558cb88f31d34785cb44d75987798, type: 2}

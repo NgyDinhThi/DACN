@@ -30,4 +30,17 @@ public class PlayerMana : MonoBehaviour
         // Reset mana về mức tối đa (dùng khi nhân vật hồi sinh hoặc bắt đầu game)
         luongmn = stats.Max_mana;
     } 
+
+    public bool CanRecoverMana()
+    {
+
+        return stats.mana > 0 && stats.mana < stats.Max_mana;       
+    }    
+
+    public void RecoverMana(float amount)
+    {
+
+        stats.mana += amount;
+        stats.mana = Mathf.Min(stats.mana, stats.Max_mana);
+    }    
 }

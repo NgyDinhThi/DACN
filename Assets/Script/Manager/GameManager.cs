@@ -1,17 +1,14 @@
 ﻿using UnityEngine;
 using System;
 
-public class GameManager : MonoBehaviour
-{
-    public static GameManager instance;
-
+public class GameManager : Singleton<GameManager>
+{ 
 
     [SerializeField] private Player player; // Tham chiếu đến đối tượng Player trong game
 
-    private void Awake()
-    {
-        instance = this;    
-    }
+    public Player Player => player;
+
+   
 
     public void ThemKN(float expamount)
     {

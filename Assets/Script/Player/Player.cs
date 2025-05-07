@@ -8,6 +8,9 @@ public class Player : MonoBehaviour
 
     public PlayerMana playerMana {  get; private set; }
 
+    public PlayerHealth playerhealth { get; private set; }
+
+
 
     // Thuộc tính cho phép truy xuất chỉ số của nhân vật từ bên ngoài
     public PlayerStats Stats => stats;
@@ -17,6 +20,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         playerAnimation = GetComponent<PlayerAnimation>(); // Lấy component PlayerAnimation từ GameObject
+        playerhealth = GetComponent<PlayerHealth>();
         playerMana = GetComponent<PlayerMana>();  // Lấy script quản lý mana
     }
 
