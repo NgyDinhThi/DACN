@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using Unity.Mathematics;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -21,9 +21,9 @@ public class PlayerAttack : MonoBehaviour
     private EnemyBrain enemyTrget; // Đối tượng kẻ địch đang bị chọn
     private Coroutine attackCoroutine; // Coroutine đang chạy cho đòn tấn công
     private PlayerMovements playerMovements; // Điều khiển di chuyển người chơi
-    private Transform noitancong; // Vị trí bắn hiện tại
+    private Transform currentAttackPosition; // Vị trí bắn hiện tại
     private PlayerMana playerMana; // Kiểm tra và tiêu hao mana khi tấn công
-    private float xoayhuong; // Góc quay của viên đạn hoặc kỹ năng
+    private float currentAttackRotation; // Góc quay của viên đạn hoặc kỹ năng
 
     private void Awake()
     {
@@ -66,12 +66,12 @@ public class PlayerAttack : MonoBehaviour
        // dungf IEnum nên không dùng return được
 
     {
-        if (noitancong == null) yield break;
+        if (currentAttackPosition == null) yield break;
        
 
         if (currentWp.loaiVK == LoaiVK.Phep)
         {
-            if (playerMana.luongmn < currentWp.luongMana) yield break;
+            if (playerMana.luongmn < currentWp.requiredMana) yield break;
             MagicAtk();
         }
         else
@@ -89,7 +89,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Canchien()
     {
-        slashFx.transform.position = noitancong.position;
+        slashFx.transform.position = currentAttackPosition.position;
         slashFx.Play();
         float denkethu = Vector3.Distance(enemyTrget.transform.position, transform.position);
         if (denkethu <=khoangcachCt)
@@ -100,19 +100,11 @@ public class PlayerAttack : MonoBehaviour
      
     private void MagicAtk()
     {
-        // Tạo hướng xoay cho đạn
-        quaternion rotation = quaternion.Euler(new Vector3(0f, 0f, xoayhuong));
-
-        // Khởi tạo đạn từ prefab tại vị trí tấn công và góc xoay
-        Projectiles projectiles = Instantiate(currentWp.projectilesPrefab, noitancong.position, rotation);
-
-        // Thiết lập hướng bay cho đạn là hướng lên (sẽ xoay theo xoayhuong)
-        projectiles.huongbay = Vector3.up;
-
+        Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, currentAttackRotation));
+        Projectiles projectiles = Instantiate(currentWp.projectilesPrefab,currentAttackPosition.position, rotation);
+        projectiles.direction = Vector3.up;
         projectiles.dmg = GetAtkdmg();
-
-        // Trừ mana sau khi bắn
-        playerMana.UseMana(currentWp.luongMana);
+        playerMana.UseMana(currentWp.requiredMana);
     }    
 
     private float GetAtkdmg()
@@ -142,12 +134,12 @@ public class PlayerAttack : MonoBehaviour
         switch (movedirection.x)
         {
             case > 0f:
-                noitancong = vitritancong[1]; // phải
-                xoayhuong = -90f;
+                currentAttackPosition = vitritancong[1]; // phải
+                currentAttackRotation = -90f;
                 break;
             case < 0f:
-                noitancong = vitritancong[3]; // trái
-                xoayhuong = -270f;
+                currentAttackPosition = vitritancong[3]; // trái
+                currentAttackRotation = -270f;
                 break;
         }
 
@@ -155,12 +147,12 @@ public class PlayerAttack : MonoBehaviour
         switch (movedirection.y)
         {
             case > 0f:
-                noitancong = vitritancong[0]; // lên
-                xoayhuong = 0f;
+                currentAttackPosition = vitritancong[0]; // lên
+                currentAttackRotation = 0f;
                 break;
             case < 0f:
-                noitancong = vitritancong[2]; // xuống
-                xoayhuong = -180f;
+                currentAttackPosition = vitritancong[2]; // xuống
+                currentAttackRotation = -180f;
                 break;
         }
     }

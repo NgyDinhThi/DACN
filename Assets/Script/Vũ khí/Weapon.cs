@@ -24,5 +24,5 @@ public class Weapon : ScriptableObject
 
     public Projectiles projectilesPrefab; // Prefab viên đạn nếu là vũ khí tầm xa (phép)
 
-    public float luongMana; // Lượng mana tiêu hao mỗi khi sử dụng (nếu là phép)
+    public float requiredMana; // Lượng mana tiêu hao mỗi khi sử dụng (nếu là phép)
 }

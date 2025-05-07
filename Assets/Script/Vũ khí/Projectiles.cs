@@ -6,14 +6,14 @@ public class Projectiles : MonoBehaviour
     [SerializeField] private float speed; // Tốc độ bay của đạn
 
     // Hướng bay của đạn, được set từ bên ngoài khi khởi tạo
-    public Vector3 huongbay { get; set; }
+    public Vector3 direction { get; set; }
 
     public float dmg { get; set; }  
 
     private void Update()
     {
         // Di chuyển đạn theo hướng đã chỉ định, với tốc độ cố định mỗi frame
-        transform.Translate(huongbay * (speed * Time.deltaTime));
+        transform.Translate(direction * (speed * Time.deltaTime));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
