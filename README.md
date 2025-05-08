@@ -3,5 +3,4 @@ Tìm hiểu về Scriptable object
 nhân vật có thể nhận st, nhận biết về scriptable object, có chỉ số health cơ bản
 nhớ fix bug
 tìm hiểu finite state machine
-deadlien mới vào thứ 7
-sửa lại hướng tấn công
+học thêm về singleton
