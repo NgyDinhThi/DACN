@@ -1,58 +1,61 @@
 ﻿using UnityEngine;
 
+// Lớp PlayerHealth chịu trách nhiệm quản lý máu và xử lý sát thương của nhân vật người chơi
 public class PlayerHealth : MonoBehaviour, IdamageAble
 {
     [Header("Config")] // Hiển thị tiêu đề "Config" trong Inspector
-    [SerializeField] private PlayerStats stats; // Tham chiếu đến thông tin chỉ số của nhân vật
+    [SerializeField] private PlayerStats stats; // Tham chiếu đến ScriptableObject chứa chỉ số nhân vật
 
-    private PlayerAnimation playerAnimation;
+    private PlayerAnimation playerAnimation; // Dùng để điều khiển animation khi bị thương hoặc chết
 
     private void Awake()
     {
-        playerAnimation = GetComponent<PlayerAnimation>();
+        playerAnimation = GetComponent<PlayerAnimation>(); // Lấy component animation khi bắt đầu
     }
 
     private void Update()
     {
+        // Kiểm tra mỗi frame: nếu máu nhỏ hơn hoặc bằng 0 thì gọi hàm chết
         if (stats.health <= 0f)
         {
             PlayerDeath();
         }
     }
 
+    // Hàm này được gọi khi nhân vật nhận sát thương
     public void TakeDamage(float amount)
     {
-        if(stats.health <=0f) return;
-        // Giảm máu của nhân vật theo lượng sát thương nhận được
-        stats.health -= amount;
+        if (stats.health <= 0f) return; // Nếu đã chết rồi thì không nhận thêm sát thương
 
+        stats.health -= amount; // Trừ máu
+
+        // Hiển thị số sát thương trên màn hình tại vị trí nhân vật
         DmgManager.instance.hienSatthuong(amount, transform);
 
-        // Nếu máu giảm xuống 0 hoặc thấp hơn, gọi hàm xử lý cái chết của nhân vật
         if (stats.health <= 0f)
-        {   
-            
-            stats.health = 0f;  
-            PlayerDeath();
-        
+        {
+            stats.health = 0f; // Đảm bảo không âm máu
+            PlayerDeath();     // Gọi xử lý chết
         }
     }
 
-
+    // Kiểm tra xem có thể hồi máu không (chưa đầy máu và chưa chết)
     public bool CanRestoreHealth()
     {
         return stats.health >= 0f && stats.health < stats.Max_health;
-    }    
+    }
 
+    // Hồi máu cho nhân vật
     public void RestoredHealth(float amount)
     {
         stats.health += amount;
-       stats.mana = Mathf.Min(stats.health, stats.Max_health);
+        // Đảm bảo không vượt quá máu tối đa
+        stats.health = Mathf.Min(stats.health, stats.Max_health);
+    }
 
-    }    
+    // Xử lý khi nhân vật chết: chạy animation chết
     private void PlayerDeath()
     {
-        // Hoạt ảnh dead hiện lên
-            playerAnimation.SetDeadAni();
+        playerAnimation.SetDeadAni();
     }
 }

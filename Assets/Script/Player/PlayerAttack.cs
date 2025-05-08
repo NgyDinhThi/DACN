@@ -3,27 +3,30 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// Quản lý logic tấn công của người chơi, bao gồm cả tấn công phép và cận chiến.
+/// </summary>
 public class PlayerAttack : MonoBehaviour
 {
     [Header("Config")]
-    [SerializeField] private PlayerStats stats;
-    [SerializeField] private Weapon cacvukhi; // Vũ khí hiện tại của người chơi
-    [SerializeField] private Transform[] vitritancong; // Mảng vị trí tấn công theo hướng (0: lên, 1: phải, 2: xuống, 3: trái)
+    [SerializeField] private PlayerStats stats;                  // Chứa các chỉ số của người chơi
+    [SerializeField] private Weapon cacvukhi;                    // Vũ khí mặc định được trang bị ban đầu
+    [SerializeField] private Transform[] vitritancong;           // Các vị trí tấn công tương ứng các hướng: 0 (trên), 1 (phải), 2 (dưới), 3 (trái)
 
     [Header("Cận chiến config")]
-    [SerializeField] private ParticleSystem slashFx;
-    [SerializeField] private float khoangcachCt;
+    [SerializeField] private ParticleSystem slashFx;             // Hiệu ứng chém khi đánh gần
+    [SerializeField] private float khoangcachCt;                 // Khoảng cách tối đa để đánh trúng cận chiến
 
-    public Weapon currentWp { get; private set; }
+    public Weapon currentWp { get; private set; }                // Vũ khí hiện tại đang sử dụng
 
-    private PlayerAction action; // Script chứa input actions (được tạo bằng Input System)
-    private PlayerAnimation playerAnimation; // Điều khiển animation của người chơi
-    private EnemyBrain enemyTrget; // Đối tượng kẻ địch đang bị chọn
-    private Coroutine attackCoroutine; // Coroutine đang chạy cho đòn tấn công
-    private PlayerMovements playerMovements; // Điều khiển di chuyển người chơi
-    private Transform currentAttackPosition; // Vị trí bắn hiện tại
-    private PlayerMana playerMana; // Kiểm tra và tiêu hao mana khi tấn công
-    private float currentAttackRotation; // Góc quay của viên đạn hoặc kỹ năng
+    private PlayerAction action;                                 // Input system đã cài sẵn (Custom InputActions)
+    private PlayerAnimation playerAnimation;                     // Xử lý animation nhân vật
+    private EnemyBrain enemyTrget;                               // Kẻ địch đang bị chọn làm mục tiêu
+    private Coroutine attackCoroutine;                           // Coroutine tấn công đang hoạt động
+    private PlayerMovements playerMovements;                     // Script điều khiển di chuyển người chơi
+    private Transform currentAttackPosition;                     // Vị trí thực hiện tấn công (spawn projectile hoặc slash effect)
+    private PlayerMana playerMana;                               // Quản lý mana và sử dụng mana
+    private float currentAttackRotation;                         // Góc quay khi tạo projectile phép
 
     private void Awake()
     {
@@ -36,101 +39,107 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-       EquipWeapon(cacvukhi);
-
-        // Đăng ký sự kiện khi nhấn nút tấn công
-        action.Attack.ClickAttack.performed += ctx => Attack();
+        EquipWeapon(cacvukhi); // Trang bị vũ khí mặc định
+        action.Attack.ClickAttack.performed += ctx => Attack(); // Gán sự kiện tấn công khi input được nhận
     }
 
     private void Update()
     {
-        // Luôn cập nhật hướng bắn dựa trên hướng di chuyển
-        GetFirePosition();
+        GetFirePosition(); // Luôn cập nhật hướng và vị trí tấn công dựa trên hướng di chuyển
     }
 
+    /// <summary>
+    /// Bắt đầu tấn công nếu có kẻ địch được chọn.
+    /// </summary>
     private void Attack()
     {
-        if (enemyTrget == null) return; // Nếu không có mục tiêu thì không tấn công
+        if (enemyTrget == null) return;
 
-        // Nếu đã có coroutine đang chạy thì dừng lại trước
         if (attackCoroutine != null)
-        {
-            StopCoroutine(attackCoroutine);
-        }
+            StopCoroutine(attackCoroutine); // Hủy coroutine cũ nếu có
 
-        // Bắt đầu coroutine tấn công mới
-        attackCoroutine = StartCoroutine(IEattack());
+        attackCoroutine = StartCoroutine(IEattack()); // Bắt đầu coroutine mới
     }
 
+    /// <summary>
+    /// Coroutine xử lý logic tấn công chính.
+    /// </summary>
     private IEnumerator IEattack()
-       // dungf IEnum nên không dùng return được
-
     {
         if (currentAttackPosition == null) yield break;
-       
 
         if (currentWp.loaiVK == LoaiVK.Phep)
         {
             if (playerMana.luongmn < currentWp.requiredMana) yield break;
-            MagicAtk();
+            MagicAtk(); // Tấn công bằng phép
         }
         else
         {
-            Canchien();
+            Canchien(); // Tấn công cận chiến
         }
 
-        // Kích hoạt animation tấn công
-        playerAnimation.setAttackani(true);
-
-        // Đợi nửa giây rồi tắt animation
-        yield return new WaitForSeconds(0.5f);
+        playerAnimation.setAttackani(true); // Kích hoạt animation tấn công
+        yield return new WaitForSeconds(0.5f); // Đợi một khoảng thời gian ngắn rồi tắt animation
         playerAnimation.setAttackani(false);
     }
 
+    /// <summary>
+    /// Xử lý tấn công cận chiến.
+    /// </summary>
     private void Canchien()
     {
         slashFx.transform.position = currentAttackPosition.position;
-        slashFx.Play();
+        slashFx.Play(); // Bật hiệu ứng slash
+
         float denkethu = Vector3.Distance(enemyTrget.transform.position, transform.position);
-        if (denkethu <=khoangcachCt)
-        {
-            enemyTrget.GetComponent<IdamageAble>().TakeDamage(GetAtkdmg());
-        }
-    }    
-     
+        if (denkethu <= khoangcachCt)
+            enemyTrget.GetComponent<IdamageAble>().TakeDamage(GetAtkdmg()); // Gây sát thương nếu trong phạm vi
+    }
+
+    /// <summary>
+    /// Tạo và bắn đạn phép.
+    /// </summary>
     private void MagicAtk()
     {
-        Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, currentAttackRotation));
-        Projectiles projectiles = Instantiate(currentWp.projectilesPrefab,currentAttackPosition.position, rotation);
-        projectiles.direction = Vector3.up;
-        projectiles.dmg = GetAtkdmg();
-        playerMana.UseMana(currentWp.requiredMana);
-    }    
+        Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, currentAttackRotation)); // Góc xoay
+        Projectiles projectiles = Instantiate(currentWp.projectilesPrefab, currentAttackPosition.position, rotation);
 
+        projectiles.direction = Vector3.up; // 
+        projectiles.dmg = GetAtkdmg();
+
+        playerMana.UseMana(currentWp.requiredMana); // Trừ mana
+    }
+
+    /// <summary>
+    /// Tính toán sát thương với khả năng chí mạng.
+    /// </summary>
     private float GetAtkdmg()
     {
-        float dmg = stats.BaseDmg;
-        dmg += currentWp.dmg;
+        float dmg = stats.BaseDmg + currentWp.dmg;
         float randomPerc = Random.Range(0f, 100);
         if (randomPerc <= stats.CritChance)
         {
-            dmg += dmg * (stats.CritDmg / 100f);
+            dmg += dmg * (stats.CritDmg / 100f); // Tăng sát thương nếu chí mạng
         }
         return dmg;
-    }    
+    }
 
+    /// <summary>
+    /// Trang bị vũ khí mới cho người chơi.
+    /// </summary>
     public void EquipWeapon(Weapon vukhimoi)
     {
-
         currentWp = vukhimoi;
         stats.TotalDmg = stats.BaseDmg + currentWp.dmg;
-    }    
+    }
+
+    /// <summary>
+    /// Cập nhật vị trí tấn công và góc xoay dựa trên hướng di chuyển.
+    /// </summary>
     private void GetFirePosition()
     {
-        // Lấy hướng di chuyển của người chơi
         Vector2 movedirection = playerMovements.MoveDirection;
 
-        // Cập nhật vị trí tấn công và hướng xoay theo trục X
         switch (movedirection.x)
         {
             case > 0f:
@@ -143,7 +152,6 @@ public class PlayerAttack : MonoBehaviour
                 break;
         }
 
-        // Cập nhật vị trí tấn công và hướng xoay theo trục Y
         switch (movedirection.y)
         {
             case > 0f:
@@ -157,16 +165,14 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    // Gọi khi người chơi chọn một kẻ địch
     private void EnemySelectedCallback(EnemyBrain enemySelected)
     {
-        enemyTrget = enemySelected;
+        enemyTrget = enemySelected; // Lưu lại mục tiêu đã chọn
     }
 
-    // Gọi khi người chơi bỏ chọn kẻ địch
     private void NoEnemySelectionCallback()
     {
-        enemyTrget = null;
+        enemyTrget = null; // Hủy mục tiêu nếu không còn chọn
     }
 
     private void OnEnable()
@@ -175,8 +181,6 @@ public class PlayerAttack : MonoBehaviour
         SelectionManager.OnEnemySelectEvent += EnemySelectedCallback;
         SelectionManager.OnnoselectionEvent += NoEnemySelectionCallback;
         EnemyHealth.OnEnemyDeathEvent += NoEnemySelectionCallback;
-
-
     }
 
     private void OnDisable()

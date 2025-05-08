@@ -1,35 +1,34 @@
 ﻿using UnityEngine;
 using System;
 
+// Lớp Player dùng để gom các thành phần liên quan đến nhân vật người chơi (máu, mana, animation, stats)
 public class Player : MonoBehaviour
 {
-    [Header("Config")] 
-    [SerializeField] private PlayerStats stats; // Tham chiếu đến thông tin chỉ số của nhân vật
+    [Header("Config")]
+    [SerializeField] private PlayerStats stats; // Tham chiếu đến ScriptableObject chứa chỉ số nhân vật
 
-    public PlayerMana playerMana {  get; private set; }
+    // Thuộc tính công khai giúp truy cập thành phần mana và máu
+    public PlayerMana playerMana { get; private set; } // Quản lý lượng mana hiện tại
+    public PlayerHealth playerhealth { get; private set; } // Quản lý lượng máu hiện tại
 
-    public PlayerHealth playerhealth { get; private set; }
-
-
-
-    // Thuộc tính cho phép truy xuất chỉ số của nhân vật từ bên ngoài
+    // Cho phép các script khác truy cập thông tin chỉ số nhân vật
     public PlayerStats Stats => stats;
 
-    private PlayerAnimation playerAnimation; // Tham chiếu đến script điều khiển animation của nhân vật
+    private PlayerAnimation playerAnimation; // Điều khiển animation di chuyển, chết, tấn công,...
 
     private void Awake()
     {
-        playerAnimation = GetComponent<PlayerAnimation>(); // Lấy component PlayerAnimation từ GameObject
-        playerhealth = GetComponent<PlayerHealth>();
-        playerMana = GetComponent<PlayerMana>();  // Lấy script quản lý mana
+        // Lấy các component cần thiết trên GameObject nhân vật
+        playerAnimation = GetComponent<PlayerAnimation>(); // Gắn script điều khiển animation
+        playerhealth = GetComponent<PlayerHealth>();       // Gắn script quản lý máu
+        playerMana = GetComponent<PlayerMana>();           // Gắn script quản lý mana
     }
 
+    // Hàm reset trạng thái nhân vật về ban đầu (gọi khi hồi sinh, chơi lại,...)
     public void ResetPlayer()
     {
-        // Reset lại chỉ số và trạng thái animation của nhân vật
-        stats.ResetPlayer(); // Gọi hàm reset stats trong ScriptableObject PlayerStats
-        playerAnimation.ResetPlayer(); // Gọi hàm reset animation trạng thái trong PlayerAnimation
-        playerMana.ResetMana(); // Hồi đầy mana cho nhân vật
-
+        stats.ResetPlayer();         // Reset lại chỉ số máu, mana, cấp độ,...
+        playerAnimation.ResetPlayer(); // Reset lại animation về trạng thái ban đầu
+        playerMana.ResetMana();      // Hồi đầy mana
     }
 }
