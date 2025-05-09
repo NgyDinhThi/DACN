@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class InventoryUI : Singleton<InventoryUI> 
 {
     [Header("Config")]
+    [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private InventorySlot slotPrefab;
     [SerializeField] private Transform container;
     
+    public InventorySlot CurrentSlot { get;  set; }  
+
     private List<InventorySlot> slotList = new List<InventorySlot>();
 
     private void Start()
@@ -23,16 +27,47 @@ public class InventoryUI : Singleton<InventoryUI>
             slotList .Add(slot);
         }
 
-    }    
-    
-    public void DrawItems(InventoryItems items, int index)
+    }
+
+    public void UseItems()
     {
-        InventorySlot slot = slotList[index];
-        slot.ShowSlotInfo(true);
-        slot.UpdateSlot(items);
-          
+        Inventory.instance.UseItems(CurrentSlot.Index);
     }    
 
+    public void DrawItems(InventoryItems item, int index)
+    {
+        InventorySlot slot = slotList[index];
+        if(item == null)
+        {
+            slot.ShowSlotInfo(false);
+            return;
+        }    
+        
+        slot.UpdateSlot(item);
+        slot.ShowSlotInfo(true);
+    }
+
+    public void OpenCloseInventory()
+    {
+        inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+
+    }
+
+    private void SlotSlectedCallback(int slotIndex)
+    {
+        CurrentSlot = slotList[slotIndex];
+    }    
+
+    private void OnEnable()
+    {
+        InventorySlot.OnSlotSelectedEvent += SlotSlectedCallback;
+    }
+
+    private void OnDisable()
+    {
+        
+        InventorySlot.OnSlotSelectedEvent -= SlotSlectedCallback;
+    }
 
 }
  
