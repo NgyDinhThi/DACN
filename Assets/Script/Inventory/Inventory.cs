@@ -18,6 +18,7 @@ public class Inventory : Singleton<Inventory>
     public void Start()
     {
         inventoryItems = new InventoryItems[inventorySize];
+        VerifiItems4Draw();
     }
 
     private void Update()
@@ -116,6 +117,18 @@ public class Inventory : Singleton<Inventory>
         }
         return itemIndexes;
 
+    }    
+
+    private void VerifiItems4Draw()
+    {
+        for (int i = 0; i < inventorySize; i++)
+        {
+            if (inventoryItems[i] == null)
+            {
+                InventoryUI.instance.DrawItems(null, i);
+            }
+
+        }
     }    
 
 }

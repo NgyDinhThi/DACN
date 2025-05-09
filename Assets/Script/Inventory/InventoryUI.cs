@@ -13,9 +13,15 @@ public class InventoryUI : Singleton<InventoryUI>
 
     private List<InventorySlot> slotList = new List<InventorySlot>();
 
+    protected override void Awake()
+    {
+        base.Awake();
+        InitInventory();
+    }
+
     private void Start()
     {
-        InitInventory();
+        
     }
 
     private void InitInventory()
