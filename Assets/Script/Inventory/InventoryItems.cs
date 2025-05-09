@@ -16,7 +16,7 @@ public class InventoryItems : ScriptableObject
 {
     [Header("Config")]
     public string id;             // ID định danh duy nhất của item
-    public string name;           // Tên hiển thị của item
+    public string itmesName;           // Tên hiển thị của item
     public Sprite icon;           // Icon hiển thị của item trong giao diện
     [TextArea] public string mieuta; // Mô tả chi tiết về item
 
@@ -26,7 +26,7 @@ public class InventoryItems : ScriptableObject
     public bool IsStackable;      // Có thể xếp chồng không (như thuốc hoặc nguyên liệu)
     public int MaxStack;          // Số lượng tối đa có thể chứa trong một ô (nếu stack được)
 
-    [HideInInspector] public int Quantity; // Số lượng hiện có của item (ẩn trong inspector, dùng trong runtime)
+    [HideInInspector] public int quantity; // Số lượng hiện có của item (ẩn trong inspector, dùng trong runtime)
 
     // Tạo một bản sao item (thường dùng khi thêm vào inventory từ prefab gốc)
     public InventoryItems CopyItem()
