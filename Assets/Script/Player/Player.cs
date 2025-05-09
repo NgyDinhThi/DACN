@@ -9,7 +9,9 @@ public class Player : MonoBehaviour
 
     // Thuộc tính công khai giúp truy cập thành phần mana và máu
     public PlayerMana playerMana { get; private set; } // Quản lý lượng mana hiện tại
-    public PlayerHealth playerhealth { get; private set; } // Quản lý lượng máu hiện tại
+    public PlayerHealth playerHealth { get; private set; } // Quản lý lượng máu hiện tại
+
+    public PlayerAttack playerAttack { get; private set; }
 
     // Cho phép các script khác truy cập thông tin chỉ số nhân vật
     public PlayerStats Stats => stats;
@@ -20,8 +22,9 @@ public class Player : MonoBehaviour
     {
         // Lấy các component cần thiết trên GameObject nhân vật
         playerAnimation = GetComponent<PlayerAnimation>(); // Gắn script điều khiển animation
-        playerhealth = GetComponent<PlayerHealth>();       // Gắn script quản lý máu
+        playerHealth = GetComponent<PlayerHealth>();       // Gắn script quản lý máu
         playerMana = GetComponent<PlayerMana>();           // Gắn script quản lý mana
+        playerAttack = GetComponent<PlayerAttack>();
     }
 
     // Hàm reset trạng thái nhân vật về ban đầu (gọi khi hồi sinh, chơi lại,...)

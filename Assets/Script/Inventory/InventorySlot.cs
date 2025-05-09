@@ -27,6 +27,7 @@ public class InventorySlot : MonoBehaviour
     {
         itemsIcons.sprite = items.icon;
         itemQuantityTMP.text = items.quantity.ToString();
+        itemsIcons.SetNativeSize();
     }
 
     public void ShowSlotInfo(bool value)

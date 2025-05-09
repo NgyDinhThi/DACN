@@ -10,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
 {
     [Header("Config")]
     [SerializeField] private PlayerStats stats;                  // Chứa các chỉ số của người chơi
-    [SerializeField] private Weapon cacvukhi;                    // Vũ khí mặc định được trang bị ban đầu
+    [SerializeField] private Weapon initialweapon;                    // Vũ khí mặc định được trang bị ban đầu
     [SerializeField] private Transform[] vitritancong;           // Các vị trí tấn công tương ứng các hướng: 0 (trên), 1 (phải), 2 (dưới), 3 (trái)
 
     [Header("Cận chiến config")]
@@ -39,7 +39,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        EquipWeapon(cacvukhi); // Trang bị vũ khí mặc định
+        WeaponManager.instance.EquipWeapon(initialweapon); // Trang bị vũ khí mặc định
         action.Attack.ClickAttack.performed += ctx => Attack(); // Gán sự kiện tấn công khi input được nhận
     }
 

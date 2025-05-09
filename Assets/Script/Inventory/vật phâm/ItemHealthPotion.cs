@@ -19,10 +19,10 @@ public class ItemHealthPotion : InventoryItems
     public override bool UseItem()
     {
         // Kiểm tra điều kiện hồi máu
-        if (GameManager.instance.Player.playerhealth.CanRestoreHealth())
+        if (GameManager.instance.Player.playerHealth.CanRestoreHealth())
         {
             // Hồi máu cho nhân vật
-            GameManager.instance.Player.playerhealth.RestoredHealth(Healthvalue);
+            GameManager.instance.Player.playerHealth.RestoredHealth(Healthvalue);
             return true;
         }
 

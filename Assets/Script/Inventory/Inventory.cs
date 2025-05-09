@@ -25,7 +25,7 @@ public class Inventory : Singleton<Inventory>
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            AddItems(testItem, 2);
+            AddItems(testItem, 1);
         }
     }
 
@@ -87,6 +87,14 @@ public class Inventory : Singleton<Inventory>
 
 
     }
+
+    public void EquipItems(int index)
+    {
+        if (inventoryItems[index] == null) return;
+        if (inventoryItems[index].itemtype != Itemtype.Weapon) return;
+        inventoryItems[index].EquipItem();
+
+    }    
 
     private void AddItemFreeSlot(InventoryItems items, int quantity)
     {

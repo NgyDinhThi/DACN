@@ -48,6 +48,12 @@ public class InventoryUI : Singleton<InventoryUI>
 
     }
 
+    public void EquipItems() 
+    {
+        if (CurrentSlot == null) return;
+    Inventory.instance.EquipItems(CurrentSlot.Index);
+    }
+
     public void DrawItems(InventoryItems item, int index)
     {
         InventorySlot slot = slotList[index];
