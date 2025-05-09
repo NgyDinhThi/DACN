@@ -37,8 +37,16 @@ public class InventoryUI : Singleton<InventoryUI>
 
     public void UseItems()
     {
+        if (CurrentSlot == null) return;
         Inventory.instance.UseItems(CurrentSlot.Index);
-    }    
+    }  
+    
+    public void RemoteItems()
+    {
+        if (CurrentSlot == null) return;
+        Inventory.instance.RemoveItems(CurrentSlot.Index);
+
+    }
 
     public void DrawItems(InventoryItems item, int index)
     {

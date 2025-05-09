@@ -74,8 +74,19 @@ public class Inventory : Singleton<Inventory>
             DecreaseItemStack(index );
         }
 
-
     }    
+
+    public void RemoveItems(int index)
+    {
+        if (inventoryItems[index] == null) return;
+
+        inventoryItems[index].RemoveItem();   
+        inventoryItems[index] = null;   
+
+        InventoryUI.instance.DrawItems(null, index);
+
+
+    }
 
     private void AddItemFreeSlot(InventoryItems items, int quantity)
     {
