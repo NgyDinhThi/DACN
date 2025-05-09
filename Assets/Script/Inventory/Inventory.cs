@@ -13,6 +13,8 @@ public class Inventory : Singleton<Inventory>
     [Header("Testing")]
     public InventoryItems testItem;
 
+    public InventoryItems[] InventoryItems => inventoryItems;
+
     public int InventorySize => inventorySize;
 
     public void Start()

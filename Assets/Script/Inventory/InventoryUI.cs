@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+using TMPro;
 
 public class InventoryUI : Singleton<InventoryUI> 
 {
@@ -8,6 +10,12 @@ public class InventoryUI : Singleton<InventoryUI>
     [SerializeField] private GameObject inventoryPanel;
     [SerializeField] private InventorySlot slotPrefab;
     [SerializeField] private Transform container;
+
+    [Header("Description Panel")]
+    [SerializeField] private GameObject descriptionPanel;
+    [SerializeField] private Image itemsIcon;
+    [SerializeField] private TextMeshProUGUI itemsNameTMP;
+    [SerializeField] private TextMeshProUGUI itemsDescriptionTMP;
     
     public InventorySlot CurrentSlot { get;  set; }  
 
@@ -51,7 +59,7 @@ public class InventoryUI : Singleton<InventoryUI>
     public void EquipItems() 
     {
         if (CurrentSlot == null) return;
-    Inventory.instance.EquipItems(CurrentSlot.Index);
+        Inventory.instance.EquipItems(CurrentSlot.Index);
     }
 
     public void DrawItems(InventoryItems item, int index)
@@ -67,15 +75,32 @@ public class InventoryUI : Singleton<InventoryUI>
         slot.ShowSlotInfo(true);
     }
 
+    public void ShowItemDescription(int index)
+    {
+        if (Inventory.instance.InventoryItems[index] == null)
+            return;
+        descriptionPanel.SetActive(true);   
+        itemsIcon.sprite = Inventory.instance.InventoryItems[index].icon;
+        itemsNameTMP.text = Inventory.instance.InventoryItems[index].name;
+        itemsDescriptionTMP.text = Inventory.instance.InventoryItems[index].description;
+
+    }
+
     public void OpenCloseInventory()
     {
         inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+        if (inventoryPanel.activeSelf == false)
+        {
+            descriptionPanel.SetActive(false);
+            CurrentSlot = null;
+        }
 
     }
 
     private void SlotSlectedCallback(int slotIndex)
     {
         CurrentSlot = slotList[slotIndex];
+        ShowItemDescription(slotIndex);
     }    
 
     private void OnEnable()
