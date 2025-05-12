@@ -1,4 +1,4 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System;
 using UnityEngine;
 using System.Collections.Generic;
@@ -7,7 +7,6 @@ using BayatGames.SaveGameFree;
 public class Inventory : Singleton<Inventory>
 {
     [Header("Header")]
-
     [SerializeField] private int inventorySize;
     [SerializeField] private InventoryItems[] inventoryItems;
     [SerializeField] private GameContents gameContents;
@@ -23,7 +22,7 @@ public class Inventory : Singleton<Inventory>
 
     private void SaveInventory()
     {
-        InventoryData saveData = new InventoryData();   
+        InventoryData saveData = new InventoryData();
         saveData.itemsContents = new string[inventorySize];
         saveData.itemsQuantity = new int[inventorySize];
         for (int i = 0; i < inventorySize; i++)
@@ -38,11 +37,11 @@ public class Inventory : Singleton<Inventory>
                 saveData.itemsContents[i] = inventoryItems[i].id;
                 saveData.itemsQuantity[i] = inventoryItems[i].quantity;
             }
-
         }
         SaveGame.Save(INVENTORY_KEY_DATA, saveData);
-    }    
-    public void Start()
+    }
+
+    private void Start()
     {
         inventoryItems = new InventoryItems[inventorySize];
         VerifiItems4Draw();
@@ -51,7 +50,7 @@ public class Inventory : Singleton<Inventory>
 
     private InventoryItems IsItemsExistInGamecontents(string itemsId)
     {
-        for (int i = 0; i < inventorySize; i++)
+        for (int i = 0; i < gameContents.GameItems.Length; i++) // Sửa inventorySize thành gameContents.GameItems.Length
         {
             if (gameContents.GameItems[i].id == itemsId)
             {
@@ -59,15 +58,14 @@ public class Inventory : Singleton<Inventory>
             }
         }
         return null;
+    }
 
-    }    
-    
     private void LoadInventory()
     {
         if (SaveGame.Exists(INVENTORY_KEY_DATA))
         {
-          InventoryData loadData = SaveGame .Load<InventoryData>(INVENTORY_KEY_DATA);
-            for (global::System.Int32 i = 0; i < inventorySize; i++)
+            InventoryData loadData = SaveGame.Load<InventoryData>(INVENTORY_KEY_DATA);
+            for (int i = 0; i < inventorySize; i++)
             {
                 if (loadData.itemsContents[i] != null)
                 {
@@ -75,17 +73,18 @@ public class Inventory : Singleton<Inventory>
                     if (itemFromContents != null)
                     {
                         inventoryItems[i] = itemFromContents.CopyItem();
+                        inventoryItems[i].quantity = loadData.itemsQuantity[i]; // Gán quantity từ dữ liệu đã lưu
                         InventoryUI.instance.DrawItems(inventoryItems[i], i);
                     }
                 }
                 else
                 {
                     inventoryItems[i] = null;
+                    InventoryUI.instance.DrawItems(null, i);
                 }
             }
         }
-    }    
-
+    }
 
     private void Update()
     {
@@ -104,7 +103,7 @@ public class Inventory : Singleton<Inventory>
             foreach (int index in itemIndexes)
             {
                 int maxStack = items.MaxStack;
-                if (inventoryItems[index].quantity< maxStack)
+                if (inventoryItems[index].quantity < maxStack)
                 {
                     inventoryItems[index].quantity += quantity;
                     if (inventoryItems[index].quantity > maxStack)
@@ -113,7 +112,6 @@ public class Inventory : Singleton<Inventory>
                         inventoryItems[index].quantity = maxStack;
                         AddItemFreeSlot(items, dif);
                     }
-
                     InventoryUI.instance.DrawItems(inventoryItems[index], index);
                     SaveInventory();
                     return;
@@ -129,30 +127,24 @@ public class Inventory : Singleton<Inventory>
             AddItems(items, remainingAmount);
         }
         SaveInventory();
-
     }
 
     public void UseItems(int index)
     {
-        if (inventoryItems[index] == null)
-            return;
-
+        if (inventoryItems[index] == null) return;
         if (inventoryItems[index].UseItem())
         {
-            DecreaseItemStack(index );
+            DecreaseItemStack(index);
         }
         SaveInventory();
-    }    
+    }
 
     public void RemoveItems(int index)
     {
         if (inventoryItems[index] == null) return;
-
-        inventoryItems[index].RemoveItem();   
-        inventoryItems[index] = null;   
-
+        inventoryItems[index].RemoveItem();
+        inventoryItems[index] = null;
         InventoryUI.instance.DrawItems(null, index);
-
         SaveInventory();
     }
 
@@ -161,8 +153,8 @@ public class Inventory : Singleton<Inventory>
         if (inventoryItems[index] == null) return;
         if (inventoryItems[index].itemtype != Itemtype.Weapon) return;
         inventoryItems[index].EquipItem();
-
-    }    
+        SaveInventory(); // Thêm SaveInventory để lưu trạng thái sau khi trang bị
+    }
 
     private void AddItemFreeSlot(InventoryItems items, int quantity)
     {
@@ -178,6 +170,7 @@ public class Inventory : Singleton<Inventory>
 
     public void DecreaseItemStack(int index)
     {
+        if (inventoryItems[index] == null) return;
         inventoryItems[index].quantity--;
         if (inventoryItems[index].quantity <= 0)
         {
@@ -186,10 +179,9 @@ public class Inventory : Singleton<Inventory>
         }
         else
         {
-            InventoryUI.instance.DrawItems(inventoryItems[index] , index);
+            InventoryUI.instance.DrawItems(inventoryItems[index], index);
         }
-
-    }    
+    }
 
     private List<int> CheckItemstock(string itemId)
     {
@@ -203,8 +195,7 @@ public class Inventory : Singleton<Inventory>
             }
         }
         return itemIndexes;
-
-    }    
+    }
 
     private void VerifiItems4Draw()
     {
@@ -214,8 +205,6 @@ public class Inventory : Singleton<Inventory>
             {
                 InventoryUI.instance.DrawItems(null, i);
             }
-
         }
-    }    
-
+    }
 }
