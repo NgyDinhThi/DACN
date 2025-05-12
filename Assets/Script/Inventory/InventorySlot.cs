@@ -17,6 +17,11 @@ public class InventorySlot : MonoBehaviour
     
     public int Index { get;  set; }
 
+    private void Start()
+    {
+        
+    }
+
     public void ClickSlot()
     {
         OnSlotSelectedEvent?.Invoke(Index);
@@ -36,4 +41,5 @@ public class InventorySlot : MonoBehaviour
         quantityContainer.gameObject.SetActive(value);
 
     }
+
 }
