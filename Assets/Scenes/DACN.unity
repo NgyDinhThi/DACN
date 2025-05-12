@@ -26742,7 +26742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c6fe437f7e5d740abb730089af8a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySize: 24
+  inventorySize: 20
   inventoryItems: []
   testItem: {fileID: 11400000, guid: 33742d1494969e148ac90f99ae0fc890, type: 2}
 --- !u!114 &1900632784

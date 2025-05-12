@@ -1,7 +1,8 @@
 using NUnit.Framework;
 using System;
 using UnityEngine;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using BayatGames.SaveGameFree;
 
 public class Inventory : Singleton<Inventory>
 {
@@ -16,6 +17,31 @@ public class Inventory : Singleton<Inventory>
     public InventoryItems[] InventoryItems => inventoryItems;
 
     public int InventorySize => inventorySize;
+
+    private readonly string INVENTORY_KEY_DATA = "PLAYER_INVENTORY";
+
+    private void SaveInventory()
+    {
+        InventoryData saveData = new InventoryData();   
+        saveData.itemsContents = new string[inventorySize];
+        saveData.itemsQuantity = new int[inventorySize];
+        for (int i = 0; i < inventorySize; i++)
+        {
+            if (inventoryItems[i] == null)
+            {
+                saveData.itemsQuantity[i] = 0;
+                saveData.itemsContents[i] = null;
+            }
+            else
+            {
+                saveData.itemsContents[i] = inventoryItems[i].id;
+                saveData.itemsQuantity[i] = inventoryItems[i].quantity;
+            }
+
+        }
+        SaveGame.Save(INVENTORY_KEY_DATA, saveData);
+    }    
+
 
     public void Start()
     {
@@ -51,6 +77,7 @@ public class Inventory : Singleton<Inventory>
                     }
 
                     InventoryUI.instance.DrawItems(inventoryItems[index], index);
+                    SaveInventory();
                     return;
                 }
             }
@@ -63,6 +90,7 @@ public class Inventory : Singleton<Inventory>
         {
             AddItems(items, remainingAmount);
         }
+        SaveInventory();
 
     }
 
@@ -75,7 +103,7 @@ public class Inventory : Singleton<Inventory>
         {
             DecreaseItemStack(index );
         }
-
+        SaveInventory();
     }    
 
     public void RemoveItems(int index)
@@ -87,7 +115,7 @@ public class Inventory : Singleton<Inventory>
 
         InventoryUI.instance.DrawItems(null, index);
 
-
+        SaveInventory();
     }
 
     public void EquipItems(int index)

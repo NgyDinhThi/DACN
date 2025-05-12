@@ -45,9 +45,8 @@ public class InventoryUI : Singleton<InventoryUI>
 
     private void InitInventory()
     {
-        // Giới hạn số ô tối đa là 24
-        int maxSlots = Mathf.Min(24, Inventory.instance.InventorySize);
-        for (int i = 0; i < maxSlots; i++)
+        // Sử dụng trực tiếp InventorySize mà không giới hạn
+        for (int i = 0; i < Inventory.instance.InventorySize; i++)
         {
             InventorySlot slot = Instantiate(slotPrefab, container);
             slot.Index = i;
@@ -119,7 +118,7 @@ public class InventoryUI : Singleton<InventoryUI>
         }
         descriptionPanel.SetActive(true);
         itemsIcon.sprite = item.icon;
-        itemsNameTMP.text = item.itemsName;
+        itemsNameTMP.text = item.itemsName; 
         itemsDescriptionTMP.text = item.description;
     }
 
