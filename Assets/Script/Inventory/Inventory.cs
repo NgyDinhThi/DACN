@@ -10,6 +10,7 @@ public class Inventory : Singleton<Inventory>
 
     [SerializeField] private int inventorySize;
     [SerializeField] private InventoryItems[] inventoryItems;
+    [SerializeField] private GameContents gameContents;
 
     [Header("Testing")]
     public InventoryItems testItem;
@@ -41,13 +42,50 @@ public class Inventory : Singleton<Inventory>
         }
         SaveGame.Save(INVENTORY_KEY_DATA, saveData);
     }    
-
-
     public void Start()
     {
         inventoryItems = new InventoryItems[inventorySize];
         VerifiItems4Draw();
+        LoadInventory();
     }
+
+    private InventoryItems IsItemsExistInGamecontents(string itemsId)
+    {
+        for (int i = 0; i < inventorySize; i++)
+        {
+            if (gameContents.GameItems[i].id == itemsId)
+            {
+                return gameContents.GameItems[i];
+            }
+        }
+        return null;
+
+    }    
+    
+    private void LoadInventory()
+    {
+        if (SaveGame.Exists(INVENTORY_KEY_DATA))
+        {
+          InventoryData loadData = SaveGame .Load<InventoryData>(INVENTORY_KEY_DATA);
+            for (global::System.Int32 i = 0; i < inventorySize; i++)
+            {
+                if (loadData.itemsContents[i] != null)
+                {
+                    InventoryItems itemFromContents = IsItemsExistInGamecontents(loadData.itemsContents[i]);
+                    if (itemFromContents != null)
+                    {
+                        inventoryItems[i] = itemFromContents.CopyItem();
+                        InventoryUI.instance.DrawItems(inventoryItems[i], i);
+                    }
+                }
+                else
+                {
+                    inventoryItems[i] = null;
+                }
+            }
+        }
+    }    
+
 
     private void Update()
     {
