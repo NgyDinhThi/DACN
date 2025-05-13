@@ -44,10 +44,19 @@ public class SelectionManager : MonoBehaviour
                 EnemyHealth enemyHealth = enemy?.GetComponent<EnemyHealth>(); // Lấy máu nếu có EnemyBrain
 
                 // Nếu không có EnemyBrain hoặc máu <= 0 thì không làm gì
-                if (enemy == null || enemyHealth == null || enemyHealth.mauhientai <= 0f) return;
+                if (enemy == null || enemyHealth == null || enemyHealth.mauhientai <= 0f) 
+                {
+                    EnemyLoot enemyLoot = enemy.GetComponent<EnemyLoot>();
+                    LootManager.instance.ShowLoot(enemyLoot);
+                
+                }
+                else
+                {
+                    // Gửi sự kiện chọn enemy
+                    OnEnemySelectEvent?.Invoke(enemy);
+                }
 
-                // Gửi sự kiện chọn enemy
-                OnEnemySelectEvent?.Invoke(enemy);
+
             }
             else
             {

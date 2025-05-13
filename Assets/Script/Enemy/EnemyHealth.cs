@@ -15,6 +15,7 @@ public class EnemyHealth : MonoBehaviour, IdamageAble
     private EnemyBrain enemyBrain; // AI điều khiển hành vi enemy
     private EnemySelect enemySelect; // Hiển thị sprite chọn enemy
     private EnemyLoot enemyLoot;
+    private Rigidbody2D rb2d;
     private void Awake()
     {
         // Lấy các component cần thiết trên cùng GameObject
@@ -22,8 +23,8 @@ public class EnemyHealth : MonoBehaviour, IdamageAble
         enemyBrain = GetComponent<EnemyBrain>();
         enemySelect = GetComponent<EnemySelect>();
         enemyLoot = GetComponent<EnemyLoot>();
+        rb2d = GetComponent<Rigidbody2D>();
     }
-
     private void Start()
     {
         // Khởi tạo máu hiện tại bằng máu gốc
@@ -61,8 +62,7 @@ public class EnemyHealth : MonoBehaviour, IdamageAble
         // Tắt sprite chọn enemy nếu đang hiển thị
         enemySelect.NoSelectedCallback();
 
-        // Đổi layer để tránh bị chọn lại (Raycast sẽ bỏ qua)
-        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        rb2d.bodyType = RigidbodyType2D.Static;
 
         OnEnemyDeathEvent?.Invoke();
 
