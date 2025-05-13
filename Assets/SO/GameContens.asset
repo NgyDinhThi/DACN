@@ -12,4 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70819f1069421340813ecc31d759c4f, type: 3}
   m_Name: GameContens
   m_EditorClassIdentifier: 
-  GameItems: []
+  GameItems:
+  - {fileID: 11400000, guid: 33742d1494969e148ac90f99ae0fc890, type: 2}
+  - {fileID: 11400000, guid: 9a125edd38efd87418752c5ff3c1515a, type: 2}
+  - {fileID: 11400000, guid: b2a837b573f615e4e87f72a53134ead3, type: 2}
+  - {fileID: 11400000, guid: 9e6e1fe8869782e48aa26ea9989a4307, type: 2}
+  - {fileID: 11400000, guid: d22fa9ec83d398b4ea83c4935293f264, type: 2}
+  - {fileID: 11400000, guid: 8489b2cffb990974e921dc75822cbc03, type: 2}
+  - {fileID: 11400000, guid: 368ff2ce8d92f194e891ce08b41c5f7c, type: 2}
+  - {fileID: 11400000, guid: fc2fd1b91f190f247b9090153522cda1, type: 2}
+  - {fileID: 11400000, guid: ce7988b7baf2daf4886c4361ce91d0a0, type: 2}
+  - {fileID: 11400000, guid: 565142ccfaa3bbf42a9086267a7f6657, type: 2}
+  - {fileID: 11400000, guid: b0fbe0b4c7ee746418000ac5481f32f2, type: 2}
+  - {fileID: 11400000, guid: 8a01c03cd8f32d546b2bf50161219c2c, type: 2}
+  - {fileID: 11400000, guid: 8cdeb70335df48d4984993482daf239e, type: 2}

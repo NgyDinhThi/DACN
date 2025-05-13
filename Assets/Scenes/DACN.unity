@@ -26742,9 +26742,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c6fe437f7e5d740abb730089af8a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySize: 20
+  inventorySize: 24
   inventoryItems: []
-  testItem: {fileID: 11400000, guid: 33742d1494969e148ac90f99ae0fc890, type: 2}
+  gameContents: {fileID: 11400000, guid: 3bc6ac9edcb376148b5321c757993de1, type: 2}
+  testItem: {fileID: 11400000, guid: 8a01c03cd8f32d546b2bf50161219c2c, type: 2}
 --- !u!114 &1900632784
 MonoBehaviour:
   m_ObjectHideFlags: 0
