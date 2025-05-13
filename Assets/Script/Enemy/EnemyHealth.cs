@@ -66,6 +66,6 @@ public class EnemyHealth : MonoBehaviour, IdamageAble
 
         OnEnemyDeathEvent?.Invoke();
 
-        GameManager.instance.ThemKN(enemyLoot.Expdrop);
+        GameManager.instance.ThemKN(enemyLoot.ExpDrop);
     }
 }
