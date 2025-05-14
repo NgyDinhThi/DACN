@@ -7,14 +7,14 @@ public class ActionPatrol : FSMaction
     [Header("Config")]
     [SerializeField] private float speed; // Tốc độ di chuyển khi tuần tra
 
-    private WayPoint WayPoint;           // Tham chiếu đến component quản lý waypoint
+    private Waypoint WayPoint;           // Tham chiếu đến component quản lý waypoint
     private int diadiemIndex;            // Chỉ số của vị trí hiện tại trong mảng waypoint
     private Vector3 vitritieptheo;       // Biến lưu vị trí tiếp theo sẽ đi (không dùng ở đây)
 
     // Lấy component WayPoint khi đối tượng được tạo
     private void Awake()
     {
-        WayPoint = GetComponent<WayPoint>();
+        WayPoint = GetComponent<Waypoint>();
     }
 
     // Lấy vị trí hiện tại từ WayPoint theo chỉ số

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class WayPoint : MonoBehaviour
+public class Waypoint : MonoBehaviour
 {
     [Header("Config")]
     [SerializeField] private Vector3[] diadiem;  // Mảng chứa các điểm waypoint (tọa độ tương đối so với vị trí gốc)

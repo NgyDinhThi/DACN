@@ -2,10 +2,10 @@ using UnityEditor;
 using UnityEngine;
 
 
-[CustomEditor(typeof(WayPoint))]
+[CustomEditor(typeof(Waypoint))]
 public class WaypointEditor : Editor
 {
-    private WayPoint muctieudd => target as WayPoint;
+    private Waypoint muctieudd => target as Waypoint;
 
 
 
