@@ -15,10 +15,23 @@ public class LootButton : MonoBehaviour
     public void ConfigLootButton(DropItem dropitem)
     {
         itemLoad = dropitem;
-        itemsIcon.sprite = dropitem.Item.icon;
-        itemNames.text = dropitem.Item.itemsName;
+        if (dropitem == null || dropitem.Item == null)
+        {
+            Debug.LogError($"dropitem or dropitem.Item is null! dropitem: {dropitem}, Item: {dropitem?.Item}");
+            return;
+        }
+        if (dropitem.Item.Icon == null)
+        {
+            Debug.LogWarning($"Icon is null for item: {dropitem.Item.ItemsName}");
+        }
+        else
+        {
+            Debug.Log($"Setting icon for item: {dropitem.Item.ItemsName}, Icon: {dropitem.Item.Icon.name}");
+        }
+        itemsIcon.sprite = dropitem.Item.Icon;
+        itemNames.text = dropitem.Item.ItemsName;
         itemQuantity.text = $"x{dropitem.Quantity.ToString()}";
-    }   
+    }
     public void CollectItem()
     {
         if (itemLoad == null) return;

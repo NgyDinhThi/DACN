@@ -15,9 +15,9 @@ public enum Itemtype
 public class InventoryItems : ScriptableObject
 {
     [Header("Config")]
-    public string id;             // ID định danh duy nhất của item
-    public string itemsName;           // Tên hiển thị của item
-    public Sprite icon;           // Icon hiển thị của item trong giao diện
+    public string Id;             // ID định danh duy nhất của item
+    public string ItemsName;           // Tên hiển thị của item
+    public Sprite Icon;           // Icon hiển thị của item trong giao diện
     [TextArea] public string description; // Mô tả chi tiết về item
 
     [Header("Info")]

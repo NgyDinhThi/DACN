@@ -28,6 +28,7 @@ public class EnemyLoot : MonoBehaviour
                 Items.Add(item);
             }
         }
+        Debug.Log($"Loaded {Items.Count} items in EnemyLoot");
     }
 }
 

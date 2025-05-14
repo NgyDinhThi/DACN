@@ -20,7 +20,8 @@ public class LootManager : Singleton<LootManager>
         foreach (DropItem item in enemyLoot.Items)
         {
             if (item.PickedItem) continue;
-           LootButton lootButton = Instantiate(lootButtonPrefab, container);
+            Debug.Log($"Processing item: Name={item.Name}, Item={item.Item}, Quantity={item.Quantity}, Picked={item.PickedItem}");
+            LootButton lootButton = Instantiate(lootButtonPrefab, container);
             lootButton.ConfigLootButton(item);
         }
     }    

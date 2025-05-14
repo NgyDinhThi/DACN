@@ -34,7 +34,7 @@ public class Inventory : Singleton<Inventory>
             }
             else
             {
-                saveData.itemsContents[i] = inventoryItems[i].id;
+                saveData.itemsContents[i] = inventoryItems[i].Id;
                 saveData.itemsQuantity[i] = inventoryItems[i].quantity;
             }
         }
@@ -52,7 +52,7 @@ public class Inventory : Singleton<Inventory>
     {
         for (int i = 0; i < gameContents.GameItems.Length; i++) // Sửa inventorySize thành gameContents.GameItems.Length
         {
-            if (gameContents.GameItems[i].id == itemsId)
+            if (gameContents.GameItems[i].Id == itemsId)
             {
                 return gameContents.GameItems[i];
             }
@@ -97,7 +97,7 @@ public class Inventory : Singleton<Inventory>
     public void AddItems(InventoryItems items, int quantity)
     {
         if (items == null || quantity <= 0) return;
-        List<int> itemIndexes = CheckItemstock(items.id);
+        List<int> itemIndexes = CheckItemstock(items.Id);
         if (items.IsStackable && itemIndexes.Count > 0)
         {
             foreach (int index in itemIndexes)
@@ -189,7 +189,7 @@ public class Inventory : Singleton<Inventory>
         for (int i = 0; i < inventoryItems.Length; i++)
         {
             if (inventoryItems[i] == null) continue;
-            if (inventoryItems[i].id == itemId)
+            if (inventoryItems[i].Id == itemId)
             {
                 itemIndexes.Add(i);
             }

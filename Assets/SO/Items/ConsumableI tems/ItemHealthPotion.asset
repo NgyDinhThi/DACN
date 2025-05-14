@@ -12,15 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198448c2c3c2955479bfef6340c6b0a3, type: 3}
   m_Name: ItemHealthPotion
   m_EditorClassIdentifier: 
-  id: HealthPotion
-  name: Health potion
-  icon: {fileID: 21300000, guid: fbf0fefb3d88eb5499a97a09f5bce8d7, type: 3}
-  mieuta: 'A potion can make u better
-
-'
+  Id: HealthPotion
+  ItemsName: Health potion
+  Icon: {fileID: 21300000, guid: fbf0fefb3d88eb5499a97a09f5bce8d7, type: 3}
+  description: A strange potion can help you feel better
   itemtype: 1
   IsComsumable: 1
   IsStackable: 1
-  MaxStack: 99
-  Quantity: 0
-  Healthvalue: 7
+  MaxStack: 20
+  quantity: 0
+  Healthvalue: 5

@@ -62,7 +62,7 @@ public class InventoryUI : Singleton<InventoryUI>
                 Debug.LogWarning($"Button missing on slot at index {i}");
             }
         }
-        Debug.Log($"Đã khởi tạo {slotList.Count} ô trong kho đồ.");
+      
     }
 
     public void UpdateInventoryDisplay()
@@ -98,7 +98,6 @@ public class InventoryUI : Singleton<InventoryUI>
     public void DrawItems(InventoryItems item, int index)
     {
         InventorySlot slot = slotList[index];
-        Debug.Log($"Cập nhật ô {index}: Item = {item?.name ?? "null"}");
         if (item == null)
         {
             slot.ShowSlotInfo(false);
@@ -117,8 +116,8 @@ public class InventoryUI : Singleton<InventoryUI>
             return;
         }
         descriptionPanel.SetActive(true);
-        itemsIcon.sprite = item.icon;
-        itemsNameTMP.text = item.itemsName; 
+        itemsIcon.sprite = item.Icon;
+        itemsNameTMP.text = item.ItemsName; 
         itemsDescriptionTMP.text = item.description;
     }
 

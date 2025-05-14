@@ -30,7 +30,7 @@ public class InventorySlot : MonoBehaviour
 
     public void UpdateSlot(InventoryItems items)
     {
-        itemsIcons.sprite = items.icon;
+        itemsIcons.sprite = items.Icon;
         itemQuantityTMP.text = items.quantity.ToString();
         itemsIcons.SetNativeSize();
     }
