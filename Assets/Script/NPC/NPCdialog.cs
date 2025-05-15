@@ -22,6 +22,7 @@ public class NPCdialog : ScriptableObject
     public InteractionType InteractionType;
 
     [Header("Dialogue")]
+    public string Greeting;
     [TextArea] public string[] dialogue;
 
 
