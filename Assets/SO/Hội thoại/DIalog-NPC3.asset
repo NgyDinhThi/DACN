@@ -10,14 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bfeb2b79b55c194ca1a7df40c9cdea0, type: 3}
-  m_Name: Dialog-NPC2
+  m_Name: DIalog-NPC3
   m_EditorClassIdentifier: 
-  Name: Monk
-  Icon: {fileID: 21300000, guid: 06eaeab3d897712428ce8a26b403a4a7, type: 3}
+  Name: 
+  Icon: {fileID: 0}
   HasInteraction: 0
   InteractionType: 0
-  Greeting: "Xin ch\xE0o ninja t\u1EADp s\u1EF1"
-  dialogue:
-  - "Ch\xE0o m\u1EEBng \u0111\u1EBFn v\u1EDBi ng\xF4i l\xE0ng c\u1EE7a ch\xFAng ta,
-    ninja t\u1EADp s\u1EF1"
-  - "Mong ng\u01B0\u01A1i ho\xE0n th\xE0nh t\u1ED1t nhi\u1EC7m v\u1EE5 c\u1EE7a m\xECnh"
+  Greeting: 
+  dialogue: []
