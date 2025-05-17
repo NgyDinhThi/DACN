@@ -43,6 +43,7 @@ public class EnemyHealth : MonoBehaviour, IdamageAble
         if (mauhientai <= 0f)
         {
             DisableEnemy();
+            QuestManager.instance.AddProgress("Kill2Enemy", 1);
         }
         else
         {
