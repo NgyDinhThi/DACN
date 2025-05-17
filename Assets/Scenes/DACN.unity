@@ -1790,6 +1790,7 @@ Transform:
   - {fileID: 1828393873}
   - {fileID: 152201334}
   - {fileID: 1050403841}
+  - {fileID: 296820164}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &165074156
@@ -2934,6 +2935,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 288930587}
   m_CullTransparentMesh: 1
+--- !u!1 &296820163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 296820164}
+  - component: {fileID: 296820165}
+  m_Layer: 0
+  m_Name: Coins Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &296820164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296820163}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 162332583}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &296820165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296820163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2191b5e542dd38e46a458b7bf5278030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cointTest: 300
 --- !u!1001 &299752352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10884,6 +10930,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quests:
   - {fileID: 11400000, guid: c4786a76f07ab894d853627e2961c4df, type: 2}
+  - {fileID: 11400000, guid: 1e9f7a6e3cd85064199c7f5f40600ea3, type: 2}
+  - {fileID: 11400000, guid: 2f8f452816cc2e244b5a61648e4d5e58, type: 2}
   questCardNPCPrefab: {fileID: 5865801351912767174, guid: 374d5ef294480b24ba57e5fc09645df4, type: 3}
   npcPanelContainer: {fileID: 1707492066}
   questCardPlayerPrefab: {fileID: 3911771277411239337, guid: 3ae7d66725a3cfc48a2ef16ea01b2c0e, type: 3}
