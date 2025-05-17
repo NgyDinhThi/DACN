@@ -16,7 +16,7 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 0d559138143951f4ea99e7f48c3fe606, type: 3}
   HasInteraction: 1
   InteractionType: 0
-  Greeting: "Ch\xE0o l\xEDnh m\u01A1i"
+  Greeting: "Ch\xE0o l\xEDnh m\u1EDBi"
   dialogue:
   - "C\u1EADu \u0111ang c\u1EA7n th\u1EED th\xE1ch \u0111\u1EC3 n\xE2ng cao b\u1EA3n
     th\xE2n \u0111\xFAng kh\xF4ng\t\t"

@@ -16,7 +16,7 @@ public class GameManager : Singleton<GameManager>
     /// Gọi khi muốn tăng kinh nghiệm cho nhân vật.
     /// </summary>
     /// <param name="expamount">Lượng kinh nghiệm muốn cộng thêm.</param>
-    public void ThemKN(float expamount)
+    public void AddPlayerExp(float expamount)
     {
         PlayerExp playerExp = player.GetComponent<PlayerExp>(); // Lấy component PlayerExp từ đối tượng Player
         playerExp.AddExp(expamount); // Thêm EXP vào nhân vật

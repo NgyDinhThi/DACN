@@ -14,6 +14,10 @@ public class QuestCardPlayer : QuestCard
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemQuantityTMP;
 
+    [Header("Quest completed")]
+    [SerializeField] private GameObject claimButton;
+    [SerializeField] private GameObject rewardsPanel;
+
     private void Update()
     {
        
@@ -32,5 +36,24 @@ public class QuestCardPlayer : QuestCard
         itemQuantityTMP.text = quest.ItemReward.Quantity.ToString();
     }
 
+    public void ClaimQuest()
+    {
+        GameManager.instance.AddPlayerExp(QuestToComplete.ExpReward);
+        Inventory.instance.AddItems(QuestToComplete.ItemReward.Items, QuestToComplete.ItemReward.Quantity);
+        CoinsManager.instance.AddCoin(QuestToComplete.GoldReWard);
+       gameObject.SetActive(false);
+    }    
 
+    private void QuestCompletedCheck()
+    {
+        if (QuestToComplete.QuestCompleted)
+        {
+            claimButton.SetActive(true);
+            rewardsPanel.SetActive(true);
+        }
+    }
+    private void OnEnable()
+    {
+        QuestCompletedCheck();
+    }
 }

@@ -44,6 +44,8 @@ public class EnemyHealth : MonoBehaviour, IdamageAble
         {
             DisableEnemy();
             QuestManager.instance.AddProgress("Kill2Enemy", 1);
+            QuestManager.instance.AddProgress("Kill5Enemy", 1);
+            QuestManager.instance.AddProgress("Kill10Enemy", 1);
         }
         else
         {
@@ -67,6 +69,6 @@ public class EnemyHealth : MonoBehaviour, IdamageAble
 
         OnEnemyDeathEvent?.Invoke();
 
-        GameManager.instance.ThemKN(enemyLoot.ExpDrop);
+        GameManager.instance.AddPlayerExp(enemyLoot.ExpDrop);
     }
 }

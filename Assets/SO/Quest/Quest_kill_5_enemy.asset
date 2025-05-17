@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adf281f1125c12d49b5fb20d960798bc, type: 3}
-  m_Name: Quest_kill_10_enemy
+  m_Name: Quest_kill_5_enemy
   m_EditorClassIdentifier: 
-  Name: Enemy Destroyer
-  ID: Kill10Enemy
-  QuestGoal: 10
+  Name: Enemy Killer
+  ID: Kill5Enemy
+  QuestGoal: 5
   Description: "Ti\xEAu di\u1EC7t nh\u1EEFng con qu\xE1i v\u1EADt \u1EDF khu v\u1EF1c
-    \u0111i s\u0103n\t\t"
-  GoldReWard: 25
-  ExpReward: 50
+    \u0111i s\u0103n\t\n"
+  GoldReWard: 20
+  ExpReward: 40
   ItemReward:
-    Items: {fileID: 11400000, guid: 8a01c03cd8f32d546b2bf50161219c2c, type: 2}
-    Quantity: 5
+    Items: {fileID: 11400000, guid: 8cdeb70335df48d4984993482daf239e, type: 2}
+    Quantity: 7
   CurrentStatus: 2
   QuestCompleted: 1
   QuestAccepted: 1
