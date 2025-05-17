@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf281f1125c12d49b5fb20d960798bc, type: 3}
   m_Name: Quest_kill_10_enemy
   m_EditorClassIdentifier: 
-  Name: 
-  ID: 
-  QuestGoal: 0
-  Description: 
-  GoldReWard: 0
-  ExpReward: 0
+  Name: Enemy Hunter
+  ID: Kill10Enemy
+  QuestGoal: 10
+  Description: "Ti\xEAu di\u1EC7t nh\u1EEFng con qu\xE1i v\u1EADt \u1EDF khu v\u1EF1c
+    \u0111i s\u0103n"
+  GoldReWard: 10
+  ExpReward: 30
   ItemReward:
-    Items: {fileID: 0}
-    Quantity: 0
+    Items: {fileID: 11400000, guid: 8cdeb70335df48d4984993482daf239e, type: 2}
+    Quantity: 5
   CurrentStatus: 0
   QuestCompleted: 0
   QuestAccepted: 0

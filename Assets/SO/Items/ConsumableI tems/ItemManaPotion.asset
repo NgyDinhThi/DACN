@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 701451677be285f42ad55a3bbd2f498e, type: 3}
   m_Name: ItemManaPotion
   m_EditorClassIdentifier: 
-  id: ManaPotion
-  name: Mana potion
-  icon: {fileID: 21300000, guid: f39f80ff89ae10346966bfeb894a15c4, type: 3}
-  mieuta: A potion can recover mana
+  Id: ManaPotion
+  ItemsName: Mana potion
+  Icon: {fileID: 21300000, guid: f39f80ff89ae10346966bfeb894a15c4, type: 3}
+  description: A potion can help you use your skill muck longer
   itemtype: 1
   IsComsumable: 1
   IsStackable: 1
-  MaxStack: 99
-  Quantity: 0
+  MaxStack: 20
+  quantity: 0
   ManaValue: 15

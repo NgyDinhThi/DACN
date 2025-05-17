@@ -16,7 +16,7 @@ public class NPCinteraction : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            DIalogManager.instance.npcSelected = this;
+            DialogManager.instance.npcSelected = this;
             interactionBox.SetActive(true);
         }
     }
@@ -25,8 +25,8 @@ public class NPCinteraction : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            DIalogManager.instance.npcSelected = null;
-            DIalogManager.instance.CloseDialogPanel();
+            DialogManager.instance.npcSelected = null;
+            DialogManager.instance.CloseDialogPanel();
             interactionBox.SetActive(false);
         }
         

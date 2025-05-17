@@ -33,6 +33,10 @@ public class UImanager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dexterity;
     [SerializeField] private TextMeshProUGUI intelligence;
 
+    [Header("Extra Pnael")]
+    [SerializeField] private GameObject npcQuestPanel;
+    [SerializeField] private GameObject playerQuestPanel;
+
     private void Update()
     {
         UpdatePlayerUI(); // Cập nhật liên tục giao diện thanh máu, mana, exp, cấp độ
@@ -45,6 +49,17 @@ public class UImanager : MonoBehaviour
         if (statsPanel.activeSelf)
             UpdateStatsPanel(); // Nếu panel bật thì cập nhật dữ liệu mới
     }
+
+    public void OpenCloseNPCQuestPanel(bool value)
+    {
+        npcQuestPanel.SetActive(!npcQuestPanel.activeSelf);
+
+    }   
+    
+    public void OpenClosePlayerQuestPanel(bool value)
+    {
+        playerQuestPanel.SetActive(!playerQuestPanel.activeSelf);
+    }    
 
     // Cập nhật giao diện thanh trạng thái chính
     private void UpdatePlayerUI()
@@ -78,6 +93,21 @@ public class UImanager : MonoBehaviour
         intelligence.text = stats.Intelligence.ToString();
     }
 
+    private void ExtraInteractionCallback(InteractionType type)
+    {
+        switch (type)
+        {
+            case InteractionType.Quest:
+                OpenCloseNPCQuestPanel(true);
+                break;
+            
+            case InteractionType.Shop:
+                break;
+            case InteractionType.NormalTalk:
+                break;
+        }
+    }    
+
     // Gọi lại hàm update panel khi có sự kiện nâng cấp
     private void UpgradeCallback()
     {
@@ -87,10 +117,12 @@ public class UImanager : MonoBehaviour
     private void OnEnable()
     {
         PlayerUpdate.OnplayerUpgrade += UpgradeCallback; // Đăng ký lắng nghe sự kiện nâng cấp chỉ số
+        DialogManager.OnExtraInteractionEvent += ExtraInteractionCallback;
     }
 
     private void OnDisable()
     {
         PlayerUpdate.OnplayerUpgrade -= UpgradeCallback; // Gỡ đăng ký khi bị disable
+        DialogManager.OnExtraInteractionEvent -= ExtraInteractionCallback;
     }
 }

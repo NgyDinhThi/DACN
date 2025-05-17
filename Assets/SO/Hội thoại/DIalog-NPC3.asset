@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bfeb2b79b55c194ca1a7df40c9cdea0, type: 3}
   m_Name: DIalog-NPC3
   m_EditorClassIdentifier: 
-  Name: 
-  Icon: {fileID: 0}
-  HasInteraction: 0
+  Name: Cave girl
+  Icon: {fileID: 21300000, guid: 0d559138143951f4ea99e7f48c3fe606, type: 3}
+  HasInteraction: 1
   InteractionType: 0
-  Greeting: 
-  dialogue: []
+  Greeting: "Ch\xE0o l\xEDnh m\u01A1i"
+  dialogue:
+  - "C\u1EADu \u0111ang c\u1EA7n th\u1EED th\xE1ch \u0111\u1EC3 n\xE2ng cao b\u1EA3n
+    th\xE2n \u0111\xFAng kh\xF4ng\t\t"
+  - "Th\u1EBF c\u1EADu t\xECm \u0111\xFAng ng\u01B0\u1EDDi r\u1ED3i \u0111\u1EA5y"
