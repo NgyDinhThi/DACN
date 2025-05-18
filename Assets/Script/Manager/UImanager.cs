@@ -18,6 +18,7 @@ public class UImanager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelTMP;  // Text hiển thị cấp độ
     [SerializeField] private TextMeshProUGUI manaTMP;   // Text hiển thị số mana
     [SerializeField] private TextMeshProUGUI expTMP;    // Text hiển thị EXP
+    [SerializeField] private TextMeshProUGUI coinsTMP;    
 
     [Header("Stats Panel")] // Các chỉ số chi tiết mở rộng
     [SerializeField] private GameObject statsPanel; // Panel thông tin chi tiết
@@ -36,6 +37,8 @@ public class UImanager : MonoBehaviour
     [Header("Extra Pnael")]
     [SerializeField] private GameObject npcQuestPanel;
     [SerializeField] private GameObject playerQuestPanel;
+    [SerializeField] private GameObject shopPanel;
+
 
     private void Update()
     {
@@ -74,6 +77,7 @@ public class UImanager : MonoBehaviour
         levelTMP.text = $"Level {stats.level}";
         manaTMP.text = $"{stats.mana}/{stats.Max_mana}";
         expTMP.text = $"{stats.CurrentExp}/{stats.NextLevelUp}";
+        coinsTMP.text = CoinsManager.instance.Coins.ToString() ;
     }
 
     // Cập nhật panel chỉ số mở rộng khi mở ra
@@ -102,10 +106,17 @@ public class UImanager : MonoBehaviour
                 break;
             
             case InteractionType.Shop:
+                OpenCloseShopPanel(true);
                 break;
             case InteractionType.NormalTalk:
                 break;
         }
+    }    
+
+    public void OpenCloseShopPanel(bool value)
+    {
+        shopPanel.SetActive(!shopPanel.activeSelf);
+
     }    
 
     // Gọi lại hàm update panel khi có sự kiện nâng cấp

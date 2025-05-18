@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a89c7b005fca94b8ab2d2c6ca9dcfd, type: 3}
   m_Name: ItemWeapon-xuong
   m_EditorClassIdentifier: 
-  id: Weaponbone
-  name: Magic bone
-  icon: {fileID: 21300000, guid: a6a3a8d76f318f347820e544612b067c, type: 3}
-  mieuta: a weird bone have magic
+  Id: BoneWeapon
+  ItemsName: Maigc bone
+  Icon: {fileID: 21300000, guid: a6a3a8d76f318f347820e544612b067c, type: 3}
+  description: A bone with strang magic
   itemtype: 0
   IsComsumable: 0
   IsStackable: 0
   MaxStack: 1
-  Quantity: 0
+  quantity: 0
   weapon: {fileID: 11400000, guid: a695df6d02dd575499de7de0a390e324, type: 2}
