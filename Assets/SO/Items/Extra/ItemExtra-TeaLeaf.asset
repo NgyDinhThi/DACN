@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 68a9895a5d8450e4eb9fe961760f2ad2, type: 3}
-  m_Name: ItemExtra-honey
+  m_Name: ItemExtra-TeaLeaf
   m_EditorClassIdentifier: 
-  Id: Honey
-  ItemsName: Honey
-  Icon: {fileID: 21300000, guid: 76cf61f55054c554b8e291752713bb31, type: 3}
-  description: sweet and delecious honey
+  Id: Tealeaf
+  ItemsName: Tea leaf
+  Icon: {fileID: 21300000, guid: be3f1cf93918bcb408544031f3a6c894, type: 3}
+  description: "A tea leaf\t"
   itemtype: 3
   IsComsumable: 0
   IsStackable: 1
