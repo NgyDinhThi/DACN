@@ -97,7 +97,7 @@ public class Inventory : Singleton<Inventory>
     public void AddItems(InventoryItems items, int quantity)
     {
         if (items == null || quantity <= 0) return;
-        List<int> itemIndexes = CheckItemstock(items.Id);
+        List<int> itemIndexes = CheckItemstockIndexes(items.Id);
         if (items.IsStackable && itemIndexes.Count > 0)
         {
             foreach (int index in itemIndexes)
@@ -183,7 +183,7 @@ public class Inventory : Singleton<Inventory>
         }
     }
 
-    private List<int> CheckItemstock(string itemId)
+    private List<int> CheckItemstockIndexes(string itemId)
     {
         List<int> itemIndexes = new List<int>();
         for (int i = 0; i < inventoryItems.Length; i++)
@@ -196,6 +196,20 @@ public class Inventory : Singleton<Inventory>
         }
         return itemIndexes;
     }
+
+    public int GetItemsCurrentStock(string itemId)
+    {
+        List<int> indexes = CheckItemstockIndexes(itemId);
+        int currentStock = 0;
+        foreach (int index in indexes) 
+        {
+            if (inventoryItems[index].Id == itemId)
+            {
+                currentStock += inventoryItems[index].quantity;
+            }
+        }
+        return currentStock;
+    }    
 
     private void VerifiItems4Draw()
     {

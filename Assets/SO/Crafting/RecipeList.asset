@@ -20,3 +20,10 @@ MonoBehaviour:
     Item2Amount: 5
     FinalItem: {fileID: 11400000, guid: 064678649eb0f2a42bb201da59a8ce06, type: 2}
     FinalItemAmount: 2
+  - Name: MedKit pack
+    Item1: {fileID: 11400000, guid: 8a01c03cd8f32d546b2bf50161219c2c, type: 2}
+    Item1Amount: 5
+    Item2: {fileID: 11400000, guid: f7695564a230d0c4a81b01665a127a91, type: 2}
+    Item2Amount: 7
+    FinalItem: {fileID: 11400000, guid: d16758a5b2385254c8c63545fc48cab9, type: 2}
+    FinalItemAmount: 1

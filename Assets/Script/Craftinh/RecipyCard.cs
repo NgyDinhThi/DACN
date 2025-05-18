@@ -16,5 +16,8 @@ public class RecipyCard : MonoBehaviour
 
     }    
 
-
+    public void ClickRecipe()
+    {
+        CraftingManager.instance.ShowRecipe(RecipeLoad);
+    }    
 }
