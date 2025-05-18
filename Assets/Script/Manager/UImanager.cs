@@ -38,6 +38,7 @@ public class UImanager : MonoBehaviour
     [SerializeField] private GameObject npcQuestPanel;
     [SerializeField] private GameObject playerQuestPanel;
     [SerializeField] private GameObject shopPanel;
+    [SerializeField] private GameObject craftingPanel;
 
 
     private void Update()
@@ -62,6 +63,18 @@ public class UImanager : MonoBehaviour
     public void OpenClosePlayerQuestPanel(bool value)
     {
         playerQuestPanel.SetActive(!playerQuestPanel.activeSelf);
+    }
+
+    public void OpenCloseShopPanel(bool value)
+    {
+        shopPanel.SetActive(!shopPanel.activeSelf);
+
+    }
+
+    public void OpenCloseCraftPanel(bool value)
+    {
+        craftingPanel.SetActive(!craftingPanel.activeSelf);
+
     }    
 
     // Cập nhật giao diện thanh trạng thái chính
@@ -110,14 +123,13 @@ public class UImanager : MonoBehaviour
                 break;
             case InteractionType.NormalTalk:
                 break;
+            case InteractionType.Crafting:
+                OpenCloseCraftPanel(true);
+                break;
         }
     }    
 
-    public void OpenCloseShopPanel(bool value)
-    {
-        shopPanel.SetActive(!shopPanel.activeSelf);
-
-    }    
+  
 
     // Gọi lại hàm update panel khi có sự kiện nâng cấp
     private void UpgradeCallback()

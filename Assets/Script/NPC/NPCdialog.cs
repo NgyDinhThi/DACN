@@ -5,7 +5,8 @@ public enum InteractionType
 {
     Quest,
     Shop,
-    NormalTalk
+    NormalTalk,
+    Crafting
 
 }
 

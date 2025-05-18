@@ -11,6 +11,7 @@ public class CraftingManager : Singleton<CraftingManager>
     [Header("Config")]
     [SerializeField] private RecipyCard recipyCardPrefab;
     [SerializeField] private Transform RecipyContainer;
+    [SerializeField] private GameObject CraftMaterialPanel;
     [Header("Reccipy info")]
     [SerializeField] private Image item1Icon;
     [SerializeField] private TextMeshProUGUI item1Name;
@@ -27,6 +28,7 @@ public class CraftingManager : Singleton<CraftingManager>
     [Header("Recipy")]
     [SerializeField] private RecipeList recipies;
 
+    public Recipe RecipeSelected { get; private set; }
 
     private void Start()
     {
@@ -47,6 +49,11 @@ public class CraftingManager : Singleton<CraftingManager>
 
     public void ShowRecipe(Recipe recipe)
     {
+        if (CraftMaterialPanel.activeSelf == false)
+            CraftMaterialPanel.SetActive(true);
+
+        RecipeSelected = recipe;
+
         item1Icon.sprite = recipe.Item1.Icon;
         item1Name.text = recipe.Item1.ItemsName;
         item2Icon.sprite = recipe.Item2.Icon;
@@ -62,6 +69,7 @@ public class CraftingManager : Singleton<CraftingManager>
         craftButton.interactable = CanCrapItem(recipe);
 
         recipyname.text = recipe.Name;
+        
     }   
     
     private bool CanCrapItem(Recipe recipe)
@@ -74,5 +82,24 @@ public class CraftingManager : Singleton<CraftingManager>
         }
         return false;
     }    
+
+    public void CrapItem()
+    {
+        for (int i = 0; i < RecipeSelected.Item1Amount; i++)
+        {
+            Inventory.instance.ConsumeItem(RecipeSelected.Item1.Id);
+        }
+
+        for (int i = 0; i < RecipeSelected.Item2Amount; i++)
+        {
+            Inventory.instance.ConsumeItem(RecipeSelected.Item2.Id);
+        }
+
+        Inventory.instance.AddItems(RecipeSelected.FinalItem, RecipeSelected.FinalItemAmount);
+        ShowRecipe(RecipeSelected);
+    }
+
+
+    
 
 }

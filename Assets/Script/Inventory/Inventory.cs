@@ -201,7 +201,7 @@ public class Inventory : Singleton<Inventory>
     {
         List<int> indexes = CheckItemstockIndexes(itemId);
         int currentStock = 0;
-        foreach (int index in indexes) 
+        foreach (int index in indexes)
         {
             if (inventoryItems[index].Id == itemId)
             {
@@ -209,7 +209,7 @@ public class Inventory : Singleton<Inventory>
             }
         }
         return currentStock;
-    }    
+    }
 
     private void VerifiItems4Draw()
     {
@@ -221,4 +221,16 @@ public class Inventory : Singleton<Inventory>
             }
         }
     }
+
+    public void ConsumeItem(string itemId)
+    {
+        List<int> indexes = CheckItemstockIndexes(itemId);
+        if (indexes.Count > 0)
+        {
+            DecreaseItemStack(indexes[^1]);
+        }
+
+    } 
+
+
 }
