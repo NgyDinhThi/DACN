@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bfeb2b79b55c194ca1a7df40c9cdea0, type: 3}
   m_Name: Dialog-NPC1
   m_EditorClassIdentifier: 
-  Name: 
-  Icon: {fileID: 0}
+  Name: Cave man
+  Icon: {fileID: 21300000, guid: 476dcbb4e8e921a45ad3f22ee23e4f0c, type: 3}
   HasInteraction: 0
-  InteractionType: 0
-  Greeting: 
-  dialogue: []
+  InteractionType: 2
+  Greeting: "ha nh\xF4"
+  dialogue:
+  - "ch\xE1n qu\xE1 kh\xF4ng c\xF3 vi\u1EC7c g\xEC l\xE0m n\xEAn t\xF4i \u0111i v\xF2ng
+    quanh"
+  - "bye nh\xF3"
