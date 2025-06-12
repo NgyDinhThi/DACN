@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a89c7b005fca94b8ab2d2c6ca9dcfd, type: 3}
   m_Name: ItemWeapon-bow
   m_EditorClassIdentifier: 
-  id: Weaponbow
-  name: bow
-  icon: {fileID: 21300000, guid: f43beb2b739d7654fadb6f7318b2f60e, type: 3}
-  mieuta: a wand have a speel to shot magic
+  Id: 
+  ItemsName: 
+  Icon: {fileID: 0}
+  description: 
   itemtype: 0
   IsComsumable: 0
   IsStackable: 0
   MaxStack: 1
-  Quantity: 0
-  weapon: {fileID: 11400000, guid: cf64498f73515fd478864527236d1cc5, type: 2}
+  quantity: 0
+  weapon: {fileID: 11400000, guid: 65d0db68a93959c409c9bfdc43553ed1, type: 2}

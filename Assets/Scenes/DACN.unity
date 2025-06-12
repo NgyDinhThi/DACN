@@ -1374,6 +1374,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1220918946429255049, guid: e5781b975cf6b2443bdf6a239271d450, type: 3}
+      propertyPath: states.Array.data[0].transitions.Array.data[0].FalseState
+      value: Wander
+      objectReference: {fileID: 0}
     - target: {fileID: 7621512257964165409, guid: e5781b975cf6b2443bdf6a239271d450, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.73
@@ -7502,6 +7506,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1220918946429255049, guid: e5781b975cf6b2443bdf6a239271d450, type: 3}
+      propertyPath: states.Array.data[0].transitions.Array.data[0].FalseState
+      value: Wander
+      objectReference: {fileID: 0}
     - target: {fileID: 7621512257964165409, guid: e5781b975cf6b2443bdf6a239271d450, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.78
@@ -8808,6 +8816,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1754258061}
     m_Modifications:
+    - target: {fileID: 203217138870068435, guid: 22b3fb43eb341db4a9cc3b94ccbc5918, type: 3}
+      propertyPath: states.Array.data[0].transitions.Array.data[0].FalseState
+      value: Wander
+      objectReference: {fileID: 0}
     - target: {fileID: 2641031210449489580, guid: 22b3fb43eb341db4a9cc3b94ccbc5918, type: 3}
       propertyPath: m_Name
       value: Enemy_3 (1)
@@ -10055,7 +10067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 75c99caee7e29b54383037e3be5bd95f, type: 2}
-  initialweapon: {fileID: 11400000, guid: 9eb1cf8db2b5eaa40a01a73422009d39, type: 2}
+  initialweapon: {fileID: 11400000, guid: 65d0db68a93959c409c9bfdc43553ed1, type: 2}
   vitritancong:
   - {fileID: 1270883410}
   - {fileID: 1393798287}
@@ -17871,7 +17883,7 @@ MonoBehaviour:
   - Name: Weapon Book x1 - 15%
     Item: {fileID: 11400000, guid: 33742d1494969e148ac90f99ae0fc890, type: 2}
     Quantity: 1
-    DropChance: 15
+    DropChance: 100
 --- !u!1001 &1347021397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74277,13 +74289,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1220918946429255049, guid: e5781b975cf6b2443bdf6a239271d450, type: 3}
+      propertyPath: states.Array.data[0].transitions.Array.data[0].FalseState
+      value: Wander
+      objectReference: {fileID: 0}
     - target: {fileID: 7621512257964165409, guid: e5781b975cf6b2443bdf6a239271d450, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.3
+      value: -7.69
       objectReference: {fileID: 0}
     - target: {fileID: 7621512257964165409, guid: e5781b975cf6b2443bdf6a239271d450, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.31
+      value: 2.79
       objectReference: {fileID: 0}
     - target: {fileID: 7621512257964165409, guid: e5781b975cf6b2443bdf6a239271d450, type: 3}
       propertyPath: m_LocalPosition.z
@@ -74513,6 +74529,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1754258061}
     m_Modifications:
+    - target: {fileID: 203217138870068435, guid: 22b3fb43eb341db4a9cc3b94ccbc5918, type: 3}
+      propertyPath: states.Array.data[0].transitions.Array.data[0].FalseState
+      value: Wander
+      objectReference: {fileID: 0}
     - target: {fileID: 2641031210449489580, guid: 22b3fb43eb341db4a9cc3b94ccbc5918, type: 3}
       propertyPath: m_Name
       value: Enemy_3

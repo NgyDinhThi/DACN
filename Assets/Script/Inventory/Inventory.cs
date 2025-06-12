@@ -50,7 +50,7 @@ public class Inventory : Singleton<Inventory>
 
     private InventoryItems IsItemsExistInGamecontents(string itemsId)
     {
-        for (int i = 0; i < gameContents.GameItems.Length; i++) // Sửa inventorySize thành gameContents.GameItems.Length
+        for (int i = 0; i < gameContents.GameItems.Length; i++) 
         {
             if (gameContents.GameItems[i].Id == itemsId)
             {

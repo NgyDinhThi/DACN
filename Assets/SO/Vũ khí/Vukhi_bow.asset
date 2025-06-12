@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: f43beb2b739d7654fadb6f7318b2f60e, type: 3}
   loaiVK: 0
-  dmg: 1.5
-  projectilesPrefab: {fileID: 42088536720288670, guid: 7e569bc519e11df48999d20a9dcb0ab9, type: 3}
-  luongMana: 3
+  dmg: 2
+  projectilesPrefab: {fileID: 7952422520792944864, guid: 3176a30e7dae424489f5adaeb2e63a45, type: 3}
+  requiredMana: 1
