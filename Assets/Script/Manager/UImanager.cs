@@ -3,25 +3,26 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Quản lý giao diện người chơi và các panel tương tác
 public class UImanager : MonoBehaviour
 {
     [Header("Stats")]
-    [SerializeField] private PlayerStats stats; // Tham chiếu đến scriptable object chứa chỉ số của nhân vật
+    [SerializeField] private PlayerStats stats;
 
     [Header("Stats bars")]
-    [SerializeField] private Image healthBar; // Thanh hiển thị lượng máu hiện tại
-    [SerializeField] private Image manaBar;   // Thanh hiển thị lượng mana hiện tại
-    [SerializeField] private Image expBar;    // Thanh hiển thị lượng EXP hiện tại
+    [SerializeField] private Image healthBar;
+    [SerializeField] private Image manaBar;
+    [SerializeField] private Image expBar;
 
     [Header("Text")]
-    [SerializeField] private TextMeshProUGUI healthTMP; // Text hiển thị số máu
-    [SerializeField] private TextMeshProUGUI levelTMP;  // Text hiển thị cấp độ
-    [SerializeField] private TextMeshProUGUI manaTMP;   // Text hiển thị số mana
-    [SerializeField] private TextMeshProUGUI expTMP;    // Text hiển thị EXP
-    [SerializeField] private TextMeshProUGUI coinsTMP;    
+    [SerializeField] private TextMeshProUGUI healthTMP;
+    [SerializeField] private TextMeshProUGUI levelTMP;
+    [SerializeField] private TextMeshProUGUI manaTMP;
+    [SerializeField] private TextMeshProUGUI expTMP;
+    [SerializeField] private TextMeshProUGUI coinsTMP;
 
-    [Header("Stats Panel")] // Các chỉ số chi tiết mở rộng
-    [SerializeField] private GameObject statsPanel; // Panel thông tin chi tiết
+    [Header("Stats Panel")]
+    [SerializeField] private GameObject statsPanel;
     [SerializeField] private TextMeshProUGUI statslv;
     [SerializeField] private TextMeshProUGUI statsdmg;
     [SerializeField] private TextMeshProUGUI statscritc;
@@ -40,10 +41,10 @@ public class UImanager : MonoBehaviour
     [SerializeField] private GameObject shopPanel;
     [SerializeField] private GameObject craftingPanel;
 
-
+    // Cập nhật thanh máu, mana, kinh nghiệm và văn bản
     private void Update()
     {
-        UpdatePlayerUI(); // Cập nhật liên tục giao diện thanh máu, mana, exp, cấp độ
+        UpdatePlayerUI();
     }
 
     // Mở/đóng panel chỉ số nhân vật
@@ -51,49 +52,47 @@ public class UImanager : MonoBehaviour
     {
         statsPanel.SetActive(!statsPanel.activeSelf);
         if (statsPanel.activeSelf)
-            UpdateStatsPanel(); // Nếu panel bật thì cập nhật dữ liệu mới
+            UpdateStatsPanel();
     }
 
+    // Mở/đóng panel nhiệm vụ NPC
     public void OpenCloseNPCQuestPanel(bool value)
     {
         npcQuestPanel.SetActive(!npcQuestPanel.activeSelf);
+    }
 
-    }   
-    
+    // Mở/đóng panel nhiệm vụ người chơi
     public void OpenClosePlayerQuestPanel(bool value)
     {
         playerQuestPanel.SetActive(!playerQuestPanel.activeSelf);
     }
 
+    // Mở/đóng panel cửa hàng
     public void OpenCloseShopPanel(bool value)
     {
         shopPanel.SetActive(!shopPanel.activeSelf);
-
     }
 
+    // Mở/đóng panel chế tạo
     public void OpenCloseCraftPanel(bool value)
     {
         craftingPanel.SetActive(!craftingPanel.activeSelf);
+    }
 
-    }    
-
-    // Cập nhật giao diện thanh trạng thái chính
+    // Cập nhật giao diện thanh máu, mana, kinh nghiệm, cấp độ, tiền
     private void UpdatePlayerUI()
     {
-        // Làm mượt giá trị hiển thị bằng Lerp
         healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, stats.health / stats.Max_health, Time.deltaTime * 10f);
         manaBar.fillAmount = Mathf.Lerp(manaBar.fillAmount, stats.mana / stats.Max_mana, Time.deltaTime * 10f);
         expBar.fillAmount = Mathf.Lerp(expBar.fillAmount, stats.CurrentExp / stats.NextLevelUp, Time.deltaTime * 10f);
-
-        // Cập nhật văn bản tương ứng
         healthTMP.text = $"{stats.health}/{stats.Max_health}";
         levelTMP.text = $"Level {stats.level}";
         manaTMP.text = $"{stats.mana}/{stats.Max_mana}";
         expTMP.text = $"{stats.CurrentExp}/{stats.NextLevelUp}";
-        coinsTMP.text = CoinsManager.instance.Coins.ToString() ;
+        coinsTMP.text = CoinsManager.instance.Coins.ToString();
     }
 
-    // Cập nhật panel chỉ số mở rộng khi mở ra
+    // Cập nhật thông tin panel chỉ số chi tiết
     private void UpdateStatsPanel()
     {
         statslv.text = stats.level.ToString();
@@ -103,13 +102,13 @@ public class UImanager : MonoBehaviour
         statstotalexp.text = stats.TotalExp.ToString();
         statscurrentexp.text = stats.CurrentExp.ToString();
         statsreqExp.text = stats.NextLevelUp.ToString();
-
         attributepoint.text = $"Points: {stats.AttributePoint}";
         strength.text = stats.Strength.ToString();
         dexterity.text = stats.Dexterity.ToString();
         intelligence.text = stats.Intelligence.ToString();
     }
 
+    // Xử lý tương tác mở panel theo loại
     private void ExtraInteractionCallback(InteractionType type)
     {
         switch (type)
@@ -117,7 +116,6 @@ public class UImanager : MonoBehaviour
             case InteractionType.Quest:
                 OpenCloseNPCQuestPanel(true);
                 break;
-            
             case InteractionType.Shop:
                 OpenCloseShopPanel(true);
                 break;
@@ -127,25 +125,25 @@ public class UImanager : MonoBehaviour
                 OpenCloseCraftPanel(true);
                 break;
         }
-    }    
+    }
 
-  
-
-    // Gọi lại hàm update panel khi có sự kiện nâng cấp
+    // Cập nhật panel chỉ số khi nâng cấp
     private void UpgradeCallback()
     {
         UpdateStatsPanel();
-    }
+    }   
 
+    // Đăng ký sự kiện nâng cấp và tương tác
     private void OnEnable()
     {
-        PlayerUpdate.OnplayerUpgrade += UpgradeCallback; // Đăng ký lắng nghe sự kiện nâng cấp chỉ số
+        PlayerUpdate.OnplayerUpgrade += UpgradeCallback;
         DialogManager.OnExtraInteractionEvent += ExtraInteractionCallback;
     }
 
+    // Gỡ đăng ký sự kiện khi vô hiệu hóa
     private void OnDisable()
     {
-        PlayerUpdate.OnplayerUpgrade -= UpgradeCallback; // Gỡ đăng ký khi bị disable
+        PlayerUpdate.OnplayerUpgrade -= UpgradeCallback;
         DialogManager.OnExtraInteractionEvent -= ExtraInteractionCallback;
     }
 }

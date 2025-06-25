@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using UnityEngine;
 
-
+// Quản lý danh sách các công thức trong game
 [CreateAssetMenu()]
 public class RecipeList : ScriptableObject
 {
-    public Recipe[] Recipes;
+    public Recipe[] Recipes; // Mảng chứa các công thức 
 }

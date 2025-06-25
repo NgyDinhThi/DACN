@@ -1,8 +1,8 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+// Quản lý nút nhặt vật phẩm trong giao diện loot
 public class LootButton : MonoBehaviour
 {
     [Header("Config")]
@@ -12,6 +12,7 @@ public class LootButton : MonoBehaviour
 
     public DropItem itemLoad { get; private set; }
 
+    // Cấu hình nút loot bằng thông tin vật phẩm truyền vào
     public void ConfigLootButton(DropItem dropitem)
     {
         itemLoad = dropitem;
@@ -32,12 +33,13 @@ public class LootButton : MonoBehaviour
         itemNames.text = dropitem.Item.ItemsName;
         itemQuantity.text = $"x{dropitem.Quantity.ToString()}";
     }
+
+    // Khi người chơi nhấn vào nút nhặt vật phẩm
     public void CollectItem()
     {
         if (itemLoad == null) return;
         Inventory.instance.AddItems(itemLoad.Item, itemLoad.Quantity);
         itemLoad.PickedItem = true;
         Destroy(gameObject);
-    }    
-   
+    }
 }

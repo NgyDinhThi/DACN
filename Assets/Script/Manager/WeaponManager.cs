@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +9,7 @@ public class WeaponManager : Singleton<WeaponManager>
     [SerializeField] private Image weaponIcons;
     [SerializeField] private TextMeshProUGUI weaponManaTMP;
 
+    // Trang bị vũ khí mới cho người chơi và cập nhật UI
     public void EquipWeapon(Weapon weapon)
     {
         weaponIcons.sprite = weapon.icon;
@@ -17,7 +18,5 @@ public class WeaponManager : Singleton<WeaponManager>
         weaponManaTMP.text = weapon.requiredMana.ToString();
         weaponManaTMP.gameObject.SetActive(true);
         GameManager.instance.Player.playerAttack.EquipWeapon(weapon);
-    }    
-
-  
+    }
 }

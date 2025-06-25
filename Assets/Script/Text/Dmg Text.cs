@@ -1,20 +1,21 @@
-﻿using TMPro;
+﻿// Hiển thị số sát thương dưới dạng text nổi khi nhân vật bị trúng đòn
+using TMPro;
 using UnityEngine;
 
 public class DmgText : MonoBehaviour
 {
     [Header("Config")]
-    [SerializeField] private TextMeshProUGUI dmgtext; // Text hiển thị lượng sát thương
+    [SerializeField] private TextMeshProUGUI dmgtext;
 
-    // Hàm để hiển thị sát thương lên màn hình
+    // Gán giá trị sát thương vào text UI
     public void textsatthuong(float dmg)
     {
-        dmgtext.text = dmg.ToString(); // Gán số sát thương vào UI
+        dmgtext.text = dmg.ToString();
     }
 
-    // Hàm để hủy object này sau khi hiển thị xong (ví dụ gọi từ animation hoặc timer)
+    // Hủy text khỏi scene
     public void huyText()
     {
-        Destroy(gameObject); // Xóa text khỏi scene
+        Destroy(gameObject);
     }
 }

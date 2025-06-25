@@ -1,5 +1,4 @@
-using UnityEngine;
-
+﻿using UnityEngine;
 
 public enum InteractionType
 {
@@ -7,24 +6,17 @@ public enum InteractionType
     Shop,
     NormalTalk,
     Crafting
-
 }
 
-[CreateAssetMenu(menuName ="NPC Dialog")]
+[CreateAssetMenu(menuName = "NPC Dialog")]
 public class NPCdialog : ScriptableObject
 {
-    [Header("Info")]
-    public string Name;
-    public Sprite Icon;
+    public string Name;         // tên NPC
+    public Sprite Icon;         // icon đại diện cho NPC
 
+    public bool HasInteraction;             // xác định NPC có tương tác đặc biệt không
+    public InteractionType InteractionType; // kiểu tương tác: mua bán, nhiệm vụ, nói chuyện...
 
-    [Header("Interaction")]
-    public bool HasInteraction;
-    public InteractionType InteractionType;
-
-    [Header("Dialogue")]
-    public string Greeting;
-    [TextArea] public string[] dialogue;
-
-
+    public string Greeting;     // câu thoại chào ban đầu
+    [TextArea] public string[] dialogue; // danh sách câu thoại sẽ hiển thị theo thứ tự
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+// Quản lý nâng cấp chỉ số của người chơi dựa trên điểm thuộc tính
 public class PlayerUpdate : MonoBehaviour
 {
     public static event Action OnplayerUpgrade;
@@ -8,10 +9,10 @@ public class PlayerUpdate : MonoBehaviour
     [Header("Config")]
     [SerializeField] private PlayerStats stats;
 
-
     [Header("Setting")]
     [SerializeField] private UpgradeSetting[] settings;
 
+    // Nâng cấp các chỉ số của người chơi dựa trên chỉ số nâng cấp
     private void UpgradePlayer(int upgradeIndex)
     {
         stats.BaseDmg += settings[upgradeIndex].DmgUpgrade;
@@ -22,23 +23,23 @@ public class PlayerUpdate : MonoBehaviour
         stats.mana = stats.Max_mana;
         stats.CritChance += settings[upgradeIndex].CritchanceUpgrade;
         stats.CritDmg += settings[upgradeIndex].CritdmgUpgrade;
- 
     }
 
+    // Xử lý nâng cấp thuộc tính khi nhận sự kiện từ nút thuộc tính
     private void AttributeCallback(Attribute attribute)
     {
         if (stats.AttributePoint == 0) return;
         switch (attribute)
         {
-          case Attribute.Strength:
+            case Attribute.Strength:
                 UpgradePlayer(0);
                 stats.Strength++;
                 break;
-          case Attribute.Dexterity:
+            case Attribute.Dexterity:
                 UpgradePlayer(1);
                 stats.Dexterity++;
                 break;
-          case Attribute.Intelligence:
+            case Attribute.Intelligence:
                 UpgradePlayer(2);
                 stats.Intelligence++;
                 break;
@@ -46,22 +47,23 @@ public class PlayerUpdate : MonoBehaviour
 
         stats.AttributePoint--;
         OnplayerUpgrade?.Invoke();
-    }    
+    }
 
+    // Đăng ký sự kiện nâng cấp thuộc tính khi kích hoạt
     private void OnEnable()
     {
         AttributeButton.OnAttributeEvent += AttributeCallback;
     }
 
+    // Hủy đăng ký sự kiện nâng cấp thuộc tính khi vô hiệu hóa
     private void OnDisable()
     {
         AttributeButton.OnAttributeEvent -= AttributeCallback;
-         
     }
 }
 
+// Lưu trữ thông tin nâng cấp cho mỗi loại thuộc tính
 [Serializable]
-
 public class UpgradeSetting
 {
     public string Name;

@@ -1,8 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+// Quản lý loot từ kẻ địch, bao gồm rơi vật phẩm và kinh nghiệm
 public class EnemyLoot : MonoBehaviour
 {
     [Header("Config")]
@@ -12,11 +13,13 @@ public class EnemyLoot : MonoBehaviour
     public List<DropItem> Items { get; private set; }
     public float ExpDrop => expDrop;
 
+    // Phương thức được gọi khi bắt đầu, tải danh sách vật phẩm có thể rơi từ kẻ địch
     private void Start()
     {
         LoadDropItems();
     }
 
+    // Phương thức để xác định các vật phẩm có thể rơi, dựa trên tỷ lệ rơi
     private void LoadDropItems()
     {
         Items = new List<DropItem>();
@@ -35,12 +38,9 @@ public class EnemyLoot : MonoBehaviour
 [Serializable]
 public class DropItem
 {
-    [Header("Config")]
     public string Name;
     public InventoryItems Item;
     public int Quantity;
-
-    [Header("Drop Chance")]
     public float DropChance;
     public bool PickedItem { get; set; }
 }

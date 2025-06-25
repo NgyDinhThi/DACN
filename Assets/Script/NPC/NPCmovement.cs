@@ -1,8 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
+// Di chuyển NPC tự động giữa các điểm waypoint
 public class NPCmovement : MonoBehaviour
 {
     [Header("Config")]
@@ -15,33 +16,37 @@ public class NPCmovement : MonoBehaviour
     private Animator animator;
     private Vector3 prePosition;
     private int currentPointIndex;
+
     private void Awake()
     {
         wayPoint = GetComponent<Waypoint>();
         animator = GetComponent<Animator>();
     }
 
+    // Di chuyển NPC tới waypoint tiếp theo và cập nhật hướng di chuyển
     private void Update()
     {
         Vector3 nextPos = wayPoint.Layvitri(currentPointIndex);
         UpdateMoveValue(nextPos);
-        transform.position = Vector3.MoveTowards(transform.position, nextPos, moveSpeed*Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, nextPos, moveSpeed * Time.deltaTime);
+
         if (Vector3.Distance(transform.position, nextPos) <= 0.2f)
         {
             prePosition = nextPos;
             currentPointIndex = (currentPointIndex + 1) % wayPoint.Diadiem.Length;
         }
     }
+
+    // Cập nhật hướng di chuyển để hiển thị animation đúng chiều
     private void UpdateMoveValue(Vector3 nextPos)
     {
         Vector2 dir = Vector2.zero;
-        if (prePosition.x < nextPos.x)dir = new Vector2(1f, 0f);
-        if (prePosition.x > nextPos.x)dir = new Vector2(-1f, 0f);
-        if (prePosition.y < nextPos.y)dir = new Vector2(0f, 1f);
-        if (prePosition.y > nextPos.y)dir = new Vector2(0f, -1f);
+        if (prePosition.x < nextPos.x) dir = new Vector2(1f, 0f);
+        if (prePosition.x > nextPos.x) dir = new Vector2(-1f, 0f);
+        if (prePosition.y < nextPos.y) dir = new Vector2(0f, 1f);
+        if (prePosition.y > nextPos.y) dir = new Vector2(0f, -1f);
 
         animator.SetFloat(moveX, dir.x);
         animator.SetFloat(moveY, dir.y);
-    }    
-
+    }
 }

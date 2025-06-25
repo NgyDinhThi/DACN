@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 
 
 [Serializable]
-
+// Quản lý một công thức nấu ăn, bao gồm các nguyên liệu và sản phẩm cuối cùng
 public class Recipe 
 {
     public String Name;

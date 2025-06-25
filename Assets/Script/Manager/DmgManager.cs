@@ -12,11 +12,9 @@ public class DmgManager : Singleton<DmgManager>
     
 
     /* 
-     <summary>
+    
      Hiển thị sát thương lên vị trí gần object (ví dụ: người chơi hoặc enemy)
-     </summary>
-      name="soSatthuong">Giá trị sát thương muốn hiển thị
-     name="parent">Transform của đối tượng bị sát thương
+     
     */
     public void hienSatthuong(float soSatthuong, Transform parent)
     {

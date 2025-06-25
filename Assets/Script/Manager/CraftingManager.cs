@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using UnityEngine.UI;
 using TMPro;
@@ -32,23 +32,23 @@ public class CraftingManager : Singleton<CraftingManager>
 
     private void Start()
     {
+        // Khởi tạo danh sách công thức chế tạo khi bắt đầu
         LoadRecipy();
     }
 
     private void LoadRecipy()
     {
+        // Sinh các thẻ công thức chế tạo từ danh sách có sẵn
         for (int i = 0; i < recipies.Recipes.Length; i++)
         {
             RecipyCard card = Instantiate(recipyCardPrefab, RecipyContainer);
             card.InitRecipyCard(recipies.Recipes[i]);
-        
         }
-
-
-    }  
+    }
 
     public void ShowRecipe(Recipe recipe)
     {
+        // Hiển thị chi tiết nguyên liệu và vật phẩm cuối cùng của công thức được chọn
         if (CraftMaterialPanel.activeSelf == false)
             CraftMaterialPanel.SetActive(true);
 
@@ -67,24 +67,20 @@ public class CraftingManager : Singleton<CraftingManager>
         finalItemDescription.text = recipe.FinalItem.description;
 
         craftButton.interactable = CanCrapItem(recipe);
-
         recipyname.text = recipe.Name;
-        
-    }   
-    
+    }
+
     private bool CanCrapItem(Recipe recipe)
     {
+        // Kiểm tra người chơi có đủ nguyên liệu để chế tạo không
         int item1Stock = Inventory.instance.GetItemsCurrentStock(recipe.Item1.Id);
         int item2Stock = Inventory.instance.GetItemsCurrentStock(recipe.Item2.Id);
-        if (item1Stock >= recipe.Item1Amount && item2Stock >= recipe.Item2Amount)
-        {
-            return true;
-        }
-        return false;
-    }    
+        return item1Stock >= recipe.Item1Amount && item2Stock >= recipe.Item2Amount;
+    }
 
     public void CrapItem()
     {
+        // Tiêu hao nguyên liệu và thêm vật phẩm đã chế tạo vào kho
         for (int i = 0; i < RecipeSelected.Item1Amount; i++)
         {
             Inventory.instance.ConsumeItem(RecipeSelected.Item1.Id);
@@ -98,8 +94,4 @@ public class CraftingManager : Singleton<CraftingManager>
         Inventory.instance.AddItems(RecipeSelected.FinalItem, RecipeSelected.FinalItemAmount);
         ShowRecipe(RecipeSelected);
     }
-
-
-    
-
 }

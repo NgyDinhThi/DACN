@@ -21,37 +21,38 @@ public class InventoryUI : Singleton<InventoryUI>
 
     private List<InventorySlot> slotList = new List<InventorySlot>();
 
+    // Khởi tạo, xóa các slot cũ và load lại kho
     protected override void Awake()
     {
         base.Awake();
-        ClearExistingSlots(); // Xóa các ô thừa trước khi khởi tạo
+        ClearExistingSlots();
         InitInventory();
     }
 
+    // Gọi cập nhật hiển thị khi game bắt đầu
     private void Start()
     {
         UpdateInventoryDisplay();
     }
 
+    // Xóa các slot cũ đang hiển thị
     private void ClearExistingSlots()
     {
-        // Xóa tất cả các ô hiện có trong container
         foreach (Transform child in container)
         {
             Destroy(child.gameObject);
         }
-        slotList.Clear(); // Xóa danh sách slot cũ
+        slotList.Clear();
     }
 
+    // Tạo mới các slot tương ứng với kích thước kho
     private void InitInventory()
     {
-        // Sử dụng trực tiếp InventorySize mà không giới hạn
         for (int i = 0; i < Inventory.instance.InventorySize; i++)
         {
             InventorySlot slot = Instantiate(slotPrefab, container);
             slot.Index = i;
             slotList.Add(slot);
-            // Đảm bảo mỗi ô có Button và sự kiện nhấp
             Button button = slot.GetComponent<Button>();
             if (button != null)
             {
@@ -62,9 +63,9 @@ public class InventoryUI : Singleton<InventoryUI>
                 Debug.LogWarning($"Button missing on slot at index {i}");
             }
         }
-      
     }
 
+    // Cập nhật lại toàn bộ giao diện kho
     public void UpdateInventoryDisplay()
     {
         for (int i = 0; i < slotList.Count; i++)
@@ -74,6 +75,7 @@ public class InventoryUI : Singleton<InventoryUI>
         }
     }
 
+    // Sử dụng vật phẩm tại slot đang chọn
     public void UseItems()
     {
         if (CurrentSlot == null) return;
@@ -81,6 +83,7 @@ public class InventoryUI : Singleton<InventoryUI>
         UpdateInventoryDisplay();
     }
 
+    // Xóa vật phẩm tại slot đang chọn
     public void RemoveItems()
     {
         if (CurrentSlot == null) return;
@@ -88,6 +91,7 @@ public class InventoryUI : Singleton<InventoryUI>
         UpdateInventoryDisplay();
     }
 
+    // Trang bị vật phẩm tại slot đang chọn
     public void EquipItems()
     {
         if (CurrentSlot == null) return;
@@ -95,6 +99,7 @@ public class InventoryUI : Singleton<InventoryUI>
         UpdateInventoryDisplay();
     }
 
+    // Hiển thị vật phẩm lên slot UI tương ứng
     public void DrawItems(InventoryItems item, int index)
     {
         InventorySlot slot = slotList[index];
@@ -107,6 +112,7 @@ public class InventoryUI : Singleton<InventoryUI>
         slot.ShowSlotInfo(true);
     }
 
+    // Hiển thị thông tin vật phẩm tại slot được chọn
     public void ShowItemDescription(int index)
     {
         InventoryItems item = Inventory.instance.InventoryItems[index];
@@ -117,10 +123,11 @@ public class InventoryUI : Singleton<InventoryUI>
         }
         descriptionPanel.SetActive(true);
         itemsIcon.sprite = item.Icon;
-        itemsNameTMP.text = item.ItemsName; 
+        itemsNameTMP.text = item.ItemsName;
         itemsDescriptionTMP.text = item.description;
     }
 
+    // Bật/tắt giao diện kho
     public void OpenCloseInventory()
     {
         inventoryPanel.SetActive(!inventoryPanel.activeSelf);
@@ -131,6 +138,7 @@ public class InventoryUI : Singleton<InventoryUI>
         }
     }
 
+    // Xử lý khi một slot được chọn
     private void SlotSlectedCallback(int slotIndex)
     {
         CurrentSlot = slotList[slotIndex];

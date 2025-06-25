@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 
+// Enum các chỉ số thuộc tính của nhân vật
 public enum Attribute
 {
     Strength,
@@ -8,51 +9,49 @@ public enum Attribute
     Intelligence
 }
 
-// Cho phép tạo ScriptableObject từ menu Unity
+// Lưu trữ và quản lý toàn bộ chỉ số của nhân vật
 [CreateAssetMenu(fileName = "PlayerStats", menuName = "Scriptable Objects/PlayerStats")]
 public class PlayerStats : ScriptableObject
 {
     [Header("Config")]
-    public int level; // Cấp độ hiện tại của nhân vật
+    public int level;
 
-    [Header("Health info")] // Thông tin liên quan đến máu
-    public float health; // Máu hiện tại
-    public float Max_health; // Máu tối đa ban đầu
+    [Header("Health info")]
+    public float health;
+    public float Max_health;
 
-    [Header("Mana info")] // Thông tin liên quan đến mana
-    public float mana; // Lượng mana hiện tại
-    public float Max_mana; // Mana tối đa ban đầu
+    [Header("Mana info")]
+    public float mana;
+    public float Max_mana;
 
-    [Header("Exp info")] // Thông tin kinh nghiệm (EXP)
-    public float CurrentExp; // EXP hiện tại của nhân vật
-    public float NextLevelUp; // Lượng EXP cần để lên cấp tiếp theo
-    public float InitialNextLevelExp; // EXP cần để lên cấp từ level 1 → 2
-    [Range(1f, 100f)] public float ExpMultiplier; // Hệ số nhân EXP để tăng cấp độ nhanh/chậm
+    [Header("Exp info")]
+    public float CurrentExp;
+    public float NextLevelUp;
+    public float InitialNextLevelExp;
+    [Range(1f, 100f)] public float ExpMultiplier;
 
-    [Header("Attack")] // Thông tin tấn công
-    public float BaseDmg; // Sát thương cơ bản
-    public float CritChance; // Tỉ lệ chí mạng (0–100%)
-    public float CritDmg; // Hệ số sát thương khi chí mạng 
+    [Header("Attack")]
+    public float BaseDmg;
+    public float CritChance;
+    public float CritDmg;
 
     [Header("Attribute")]
-    public int Strength; 
-    public int Dexterity; 
+    public int Strength;
+    public int Dexterity;
     public int Intelligence;
     public int AttributePoint;
-
-
 
     [HideInInspector] public float TotalExp;
     [HideInInspector] public float TotalDmg;
 
-    // Hàm dùng để reset lại nhân vật về trạng thái ban đầu khi bắt đầu lại game hoặc revive
+    // Đặt lại toàn bộ chỉ số nhân vật về trạng thái khởi đầu
     public void ResetPlayer()
     {
-        health = Max_health; // Hồi đầy máu
-        mana = Max_mana; // Hồi đầy mana
-        level = 1; // Trở về cấp độ 1
-        CurrentExp = 0f; // Xóa kinh nghiệm hiện tại
-        NextLevelUp = InitialNextLevelExp; // Thiết lập lại ngưỡng EXP ban đầu để lên cấp
+        health = Max_health;
+        mana = Max_mana;
+        level = 1;
+        CurrentExp = 0f;
+        NextLevelUp = InitialNextLevelExp;
         TotalExp = 0f;
         BaseDmg = 3f;
         CritChance = 10;
@@ -60,8 +59,6 @@ public class PlayerStats : ScriptableObject
         Strength = 0;
         Dexterity = 0;
         Intelligence = 0;
-        AttributePoint =0;
-
-
+        AttributePoint = 0;
     }
 }

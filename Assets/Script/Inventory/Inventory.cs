@@ -4,22 +4,23 @@ using UnityEngine;
 using System.Collections.Generic;
 using BayatGames.SaveGameFree;
 
+// Quản lý inventory của người chơi, bao gồm thêm, sử dụng, xóa, trang bị item, và lưu trữ dữ liệu inventory
 public class Inventory : Singleton<Inventory>
 {
     [Header("Header")]
-    [SerializeField] private int inventorySize;
-    [SerializeField] private InventoryItems[] inventoryItems;
-    [SerializeField] private GameContents gameContents;
+    [SerializeField] private int inventorySize; // Kích thước của inventory
+    [SerializeField] private InventoryItems[] inventoryItems; // Danh sách các item trong inventory
+    [SerializeField] private GameContents gameContents; // Thông tin về các item có sẵn trong game
 
     [Header("Testing")]
-    public InventoryItems testItem;
+    public InventoryItems testItem; // Item dùng để kiểm tra trong quá trình phát triển
 
     public InventoryItems[] InventoryItems => inventoryItems;
-
     public int InventorySize => inventorySize;
 
     private readonly string INVENTORY_KEY_DATA = "PLAYER_INVENTORY";
 
+    // Lưu trữ dữ liệu inventory vào hệ thống lưu trữ
     private void SaveInventory()
     {
         InventoryData saveData = new InventoryData();
@@ -38,28 +39,31 @@ public class Inventory : Singleton<Inventory>
                 saveData.itemsQuantity[i] = inventoryItems[i].quantity;
             }
         }
-        SaveGame.Save(INVENTORY_KEY_DATA, saveData);
+        SaveGame.Save(INVENTORY_KEY_DATA, saveData); // Lưu lại dữ liệu vào game
     }
 
+    // Khởi tạo inventory và tải dữ liệu từ bộ nhớ
     private void Start()
     {
         inventoryItems = new InventoryItems[inventorySize];
         VerifiItems4Draw();
-        LoadInventory();
+        LoadInventory(); // Tải dữ liệu inventory từ bộ nhớ
     }
 
+    // Kiểm tra nếu item tồn tại trong game contents
     private InventoryItems IsItemsExistInGamecontents(string itemsId)
     {
-        for (int i = 0; i < gameContents.GameItems.Length; i++) 
+        for (int i = 0; i < gameContents.GameItems.Length; i++)
         {
             if (gameContents.GameItems[i].Id == itemsId)
             {
-                return gameContents.GameItems[i];
+                return gameContents.GameItems[i]; // Trả về item nếu tìm thấy
             }
         }
-        return null;
+        return null; // Trả về null nếu không tìm thấy
     }
 
+    // Tải dữ liệu inventory từ bộ nhớ
     private void LoadInventory()
     {
         if (SaveGame.Exists(INVENTORY_KEY_DATA))
@@ -73,19 +77,20 @@ public class Inventory : Singleton<Inventory>
                     if (itemFromContents != null)
                     {
                         inventoryItems[i] = itemFromContents.CopyItem();
-                        inventoryItems[i].quantity = loadData.itemsQuantity[i]; // Gán quantity từ dữ liệu đã lưu
-                        InventoryUI.instance.DrawItems(inventoryItems[i], i);
+                        inventoryItems[i].quantity = loadData.itemsQuantity[i];
+                        InventoryUI.instance.DrawItems(inventoryItems[i], i); // Vẽ item lên UI
                     }
                 }
                 else
                 {
                     inventoryItems[i] = null;
-                    InventoryUI.instance.DrawItems(null, i);
+                    InventoryUI.instance.DrawItems(null, i); // Vẽ ô trống trên UI
                 }
             }
         }
     }
 
+    // Cập nhật mỗi khung hình nếu người dùng nhấn phím H để thêm item
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
@@ -94,6 +99,7 @@ public class Inventory : Singleton<Inventory>
         }
     }
 
+    // Thêm item vào inventory, xử lý khi item có thể stack
     public void AddItems(InventoryItems items, int quantity)
     {
         if (items == null || quantity <= 0) return;
@@ -129,6 +135,7 @@ public class Inventory : Singleton<Inventory>
         SaveInventory();
     }
 
+    // Sử dụng item trong inventory
     public void UseItems(int index)
     {
         if (inventoryItems[index] == null) return;
@@ -139,6 +146,7 @@ public class Inventory : Singleton<Inventory>
         SaveInventory();
     }
 
+    // Xóa item khỏi inventory
     public void RemoveItems(int index)
     {
         if (inventoryItems[index] == null) return;
@@ -148,14 +156,16 @@ public class Inventory : Singleton<Inventory>
         SaveInventory();
     }
 
+    // Trang bị item cho người chơi
     public void EquipItems(int index)
     {
         if (inventoryItems[index] == null) return;
         if (inventoryItems[index].itemtype != Itemtype.Weapon) return;
         inventoryItems[index].EquipItem();
-        SaveInventory(); // Thêm SaveInventory để lưu trạng thái sau khi trang bị
+        SaveInventory();
     }
 
+    // Thêm item vào slot trống trong inventory
     private void AddItemFreeSlot(InventoryItems items, int quantity)
     {
         for (int i = 0; i < inventorySize; i++)
@@ -168,6 +178,7 @@ public class Inventory : Singleton<Inventory>
         }
     }
 
+    // Giảm số lượng stack của item trong inventory
     public void DecreaseItemStack(int index)
     {
         if (inventoryItems[index] == null) return;
@@ -183,6 +194,7 @@ public class Inventory : Singleton<Inventory>
         }
     }
 
+    // Kiểm tra các ô có chứa item trùng với itemId
     private List<int> CheckItemstockIndexes(string itemId)
     {
         List<int> itemIndexes = new List<int>();
@@ -197,6 +209,7 @@ public class Inventory : Singleton<Inventory>
         return itemIndexes;
     }
 
+    // Lấy số lượng item hiện tại trong inventory
     public int GetItemsCurrentStock(string itemId)
     {
         List<int> indexes = CheckItemstockIndexes(itemId);
@@ -211,6 +224,7 @@ public class Inventory : Singleton<Inventory>
         return currentStock;
     }
 
+    // Kiểm tra và vẽ lại các ô trống trong inventory
     private void VerifiItems4Draw()
     {
         for (int i = 0; i < inventorySize; i++)
@@ -222,6 +236,7 @@ public class Inventory : Singleton<Inventory>
         }
     }
 
+    // Tiêu thụ item trong inventory
     public void ConsumeItem(string itemId)
     {
         List<int> indexes = CheckItemstockIndexes(itemId);
@@ -229,8 +244,5 @@ public class Inventory : Singleton<Inventory>
         {
             DecreaseItemStack(indexes[^1]);
         }
-
-    } 
-
-
+    }
 }

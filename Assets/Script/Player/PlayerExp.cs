@@ -1,45 +1,42 @@
 ﻿using UnityEngine;
 using System;
 
+// Quản lý điểm kinh nghiệm và xử lý lên cấp cho người chơi
 public class PlayerExp : MonoBehaviour
 {
     [Header("Config")]
-    [SerializeField] private PlayerStats stats; // Tham chiếu đến ScriptableObject chứa chỉ số người chơi
+    [SerializeField] private PlayerStats stats;
 
     private void Update()
     {
-        // Kiểm tra nếu phím X được nhấn, nhân vật sẽ nhận 200 EXP
         if (Input.GetKeyDown(KeyCode.X))
         {
-            AddExp(200f); // Thêm 200 điểm kinh nghiệm
+            AddExp(200f);
         }
     }
 
-    // Hàm thêm kinh nghiệm cho nhân vật
+    // Thêm EXP và kiểm tra lên cấp
     public void AddExp(float amount)
     {
         stats.CurrentExp += amount;
-        stats.TotalExp += amount; // Cộng thêm lượng EXP vào chỉ số hiện tại
+        stats.TotalExp += amount;
 
-        // Nếu đủ EXP để lên cấp, thực hiện quá trình lên cấp
         while (stats.CurrentExp >= stats.NextLevelUp)
         {
-            stats.CurrentExp -= stats.NextLevelUp; // Trừ EXP đã dùng để lên cấp
-            NewLevelGrow(); // Gọi hàm tăng cấp
+            stats.CurrentExp -= stats.NextLevelUp;
+            NewLevelGrow();
         }
     }
 
-    // Hàm xử lý khi nhân vật lên cấp mới
+    // Thực hiện tăng cấp và tính lại ngưỡng EXP
     private void NewLevelGrow()
     {
-        stats.level++; // Tăng cấp độ nhân vật
+        stats.level++;
         stats.AttributePoint++;
 
-        float currentExpRequired = stats.NextLevelUp; // Lưu EXP cần thiết hiện tại
-
-        // Tính toán EXP cần thiết cho cấp tiếp theo dựa trên phần trăm hệ số tăng trưởng
+        float currentExpRequired = stats.NextLevelUp;
         float newNextLevelUp = MathF.Round(currentExpRequired + stats.NextLevelUp * (stats.ExpMultiplier / 100f));
 
-        stats.NextLevelUp = newNextLevelUp; // Cập nhật EXP cần thiết cho cấp tiếp theo
+        stats.NextLevelUp = newNextLevelUp;
     }
 }

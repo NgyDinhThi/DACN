@@ -3690,7 +3690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34fec6d4ae261945a2a9504ed57427a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 20
 --- !u!114 &302032029
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3717,6 +3717,10 @@ MonoBehaviour:
     Item: {fileID: 11400000, guid: 33742d1494969e148ac90f99ae0fc890, type: 2}
     Quantity: 1
     DropChance: 15
+  - Name: TealLeaf x2-50%
+    Item: {fileID: 11400000, guid: f7695564a230d0c4a81b01665a127a91, type: 2}
+    Quantity: 2
+    DropChance: 50
 --- !u!1 &302706851
 GameObject:
   m_ObjectHideFlags: 0
@@ -4101,7 +4105,7 @@ MonoBehaviour:
   items:
   - Name: Health potion
     Item: {fileID: 11400000, guid: 8a01c03cd8f32d546b2bf50161219c2c, type: 2}
-    Cost: 15
+    Cost: 10
   - Name: Mana potion
     Item: {fileID: 11400000, guid: 8cdeb70335df48d4984993482daf239e, type: 2}
     Cost: 30
@@ -9644,7 +9648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34fec6d4ae261945a2a9504ed57427a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 20
 --- !u!114 &827809012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9671,6 +9675,10 @@ MonoBehaviour:
     Item: {fileID: 11400000, guid: 33742d1494969e148ac90f99ae0fc890, type: 2}
     Quantity: 1
     DropChance: 15
+  - Name: TealLeaf x2-50%
+    Item: {fileID: 11400000, guid: f7695564a230d0c4a81b01665a127a91, type: 2}
+    Quantity: 2
+    DropChance: 50
 --- !u!1 &836204483
 GameObject:
   m_ObjectHideFlags: 0
@@ -11692,7 +11700,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 448, y: 134}
+  m_AnchoredPosition: {x: 292, y: 134}
   m_SizeDelta: {x: 900, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &984725078
@@ -71581,6 +71589,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5259000264634898375, guid: 36078338f64220e458ba6ade76105682, type: 3}
+      propertyPath: states.Array.data[1].transitions.Array.data[1].FalseState
+      value: Patrol
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -73693,11 +73705,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3685844380390473439, guid: 36078338f64220e458ba6ade76105682, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.55
+      value: 5.19
       objectReference: {fileID: 0}
     - target: {fileID: 3685844380390473439, guid: 36078338f64220e458ba6ade76105682, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.25
+      value: -4.29
       objectReference: {fileID: 0}
     - target: {fileID: 3685844380390473439, guid: 36078338f64220e458ba6ade76105682, type: 3}
       propertyPath: m_LocalPosition.z
@@ -73734,6 +73746,14 @@ PrefabInstance:
     - target: {fileID: 4575315615417562854, guid: 36078338f64220e458ba6ade76105682, type: 3}
       propertyPath: m_Name
       value: Enemy_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5259000264634898375, guid: 36078338f64220e458ba6ade76105682, type: 3}
+      propertyPath: states.Array.data[0].transitions.Array.data[0].FalseState
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5259000264634898375, guid: 36078338f64220e458ba6ade76105682, type: 3}
+      propertyPath: states.Array.data[1].transitions.Array.data[1].FalseState
+      value: Patrol
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
