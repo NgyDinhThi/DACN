@@ -40,7 +40,7 @@ public class PlayerAnimation : MonoBehaviour
     public void ResetPlayer()
     {
         SetMoveAni(Vector2.down);
-        animator.SetTrigger(revie);
+        animator.SetBool(revie, true);
     }
 
     // Bật/tắt animation tấn công
