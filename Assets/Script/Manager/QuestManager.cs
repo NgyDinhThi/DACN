@@ -67,4 +67,12 @@ public class QuestManager : Singleton<QuestManager>
             quests[i].ResetQuest();
         }
     }
+
+    public void ResetAllQuests()
+    {
+        for (int i = 0; i < quests.Length; i++)
+        {
+            quests[i].ResetQuest();
+        }
+    }
 }
