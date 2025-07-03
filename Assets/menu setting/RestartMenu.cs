@@ -8,8 +8,8 @@ public class RestartMenu : MonoBehaviour
     [Header("Config")]
     [SerializeField] private GameObject menu;
     [SerializeField] private PlayerStats stats;
-    [SerializeField] private Transform playerTransform;
-
+    [SerializeField] private Transform playerPosition;
+    [SerializeField] private Transform[] vitrihoisinh;
     public static bool isDead;
 
     private void Start()
@@ -53,17 +53,17 @@ public class RestartMenu : MonoBehaviour
 
     public void YesButtton()
     {
-        Transform spawnPoint = GameObject.FindGameObjectWithTag("Respawn")?.transform;
-        if (spawnPoint != null && playerTransform != null)
+        if (vitrihoisinh != null && vitrihoisinh.Length > 0 && playerPosition != null)
         {
-            playerTransform.position = spawnPoint.position;
+            // Hồi sinh tại vị trí đầu tiên trong danh sách
+            playerPosition.position = vitrihoisinh[0].position;
         }
 
         // Reset chỉ số
         RestartAgain();
 
         // Gọi animation hồi sinh
-        PlayerAnimation playerAnim = playerTransform.GetComponent<PlayerAnimation>();
+        PlayerAnimation playerAnim = playerPosition.GetComponent<PlayerAnimation>();
         if (playerAnim != null)
         {
             playerAnim.ResetPlayer();

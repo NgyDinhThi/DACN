@@ -7722,7 +7722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &663823284
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17768,7 +17768,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menu: {fileID: 663823283}
   stats: {fileID: 11400000, guid: 75c99caee7e29b54383037e3be5bd95f, type: 2}
-  playerTransform: {fileID: 1647803659}
+  playerPosition: {fileID: 842307888}
+  vitrihoisinh:
+  - {fileID: 1647803659}
 --- !u!1 &1288057459 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2641031210449489580, guid: 22b3fb43eb341db4a9cc3b94ccbc5918, type: 3}
@@ -73531,19 +73533,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2015956260}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1286468653}
-        m_TargetAssemblyTypeName: RestartMenu, Assembly-CSharp
-        m_MethodName: YesButtton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2015956260
 MonoBehaviour:
   m_ObjectHideFlags: 0
