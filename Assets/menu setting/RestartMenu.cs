@@ -71,7 +71,9 @@ public class RestartMenu : MonoBehaviour
 
         // Reset nhiệm vụ
         QuestManager.instance.ResetAllQuests();
+        QuestManager.instance.ClearPlayerQuestUI();
 
+        Inventory.instance.ResetInventory();
         // Tắt panel và tiếp tục game
         PanelDown();
         Time.timeScale = 1f;

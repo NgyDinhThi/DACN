@@ -74,5 +74,20 @@ public class QuestManager : Singleton<QuestManager>
         {
             quests[i].ResetQuest();
         }
+
+        foreach (Transform child in npcPanelContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        LoadQuestToNPCPanel();
+    }
+
+    public void ClearPlayerQuestUI()
+    {
+        foreach (Transform child in playerQuestContainer)
+        {
+            Destroy(child.gameObject);
+        }
     }
 }

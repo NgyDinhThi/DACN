@@ -245,4 +245,16 @@ public class Inventory : Singleton<Inventory>
             DecreaseItemStack(indexes[^1]);
         }
     }
+
+    public void ResetInventory()
+    {
+        for (int i = 0; i < inventoryItems.Length; i++)
+        {
+            inventoryItems[i] = null;
+            InventoryUI.instance.DrawItems(null, i); // Vẽ ô trống
+        }
+
+        SaveGame.Delete("PLAYER_INVENTORY"); // Xoá file lưu cũ (nếu dùng Bayat SaveGame)
+    }
+
 }
