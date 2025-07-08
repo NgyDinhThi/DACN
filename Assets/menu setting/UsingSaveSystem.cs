@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,7 +36,8 @@ public class UsingSaveSystem : MonoBehaviour
 
     public void UseSave()
     {
-        SaveSystem.Saveplayer(player); // giờ player đã được biết
+        SaveSystem.Saveplayer(player);
+        Debug.Log("Save thành công! File được lưu tại: " + SaveSystem.path);
     }
 
     public void UseLoadPlayer()

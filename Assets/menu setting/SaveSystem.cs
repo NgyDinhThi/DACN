@@ -5,10 +5,12 @@ using UnityEngine;
 
 public static class SaveSystem 
 {
+    public static readonly string path = Application.persistentDataPath + "/Player.siuuu";
+
     public static void Saveplayer (Player player )
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "Player.siuuu";
+        
         FileStream stream = new FileStream(path, FileMode.Create);
 
         DataStore data = new DataStore(player.Stats, player.transform);
@@ -20,7 +22,6 @@ public static class SaveSystem
 
     public static DataStore LoadPlayer()
     {
-        string path = Application.persistentDataPath + "Player.siuuu";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -28,11 +29,11 @@ public static class SaveSystem
 
             DataStore data = formatter.Deserialize(stream) as DataStore;
             stream.Close();
-            
+
+            Debug.Log("💾 Load thành công từ file: " + path); // Thêm log kiểm tra
+
             return data;
-
         }
-
         else
         {
             Debug.Log("không thấy file");
