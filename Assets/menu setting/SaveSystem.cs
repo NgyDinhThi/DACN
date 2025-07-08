@@ -13,7 +13,7 @@ public static class SaveSystem
         
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        DataStore data = new DataStore(player.Stats, player.transform);
+        DataStore data = new DataStore(player.Stats, player.transform, QuestManager.instance, Inventory.instance);
 
         formatter.Serialize(stream, data);
         stream.Close();
@@ -30,7 +30,7 @@ public static class SaveSystem
             DataStore data = formatter.Deserialize(stream) as DataStore;
             stream.Close();
 
-            Debug.Log("💾 Load thành công từ file: " + path); // Thêm log kiểm tra
+            Debug.Log(" Load thành công từ file: " + path); // Thêm log kiểm tra
 
             return data;
         }

@@ -1752,7 +1752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &137631155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20031,7 +20031,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Load
+  m_text: "T\u1EA3i l\xEAn"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 671c45858b5559247a83cc93a89a7660, type: 2}
   m_sharedMaterial: {fileID: -5920154114919826857, guid: 671c45858b5559247a83cc93a89a7660, type: 2}
@@ -75380,7 +75380,7 @@ GameObject:
   - component: {fileID: 2053721785}
   - component: {fileID: 2053721784}
   m_Layer: 5
-  m_Name: Button-Main menu
+  m_Name: Button-load
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75450,10 +75450,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1028623834}
-        m_TargetAssemblyTypeName: UsingSaveSystem, Assembly-CSharp
-        m_MethodName: UseLoadPlayer
-        m_Mode: 1
+      - m_Target: {fileID: 137631154}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -75462,10 +75462,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 137631154}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1028623834}
+        m_TargetAssemblyTypeName: UsingSaveSystem, Assembly-CSharp
+        m_MethodName: UseLoadPlayer
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

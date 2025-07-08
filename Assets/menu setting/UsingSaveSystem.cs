@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Splines.ExtrusionShapes;
 
 public class UsingSaveSystem : MonoBehaviour
 {
@@ -66,6 +67,40 @@ public class UsingSaveSystem : MonoBehaviour
 
         Vector3 LoadPosition = new Vector3(data.position[0], data.position[1], data.position[2]);
         player.transform.position  = LoadPosition;
+
+
+        // ----------- LOAD INVENTORY ----------------
+        Inventory inventory = Inventory.instance;
+        inventory.ResetInventory(); // clear inventory trước
+        for (int i = 0; i < data.itemIds.Count; i++)
+        {
+            string id = data.itemIds[i];
+            int quantity = data.quantities[i];
+
+            // tìm item từ GameContents
+            InventoryItems found = inventory.IsItemsExistInGamecontents(id);
+            if (found != null)
+            {
+                InventoryItems copy = found.CopyItem();
+                copy.quantity = quantity;
+                inventory.AddItems(copy, quantity);
+            }
+        }
+
+        QuestManager questManager = QuestManager.instance;
+        questManager.ResetAllQuests();
+        questManager.ClearPlayerQuestUI();
+        for (int i = 0; i < data.acceptedQuestIDs.Count; i++)
+        {
+            Quest quest = questManager.GetQuestByID(data.acceptedQuestIDs[i]);
+            if (quest != null)
+            {
+                quest.QuestAccepted = true;
+                quest.CurrentStatus = data.questProgressValues[i];
+                quest.QuestCompleted = data.questCompletions[i];
+                questManager.AddQuestToUI(quest);
+            }
+        }
 
     }    
 }

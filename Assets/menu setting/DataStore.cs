@@ -43,7 +43,17 @@ public class DataStore
     // position info
     public float[] position;
 
-    public DataStore(PlayerStats stats, Transform playerTransform)
+    // mission info
+    public List<string> acceptedQuestIDs;       // Các ID nhiệm vụ đã nhận
+    public List<int> questProgressValues;       // Tiến độ tương ứng
+    public List<bool> questCompletions;         // Trạng thái hoàn thành
+
+    // inventory info
+    public List<string> itemIds;
+    public List<int> quantities;
+
+
+    public DataStore(PlayerStats stats, Transform playerTransform, QuestManager questManager, Inventory inventory)
     {
         // Level & stats
         level = stats.level;
@@ -79,5 +89,37 @@ public class DataStore
         position[0] = playerTransform.position.x;
         position[1] = playerTransform.position.y;
         position[2] = playerTransform.position.z;
+
+        // mission
+        acceptedQuestIDs = new List<string>();
+        questProgressValues = new List<int>();
+        questCompletions = new List<bool>();
+
+        foreach (Quest quest in questManager.Quests)
+        {
+            if (quest.QuestAccepted)
+            {
+                acceptedQuestIDs.Add(quest.ID);
+                questProgressValues.Add(quest.CurrentStatus);
+                questCompletions.Add(quest.QuestCompleted);
+            }
+        }
+
+        // inventory
+        itemIds = new List<string>();
+        quantities = new List<int>();
+
+        if (inventory != null && inventory.inventoryItems != null)
+        {
+            foreach (InventoryItems item in inventory.inventoryItems)
+            {
+                if (item != null) // tránh null trong danh sách
+                {
+                    itemIds.Add(item.Id);
+                    quantities.Add(item.quantity);
+                }
+            }
+        }
+
     }
 }

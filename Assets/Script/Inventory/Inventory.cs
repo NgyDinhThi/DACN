@@ -9,7 +9,7 @@ public class Inventory : Singleton<Inventory>
 {
     [Header("Header")]
     [SerializeField] private int inventorySize; // Kích thước của inventory
-    [SerializeField] private InventoryItems[] inventoryItems; // Danh sách các item trong inventory
+    [SerializeField] public InventoryItems[] inventoryItems; // Danh sách các item trong inventory
     [SerializeField] private GameContents gameContents; // Thông tin về các item có sẵn trong game
 
     [Header("Testing")]
@@ -51,7 +51,7 @@ public class Inventory : Singleton<Inventory>
     }
 
     // Kiểm tra nếu item tồn tại trong game contents
-    private InventoryItems IsItemsExistInGamecontents(string itemsId)
+    public InventoryItems IsItemsExistInGamecontents(string itemsId)
     {
         for (int i = 0; i < gameContents.GameItems.Length; i++)
         {

@@ -6,6 +6,7 @@ public class QuestManager : Singleton<QuestManager>
 {
     [Header("Config")]
     [SerializeField] private Quest[] quests; // Danh sách nhiệm vụ
+    public Quest[] Quests => quests;
     [Header("NPC quest panel")]
     [SerializeField] private QuestCardNPC questCardNPCPrefab; // Mẫu thẻ nhiệm vụ NPC
     [SerializeField] protected Transform npcPanelContainer; // Container chứa thẻ nhiệm vụ NPC
@@ -90,4 +91,16 @@ public class QuestManager : Singleton<QuestManager>
             Destroy(child.gameObject);
         }
     }
+
+    public Quest GetQuestByID(string id)
+    {
+        return Array.Find(quests, q => q.ID == id);
+    }
+
+    public void AddQuestToUI(Quest quest)
+    {
+        QuestCardPlayer cardPlayer = GameObject.Instantiate(questCardPlayerPrefab, playerQuestContainer);
+        cardPlayer.ConfigQuestUI(quest);
+    }
+
 }
