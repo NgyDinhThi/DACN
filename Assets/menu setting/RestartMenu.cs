@@ -69,6 +69,9 @@ public class RestartMenu : MonoBehaviour
             playerAnim.ResetPlayer();
         }
 
+        // Reset lượng xu
+        CoinsManager.instance.SetCoins(CoinsManager.instance.BaseCoint);
+
         // Reset nhiệm vụ
         QuestManager.instance.ResetAllQuests();
         QuestManager.instance.ClearPlayerQuestUI();

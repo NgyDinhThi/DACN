@@ -5,6 +5,7 @@ using UnityEngine;
 public class CoinsManager : Singleton<CoinsManager>
 {
     [SerializeField] private float cointTest;
+    [SerializeField] private float baseCoint;
     public float Coins { get; set; }
     private const string COIN_KEY = "Coins";
 
@@ -29,5 +30,18 @@ public class CoinsManager : Singleton<CoinsManager>
             Coins -= amount;
             SaveGame.Save(COIN_KEY, Coins);
         }
+    }
+
+    public float BaseCoint
+    {
+        get => baseCoint;
+        set => baseCoint = value;
+    }
+
+    public void SetCoins( float value)
+    {
+        Coins = value;
+        SaveGame.Save(COIN_KEY, Coins );
+
     }
 }

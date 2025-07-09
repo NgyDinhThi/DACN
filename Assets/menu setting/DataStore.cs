@@ -44,9 +44,9 @@ public class DataStore
     public float[] position;
 
     // mission info
-    public List<string> acceptedQuestIDs;       // Các ID nhiệm vụ đã nhận
-    public List<int> questProgressValues;       // Tiến độ tương ứng
-    public List<bool> questCompletions;         // Trạng thái hoàn thành
+    public List<string> acceptedQuestIDs;      
+    public List<int> questProgressValues;       
+    public List<bool> questCompletions;         
 
     // inventory info
     public List<string> itemIds;
@@ -113,7 +113,7 @@ public class DataStore
         {
             foreach (InventoryItems item in inventory.inventoryItems)
             {
-                if (item != null) // tránh null trong danh sách
+                if (item != null) 
                 {
                     itemIds.Add(item.Id);
                     quantities.Add(item.quantity);
