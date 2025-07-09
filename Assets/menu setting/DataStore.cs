@@ -53,6 +53,9 @@ public class DataStore
     public List<int> quantities;
 
 
+    // coin info
+    public float Coins;
+
     public DataStore(PlayerStats stats, Transform playerTransform, QuestManager questManager, Inventory inventory)
     {
         // Level & stats
@@ -94,6 +97,9 @@ public class DataStore
         acceptedQuestIDs = new List<string>();
         questProgressValues = new List<int>();
         questCompletions = new List<bool>();
+
+        // coin
+        Coins = CoinsManager.instance.Coins;
 
         foreach (Quest quest in questManager.Quests)
         {

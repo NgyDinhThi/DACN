@@ -14,6 +14,7 @@ public static class SaveSystem
         FileStream stream = new FileStream(path, FileMode.Create);
 
         DataStore data = new DataStore(player.Stats, player.transform, QuestManager.instance, Inventory.instance);
+        data.Coins = CoinsManager.instance.Coins;
 
         formatter.Serialize(stream, data);
         stream.Close();

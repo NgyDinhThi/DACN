@@ -64,6 +64,7 @@ public class UsingSaveSystem : MonoBehaviour
         stats.AttributePoint = data.AttributePoint;
         stats.TotalExp = data.TotalExp;
         stats.TotalDmg = data.TotalDmg;
+       
 
         Vector3 LoadPosition = new Vector3(data.position[0], data.position[1], data.position[2]);
         player.transform.position  = LoadPosition;
@@ -87,6 +88,7 @@ public class UsingSaveSystem : MonoBehaviour
             }
         }
 
+        CoinsManager.instance.SetCoins(data.Coins);
         QuestManager questManager = QuestManager.instance;
         questManager.ResetAllQuests();
         questManager.ClearPlayerQuestUI();
