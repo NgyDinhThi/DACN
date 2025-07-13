@@ -9,6 +9,7 @@ using UnityEngine.Splines.ExtrusionShapes;
 
 public class UsingSaveSystem : MonoBehaviour
 {
+    public string sceneToLoad = "DACN";
 
     [Header("Config")]
     [SerializeField] private GameObject menu;
@@ -24,7 +25,7 @@ public class UsingSaveSystem : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
+        { 
            ClosePanel();
         }
     }
