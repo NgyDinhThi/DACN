@@ -10,6 +10,12 @@ public class QuestCardNPC : QuestCard
     // Cấu hình giao diện nhiệm vụ với thông tin phần thưởng
     public override void ConfigQuestUI(Quest quest)
     {
+        if (quest.QuestAccepted)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
         base.ConfigQuestUI(quest);
         questRewardTMP.text = $"-{quest.GoldReWard} Gold\n" +
                               $"-{quest.ExpReward} Exp\n" +

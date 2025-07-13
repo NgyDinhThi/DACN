@@ -38,7 +38,7 @@ public class QuestCardPlayer : QuestCard
         expRewardTMP.text = quest.ExpReward.ToString();
         itemIcon.sprite = quest.ItemReward.Items.Icon;
         itemQuantityTMP.text = quest.ItemReward.Quantity.ToString();
-        
+        QuestCompletedCheck();
     }
 
     // Nhận phần thưởng và vô hiệu hóa card

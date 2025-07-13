@@ -91,8 +91,12 @@ public class UsingSaveSystem : MonoBehaviour
 
         CoinsManager.instance.SetCoins(data.Coins);
         QuestManager questManager = QuestManager.instance;
-        questManager.ResetAllQuests();
-        questManager.ClearPlayerQuestUI();
+        questManager.ResetAllQuests();        // Chỉ reset trạng thái logic (KHÔNG load lại UI)
+        questManager.ClearPlayerQuestUI();  // clear khung quest người chơi
+        questManager.ClearNPCQuestUI();     // clear khung quest NPC
+
+
+        // Set lại trạng thái của các quest đã nhận
         for (int i = 0; i < data.acceptedQuestIDs.Count; i++)
         {
             Quest quest = questManager.GetQuestByID(data.acceptedQuestIDs[i]);
@@ -104,6 +108,9 @@ public class UsingSaveSystem : MonoBehaviour
                 questManager.AddQuestToUI(quest);
             }
         }
+
+        // ❗ Chỉ sau khi đã set lại trạng thái accepted thì mới load panel
+        questManager.LoadQuestToNPCPanel();
 
     }    
 }

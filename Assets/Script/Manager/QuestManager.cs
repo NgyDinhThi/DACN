@@ -29,14 +29,18 @@ public class QuestManager : Singleton<QuestManager>
     }
 
     // Tạo thẻ nhiệm vụ NPC cho từng nhiệm vụ
-    private void LoadQuestToNPCPanel()
+    public void LoadQuestToNPCPanel()
     {
-        for (int i = 0; i < quests.Length; i++)
+        foreach (Quest quest in quests)
         {
-            QuestCard npcCard = Instantiate(questCardNPCPrefab, npcPanelContainer);
-            npcCard.ConfigQuestUI(quests[i]);
+            if (!quest.QuestAccepted) // chỉ hiện những quest chưa được nhận
+            {
+                QuestCard npcCard = Instantiate(questCardNPCPrefab, npcPanelContainer);
+                npcCard.ConfigQuestUI(quest);
+            }
         }
     }
+
 
     // Tìm nhiệm vụ theo ID
     private Quest QuestExits(string questId)
@@ -75,13 +79,7 @@ public class QuestManager : Singleton<QuestManager>
         {
             quests[i].ResetQuest();
         }
-
-        foreach (Transform child in npcPanelContainer)
-        {
-            Destroy(child.gameObject);
-        }
-
-        LoadQuestToNPCPanel();
+     
     }
 
     public void ClearPlayerQuestUI()
@@ -104,4 +102,11 @@ public class QuestManager : Singleton<QuestManager>
         cardPlayer.ConfigQuestUI(quest);
     }
 
+    public void ClearNPCQuestUI()
+    {
+        foreach (Transform child in npcPanelContainer)
+        {
+            Destroy(child.gameObject);
+        }
+    }
 }
