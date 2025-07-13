@@ -22,8 +22,12 @@ public class QuestCardPlayer : QuestCard
     // Cập nhật trạng thái nhiệm vụ mỗi frame
     private void Update()
     {
-        statusTMP.text = $"Status\n {QuestToComplete.CurrentStatus}/{QuestToComplete.QuestGoal}";
+        if (QuestToComplete != null)
+        {
+            statusTMP.text = $"Status\n {QuestToComplete.CurrentStatus}/{QuestToComplete.QuestGoal}";
+        }
     }
+
 
     // Cấu hình giao diện nhiệm vụ với thông tin chi tiết
     public override void ConfigQuestUI(Quest quest)
@@ -34,6 +38,7 @@ public class QuestCardPlayer : QuestCard
         expRewardTMP.text = quest.ExpReward.ToString();
         itemIcon.sprite = quest.ItemReward.Items.Icon;
         itemQuantityTMP.text = quest.ItemReward.Quantity.ToString();
+        
     }
 
     // Nhận phần thưởng và vô hiệu hóa card
@@ -48,7 +53,7 @@ public class QuestCardPlayer : QuestCard
     // Kiểm tra trạng thái hoàn thành nhiệm vụ
     private void QuestCompletedCheck()
     {
-        if (QuestToComplete.QuestCompleted)
+        if (QuestToComplete != null && QuestToComplete.QuestCompleted)
         {
             claimButton.SetActive(true);
             rewardsPanel.SetActive(true);

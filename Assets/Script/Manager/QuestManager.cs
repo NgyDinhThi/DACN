@@ -99,6 +99,7 @@ public class QuestManager : Singleton<QuestManager>
 
     public void AddQuestToUI(Quest quest)
     {
+
         QuestCardPlayer cardPlayer = GameObject.Instantiate(questCardPlayerPrefab, playerQuestContainer);
         cardPlayer.ConfigQuestUI(quest);
     }
