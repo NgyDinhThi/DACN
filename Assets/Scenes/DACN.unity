@@ -14143,6 +14143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c76bf7379eb0ec248a80ab453f06868f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToLoad: DACN
   menu: {fileID: 137631154}
   player: {fileID: 842307890}
 --- !u!1 &1031998514

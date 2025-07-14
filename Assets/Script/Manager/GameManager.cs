@@ -16,6 +16,17 @@ public class GameManager : Singleton<GameManager>
     /// Gọi khi muốn tăng kinh nghiệm cho nhân vật.
     /// </summary>
     /// <param name="expamount">Lượng kinh nghiệm muốn cộng thêm.</param>
+
+    private void Start()
+    {
+        if (GameStateTracker.shouldResetOnNextScene)
+        {
+            GameStateTracker.shouldResetOnNextScene = false;
+            ResetGame();
+        }
+    }
+
+
     public void AddPlayerExp(float expamount)
     {
         PlayerExp playerExp = player.GetComponent<PlayerExp>(); // Lấy component PlayerExp từ đối tượng Player
@@ -29,5 +40,10 @@ public class GameManager : Singleton<GameManager>
         {
             player.ResetPlayer(); // Gọi hàm ResetPlayer để khôi phục trạng thái ban đầu của nhân vật
         }
+    }
+
+    public void ResetGame()
+    {
+        RestartMenu.instance.YesButtton();
     }
 }

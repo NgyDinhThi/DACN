@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RestartMenu : MonoBehaviour
-{
+public class RestartMenu : Singleton<RestartMenu>
+{ 
     
 
     [Header("Config")]
