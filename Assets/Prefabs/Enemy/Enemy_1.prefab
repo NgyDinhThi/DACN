@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 1006708332998054616}
   - component: {fileID: 6479660138185205347}
   - component: {fileID: 8756829798795396719}
+  - component: {fileID: -6671918735071971829}
+  - component: {fileID: -593989349945185253}
   m_Layer: 6
   m_Name: Enemy_1
   m_TagString: Enemy
@@ -336,6 +338,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectorSpritel: {fileID: 3244657053272845300}
+--- !u!114 &-6671918735071971829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077315866331300576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a69bf4b31b3e874439c87b17914b9dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expDrop: 50
+  dropItems:
+  - Name: Gay phep
+    Item: {fileID: 11400000, guid: 368ff2ce8d92f194e891ce08b41c5f7c, type: 2}
+    Quantity: 1
+    DropChance: 10
+  - Name: la tra
+    Item: {fileID: 11400000, guid: f7695564a230d0c4a81b01665a127a91, type: 2}
+    Quantity: 3
+    DropChance: 40
+--- !u!114 &-593989349945185253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077315866331300576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34fec6d4ae261945a2a9504ed57427a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
 --- !u!1 &3244657053272845300
 GameObject:
   m_ObjectHideFlags: 0

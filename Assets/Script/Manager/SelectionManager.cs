@@ -44,15 +44,29 @@ public class SelectionManager : MonoBehaviour
                 EnemyHealth enemyHealth = enemy?.GetComponent<EnemyHealth>(); // Lấy máu nếu có EnemyBrain
 
                 // Nếu không có EnemyBrain hoặc máu <= 0 thì không làm gì
-                if (enemy == null || enemyHealth == null || enemyHealth.mauhientai <= 0f) 
+                if (enemy == null)
+                {
+                    // Nếu không phải enemy hợp lệ thì không xử lý gì cả
+                    Debug.LogWarning("Không có enemy hoặc enemy không hợp lệ.");
+                    return;
+                }
+
+                // Nếu enemy có máu ≤ 0 → gọi loot
+                if (enemyHealth != null && enemyHealth.mauhientai <= 0f)
                 {
                     EnemyLoot enemyLoot = enemy.GetComponent<EnemyLoot>();
-                    LootManager.instance.ShowLoot(enemyLoot);
-                
+                    if (enemyLoot != null && enemyLoot.Items != null)
+                    {
+                        LootManager.instance.ShowLoot(enemyLoot);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("enemyLoot hoặc Items bị null.");
+                    }
                 }
                 else
                 {
-                    // Gửi sự kiện chọn enemy
+                    // Nếu enemy còn sống thì trigger sự kiện chọn
                     OnEnemySelectEvent?.Invoke(enemy);
                 }
 

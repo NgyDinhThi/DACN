@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 3513871985964261344}
   - component: {fileID: 3777698879089990304}
   - component: {fileID: 9008561443424616210}
+  - component: {fileID: 9159531948201494161}
+  - component: {fileID: -5072872410017316036}
   m_Layer: 6
   m_Name: Enemy_4
   m_TagString: Enemy
@@ -340,6 +342,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectorSpritel: {fileID: 8525972150316505708}
+--- !u!114 &9159531948201494161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4575315615417562854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a69bf4b31b3e874439c87b17914b9dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expDrop: 30
+  dropItems:
+  - Name: Binh mau
+    Item: {fileID: 11400000, guid: 8a01c03cd8f32d546b2bf50161219c2c, type: 2}
+    Quantity: 2
+    DropChance: 50
+--- !u!114 &-5072872410017316036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4575315615417562854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34fec6d4ae261945a2a9504ed57427a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 14
 --- !u!1 &8525972150316505708
 GameObject:
   m_ObjectHideFlags: 0

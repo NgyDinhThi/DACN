@@ -109,6 +109,8 @@ GameObject:
   - component: {fileID: 9045400259349875000}
   - component: {fileID: 1063237940996861803}
   - component: {fileID: 1147296655844155554}
+  - component: {fileID: 7140584580848819988}
+  - component: {fileID: 7380821334246528941}
   m_Layer: 6
   m_Name: Enemy_2
   m_TagString: Enemy
@@ -427,3 +429,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectorSpritel: {fileID: 3961987816315541501}
+--- !u!114 &7140584580848819988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4950439976759534245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a69bf4b31b3e874439c87b17914b9dfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expDrop: 50
+  dropItems: []
+--- !u!114 &7380821334246528941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4950439976759534245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b34fec6d4ae261945a2a9504ed57427a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 17
