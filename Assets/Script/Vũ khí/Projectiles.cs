@@ -8,9 +8,27 @@ public class Projectiles : MonoBehaviour
 
     public Vector3 direction { get; set; }
     public float dmg { get; set; }
+    private bool isPaused;
+
+    private void OnEnable()
+    {
+        PauseManager.OnPauseChanged += HandlePauseChanged;
+    }
+
+    private void OnDisable()
+    {
+
+        PauseManager.OnPauseChanged -= HandlePauseChanged;
+    }
+
+    private void HandlePauseChanged(bool paused)
+    {
+        isPaused = paused;
+    }
 
     private void Update()
     {
+        if (isPaused) return;
         transform.Translate(direction * (speed * Time.deltaTime));
     }
 

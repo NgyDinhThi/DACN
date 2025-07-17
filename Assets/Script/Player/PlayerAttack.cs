@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-// Điều khiển logic tấn công của người chơi (phép và cận chiến)
 public class PlayerAttack : MonoBehaviour
 {
     [Header("Config")]
@@ -25,6 +24,7 @@ public class PlayerAttack : MonoBehaviour
     private Transform currentAttackPosition;
     private PlayerMana playerMana;
     private float currentAttackRotation;
+    private bool isPaused;
 
     private void Awake()
     {
@@ -42,12 +42,13 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        if (isPaused) return;
         GetFirePosition();
     }
 
-    // Kiểm tra và bắt đầu tấn công
     private void Attack()
     {
+        if (isPaused) return;
         if (enemyTrget == null) return;
 
         if (attackCoroutine != null)
@@ -56,7 +57,6 @@ public class PlayerAttack : MonoBehaviour
         attackCoroutine = StartCoroutine(IEattack());
     }
 
-    // Logic tấn công (phép hoặc cận chiến)
     private IEnumerator IEattack()
     {
         if (currentAttackPosition == null) yield break;
@@ -76,7 +76,6 @@ public class PlayerAttack : MonoBehaviour
         playerAnimation.setAttackani(false);
     }
 
-    // Gây sát thương cận chiến
     private void Canchien()
     {
         slashFx.transform.position = currentAttackPosition.position;
@@ -84,10 +83,9 @@ public class PlayerAttack : MonoBehaviour
 
         float denkethu = Vector3.Distance(enemyTrget.transform.position, transform.position);
         if (denkethu <= khoangcachCt)
-            enemyTrget.GetComponent<IdamageAble>().TakeDamage(GetAtkdmg());
+            enemyTrget.GetComponent<IdamageAble>()?.TakeDamage(GetAtkdmg());
     }
 
-    // Gây sát thương phép
     private void MagicAtk()
     {
         Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, currentAttackRotation));
@@ -99,7 +97,6 @@ public class PlayerAttack : MonoBehaviour
         playerMana.UseMana(currentWp.requiredMana);
     }
 
-    // Tính sát thương với khả năng chí mạng
     private float GetAtkdmg()
     {
         float dmg = stats.BaseDmg + currentWp.dmg;
@@ -111,14 +108,12 @@ public class PlayerAttack : MonoBehaviour
         return dmg;
     }
 
-    // Trang bị vũ khí mới
     public void EquipWeapon(Weapon vukhimoi)
     {
         currentWp = vukhimoi;
         stats.TotalDmg = stats.BaseDmg + currentWp.dmg;
     }
 
-    // Cập nhật vị trí tấn công theo hướng di chuyển
     private void GetFirePosition()
     {
         Vector2 movedirection = playerMovements.MoveDirection;
@@ -148,21 +143,32 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    // Gán kẻ địch được chọn làm mục tiêu
     private void EnemySelectedCallback(EnemyBrain enemySelected)
     {
         enemyTrget = enemySelected;
     }
 
-    // Hủy mục tiêu nếu không còn chọn
     private void NoEnemySelectionCallback()
     {
         enemyTrget = null;
     }
 
+    private void HandlePauseChanged(bool paused)
+    {
+        isPaused = paused;
+
+        // Optionally stop animation if đang đánh
+        if (paused && attackCoroutine != null)
+        {
+            StopCoroutine(attackCoroutine);
+            playerAnimation.setAttackani(false);
+        }
+    }
+
     private void OnEnable()
     {
         action.Enable();
+        PauseManager.OnPauseChanged += HandlePauseChanged;
         SelectionManager.OnEnemySelectEvent += EnemySelectedCallback;
         SelectionManager.OnnoselectionEvent += NoEnemySelectionCallback;
         EnemyHealth.OnEnemyDeathEvent += NoEnemySelectionCallback;
@@ -171,6 +177,7 @@ public class PlayerAttack : MonoBehaviour
     private void OnDisable()
     {
         action.Disable();
+        PauseManager.OnPauseChanged -= HandlePauseChanged;
         SelectionManager.OnEnemySelectEvent -= EnemySelectedCallback;
         SelectionManager.OnnoselectionEvent -= NoEnemySelectionCallback;
         EnemyHealth.OnEnemyDeathEvent -= NoEnemySelectionCallback;

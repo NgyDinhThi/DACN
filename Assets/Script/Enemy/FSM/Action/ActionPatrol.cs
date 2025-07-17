@@ -27,6 +27,7 @@ public class ActionPatrol : FSMaction
     private void followPath()
     {
         // Di chuyển dần về vị trí mục tiêu
+       
         transform.position = Vector3.MoveTowards(transform.position, vitrihientai(), speed * Time.deltaTime);
 
         // Nếu đến gần đủ vị trí hiện tại thì cập nhật sang waypoint tiếp theo
@@ -51,6 +52,7 @@ public class ActionPatrol : FSMaction
     // Override từ FSMaction: gọi khi hành động tuần tra đang diễn ra
     public override void Act()
     {
+        if (isPaused) return;
         followPath();  // Gọi hành vi di chuyển tuần tra
     }
 }

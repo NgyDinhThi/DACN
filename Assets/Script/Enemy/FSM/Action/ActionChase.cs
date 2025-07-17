@@ -18,6 +18,7 @@ public class ActionChase : FSMaction
     // Override hàm Act() từ FSMaction – sẽ được gọi mỗi frame khi Enemy ở trạng thái Chase
     public override void Act()
     {
+        if (isPaused) return;
         duoitheongchoi();  // Gọi hàm xử lý hành vi đuổi theo người chơi
     }
 

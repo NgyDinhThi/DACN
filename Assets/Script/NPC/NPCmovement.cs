@@ -16,6 +16,17 @@ public class NPCmovement : MonoBehaviour
     private Animator animator;
     private Vector3 prePosition;
     private int currentPointIndex;
+    private bool isPaused;
+
+    private void OnEnable()
+    {
+        PauseManager.OnPauseChanged += HandlePauseChanged;
+    }
+
+    private void OnDisable()
+    {
+        PauseManager.OnPauseChanged -= HandlePauseChanged;
+    }
 
     private void Awake()
     {
@@ -26,6 +37,7 @@ public class NPCmovement : MonoBehaviour
     // Di chuyển NPC tới waypoint tiếp theo và cập nhật hướng di chuyển
     private void Update()
     {
+        if (isPaused) return;
         Vector3 nextPos = wayPoint.Layvitri(currentPointIndex);
         UpdateMoveValue(nextPos);
         transform.position = Vector3.MoveTowards(transform.position, nextPos, moveSpeed * Time.deltaTime);
@@ -49,4 +61,9 @@ public class NPCmovement : MonoBehaviour
         animator.SetFloat(moveX, dir.x);
         animator.SetFloat(moveY, dir.y);
     }
+    private void HandlePauseChanged(bool pause)
+    {
+        isPaused = pause;
+    }
+
 }

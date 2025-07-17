@@ -31,6 +31,7 @@ public class EnemyBrain : MonoBehaviour
     {
         // Gọi UpdateState của trạng thái hiện tại để thực thi hành vi (nếu CurrentState không null).
         // Toán tử ?. (null-conditional) ngăn lỗi nếu CurrentState là null.
+        if (PauseManager.IsPaused) return;
         CurrentState?.UpdateState(this);
     }
 

@@ -21,6 +21,7 @@ public class ActionWander : FSMaction
     // Hàm Act được gọi liên tục khi NPC ở trạng thái "Wander"
     public override void Act()
     {
+        if (isPaused) return;
         timer -= Time.deltaTime; // Giảm thời gian đếm
 
         // Tính toán hướng di chuyển đến đích

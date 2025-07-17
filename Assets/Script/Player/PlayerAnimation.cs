@@ -11,6 +11,7 @@ public class PlayerAnimation : MonoBehaviour
     private readonly int tancong = Animator.StringToHash("Attacking");
 
     private Animator animator;
+    private bool isPaused;
 
     private void Awake()
     {
@@ -48,4 +49,21 @@ public class PlayerAnimation : MonoBehaviour
     {
         animator.SetBool(tancong, value);
     }
+
+    private void OnEnable()
+    {
+        PauseManager.OnPauseChanged += HandlePauseChanged;
+    }
+
+    private void OnDisable()
+    {
+        PauseManager.OnPauseChanged -= HandlePauseChanged;
+    }
+
+    private void HandlePauseChanged(bool paused)
+    {
+        isPaused = paused;
+        animator.speed = paused ? 0f : 1f;
+    } 
+
 }

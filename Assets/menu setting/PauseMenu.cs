@@ -9,19 +9,19 @@ public class PauseMenu : MonoBehaviour
     [Header("Config")]
     [SerializeField] private GameObject menu;
 
-    public static bool isPause;
+    
 
     private void Start()
     {
         menu.SetActive(false);
-        isPause = false;
+       
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPause)
+            if (PauseManager.IsPaused)
             {
                 ResumeGame();
             }
@@ -36,15 +36,13 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         menu?.SetActive(true);
-        Time.timeScale = 0f;
-        isPause = true;
+        PauseManager.Pause();
     }
 
     public void ResumeGame()
     {
         menu?.SetActive(false);
-        Time.timeScale = 1f;
-        isPause = false;
+        PauseManager.Resume();
     }
 
     public void GotoMain()

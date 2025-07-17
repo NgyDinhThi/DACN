@@ -7,6 +7,8 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private int jump;//chưa sử dụng đến
 
+
+    private bool isPaused;
     public Vector2 MoveDirection => moveDirection;
 
     private PlayerAction action;
@@ -27,12 +29,14 @@ public class PlayerMovements : MonoBehaviour
     private void FixedUpdate()
     {
         // Xử lý di chuyển vật lý
+        if (isPaused) return;
         move();
     }
 
     private void Update()
     {
         // Đọc input từ người chơi
+        if (isPaused) return;
         ReadMovement();
     }
 
@@ -62,11 +66,26 @@ public class PlayerMovements : MonoBehaviour
     {
         // Bật input system
         action.Enable();
+        PauseManager.OnPauseChanged += HandlePauseChanged;
     }
 
     private void OnDisable()
     {
         // Tắt input system
         action?.Disable();
+        PauseManager.OnPauseChanged -= HandlePauseChanged;
     }
+
+    private void HandlePauseChanged(bool paused)
+    {
+        isPaused = paused;
+
+        // Optional: Stop animation when paused
+        if (paused)
+        {
+            moveDirection = Vector2.zero;
+            playerAnimation.SetMoveBoolTransition(false);
+        }
+    }
+
 }
