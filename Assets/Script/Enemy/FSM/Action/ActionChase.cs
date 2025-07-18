@@ -8,17 +8,20 @@ public class ActionChase : FSMaction
     [SerializeField] private float tocdoduoi;  // Tốc độ đuổi theo của enemy
 
     private EnemyBrain enemy;  // Tham chiếu đến script điều khiển Enemy
+    private EnemyAnimation enemyAnim;
 
     // Lấy component EnemyBrain khi khởi tạo
     private void Awake()
     {
         enemy = GetComponent<EnemyBrain>();
+        enemyAnim = GetComponent<EnemyAnimation>();
     }
 
     // Override hàm Act() từ FSMaction – sẽ được gọi mỗi frame khi Enemy ở trạng thái Chase
     public override void Act()
     {
         if (isPaused) return;
+        enemyAnim?.SetMove(true); // Bật animation chạy
         duoitheongchoi();  // Gọi hàm xử lý hành vi đuổi theo người chơi
     }
 

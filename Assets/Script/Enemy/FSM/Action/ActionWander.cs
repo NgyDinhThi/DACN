@@ -11,6 +11,12 @@ public class ActionWander : FSMaction
 
     private Vector3 vitrihd;   // Vị trí hiện tại NPC sẽ đi tới
     private float timer;       // Bộ đếm thời gian để đổi hướng
+    private EnemyAnimation enemyAnim;
+
+    private void Awake()
+    {
+        enemyAnim = GetComponent<EnemyAnimation>();
+    }
 
     // Hàm Start được gọi khi script bắt đầu chạy
     private void Start()
@@ -32,6 +38,11 @@ public class ActionWander : FSMaction
         if (Vector3.Distance(transform.position, vitrihd) >= 0.5f)
         {
             transform.Translate(movement); // Di chuyển NPC
+            enemyAnim?.SetMove(true);            // Bật animation đi
+        }
+        else
+        {
+            enemyAnim?.SetMove(false);           // Tắt animation khi đứng yên
         }
 
         // Nếu hết thời gian wander thì chọn điểm đích mới

@@ -11,10 +11,13 @@ public class ActionPatrol : FSMaction
     private int diadiemIndex;            // Chỉ số của vị trí hiện tại trong mảng waypoint
     private Vector3 vitritieptheo;       // Biến lưu vị trí tiếp theo sẽ đi (không dùng ở đây)
 
+    private EnemyAnimation enemyAnim;
+
     // Lấy component WayPoint khi đối tượng được tạo
     private void Awake()
     {
         WayPoint = GetComponent<Waypoint>();
+        enemyAnim = GetComponent<EnemyAnimation>();
     }
 
     // Lấy vị trí hiện tại từ WayPoint theo chỉ số
@@ -30,11 +33,16 @@ public class ActionPatrol : FSMaction
        
         transform.position = Vector3.MoveTowards(transform.position, vitrihientai(), speed * Time.deltaTime);
 
+        enemyAnim?.SetMove(true);
+
+
         // Nếu đến gần đủ vị trí hiện tại thì cập nhật sang waypoint tiếp theo
         if (Vector3.Distance(transform.position, vitrihientai()) <= 0.1f)
         {
             Capnhatvitrihientai();
         }
+
+
     }
 
     // Hàm cập nhật chỉ số waypoint khi đến đích
