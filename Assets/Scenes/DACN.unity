@@ -1410,12 +1410,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba847d55070deee46b62bfedac2c514a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 1077315866331300576, guid: e5781b975cf6b2443bdf6a239271d450, type: 3}
   numberToSpawn: 3
   spawnDelay: 1
-  respawnCheckInterval: 7
-  deadEnemyClearDelay: 18
+  respawnCheckInterval: 10
+  deadEnemyClearDelay: 5
+  deathAnimationDuration: 7
 --- !u!61 &100931338
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13907,6 +13906,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2125001860023851137, guid: 05b448a843c3c5747ac3642f3342bc89, type: 3}
   m_PrefabInstance: {fileID: 1091116355}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1103199181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1103199182}
+  - component: {fileID: 1103199183}
+  m_Layer: 0
+  m_Name: EnemyPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1103199182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103199181}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1769580601}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1103199183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103199181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004885df00c5e1d4faf0167652925dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 1077315866331300576, guid: e5781b975cf6b2443bdf6a239271d450, type: 3}
+  - {fileID: 4950439976759534245, guid: ad9004792ff05424692618bc1200a2f3, type: 3}
+  - {fileID: 2641031210449489580, guid: 22b3fb43eb341db4a9cc3b94ccbc5918, type: 3}
+  - {fileID: 4575315615417562854, guid: 36078338f64220e458ba6ade76105682, type: 3}
+  poolSizePerType: 5
 --- !u!1001 &1105443402
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16319,12 +16368,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba847d55070deee46b62bfedac2c514a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 4575315615417562854, guid: 36078338f64220e458ba6ade76105682, type: 3}
   numberToSpawn: 3
   spawnDelay: 1
-  respawnCheckInterval: 7
-  deadEnemyClearDelay: 18
+  respawnCheckInterval: 10
+  deadEnemyClearDelay: 5
+  deathAnimationDuration: 7
 --- !u!61 &1234920165
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19404,12 +19452,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba847d55070deee46b62bfedac2c514a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 4950439976759534245, guid: ad9004792ff05424692618bc1200a2f3, type: 3}
   numberToSpawn: 3
   spawnDelay: 1
-  respawnCheckInterval: 7
-  deadEnemyClearDelay: 18
+  respawnCheckInterval: 10
+  deadEnemyClearDelay: 5
+  deathAnimationDuration: 7
 --- !u!61 &1497647415
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28226,6 +28273,7 @@ Transform:
   - {fileID: 1497647413}
   - {fileID: 2066139544}
   - {fileID: 1234920163}
+  - {fileID: 1103199182}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1770265210
@@ -72818,7 +72866,7 @@ Transform:
   m_GameObject: {fileID: 2066139543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.48, y: 12.4, z: 0}
+  m_LocalPosition: {x: -21.3, y: 12.66, z: 0}
   m_LocalScale: {x: 9, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -72836,12 +72884,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba847d55070deee46b62bfedac2c514a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 2641031210449489580, guid: 22b3fb43eb341db4a9cc3b94ccbc5918, type: 3}
   numberToSpawn: 4
   spawnDelay: 1
-  respawnCheckInterval: 7
-  deadEnemyClearDelay: 18
+  respawnCheckInterval: 10
+  deadEnemyClearDelay: 5
+  deathAnimationDuration: 7
 --- !u!61 &2066139546
 BoxCollider2D:
   m_ObjectHideFlags: 0

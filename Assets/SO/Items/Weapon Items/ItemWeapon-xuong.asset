@@ -15,7 +15,7 @@ MonoBehaviour:
   Id: BoneWeapon
   ItemsName: Maigc bone
   Icon: {fileID: 21300000, guid: a6a3a8d76f318f347820e544612b067c, type: 3}
-  description: A bone with strang magic
+  description: Cai xuong ki la
   itemtype: 0
   IsComsumable: 0
   IsStackable: 0

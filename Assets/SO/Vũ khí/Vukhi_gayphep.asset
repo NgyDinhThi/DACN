@@ -16,4 +16,4 @@ MonoBehaviour:
   loaiVK: 0
   dmg: 4
   projectilesPrefab: {fileID: 9101555831141566931, guid: f4351a38764e1134aa9222fb885d6ac4, type: 3}
-  luongMana: 10
+  requiredMana: 4

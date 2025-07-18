@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a89c7b005fca94b8ab2d2c6ca9dcfd, type: 3}
   m_Name: ItemWeapon-stick
   m_EditorClassIdentifier: 
-  id: Weaponstick
-  name: Magic stick
-  icon: {fileID: 21300000, guid: d02606cb603ecb14daa05a23b3879426, type: 3}
-  mieuta: a stick have magic
+  Id: MagicStick
+  ItemsName: Gay phep
+  Icon: {fileID: 21300000, guid: d02606cb603ecb14daa05a23b3879426, type: 3}
+  description: Cay gay ban ra dan lam tu tre
   itemtype: 0
   IsComsumable: 0
   IsStackable: 0
   MaxStack: 1
-  Quantity: 0
+  quantity: 0
   weapon: {fileID: 11400000, guid: 1c9825f6728e8ac4e93e4effc3f02d50, type: 2}

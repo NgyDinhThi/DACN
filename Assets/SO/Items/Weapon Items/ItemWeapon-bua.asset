@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02a89c7b005fca94b8ab2d2c6ca9dcfd, type: 3}
   m_Name: ItemWeapon-bua
   m_EditorClassIdentifier: 
-  id: Weaponhammer
-  name: Magic wand
-  icon: {fileID: 21300000, guid: a5b8293e5551a1a45910a3231bc90de1, type: 3}
-  mieuta: a strong and heavy hammer
+  Id: BigHammer
+  ItemsName: Bua go
+  Icon: {fileID: 21300000, guid: a5b8293e5551a1a45910a3231bc90de1, type: 3}
+  description: Mot cay bua binh thuong
   itemtype: 0
   IsComsumable: 0
   IsStackable: 0
   MaxStack: 1
-  Quantity: 0
+  quantity: 0
   weapon: {fileID: 11400000, guid: b02eb726b0affd0479c91ef60cbc7cf1, type: 2}

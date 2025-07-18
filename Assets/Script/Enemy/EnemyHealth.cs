@@ -1,15 +1,13 @@
 ﻿using System;
 using UnityEngine;
 
-/// <summary>
-/// Quản lý máu, sát thương và cái chết của enemy.
-/// </summary>
 public class EnemyHealth : MonoBehaviour, IdamageAble
 {
+    public static event Action<GameObject> OnEnemyDied;
     public static event Action OnEnemyDeathEvent;
 
     [Header("Thiết lập máu")]
-    [SerializeField] private float maxHealth ;
+    [SerializeField] private float maxHealth;
 
     public float CurrentHealth { get; private set; }
 
@@ -30,15 +28,20 @@ public class EnemyHealth : MonoBehaviour, IdamageAble
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        CurrentHealth = maxHealth;
+        ResetEnemy();
     }
 
-    /// <summary>
-    /// Gọi khi enemy nhận sát thương.
-    /// </summary>
-    /// <param name="amount">Lượng sát thương nhận</param>
+    private void ResetEnemy()
+    {
+        isDead = false;
+        CurrentHealth = maxHealth;
+
+        enemyBrain.enabled = true;
+        rb2d.bodyType = RigidbodyType2D.Dynamic;
+    }
+
     public void TakeDamage(float amount)
     {
         if (isDead) return;
@@ -56,9 +59,6 @@ public class EnemyHealth : MonoBehaviour, IdamageAble
         }
     }
 
-    /// <summary>
-    /// Xử lý khi enemy chết.
-    /// </summary>
     private void Die()
     {
         isDead = true;
@@ -68,19 +68,9 @@ public class EnemyHealth : MonoBehaviour, IdamageAble
         rb2d.bodyType = RigidbodyType2D.Static;
 
         enemySelect?.NoSelectedCallback();
+        OnEnemyDied?.Invoke(gameObject);
         OnEnemyDeathEvent?.Invoke();
 
-        // Thêm kinh nghiệm cho người chơi
         GameManager.instance?.AddPlayerExp(enemyLoot.ExpDrop);
-
-        // Để animation có thời gian chạy trước khi destroy (tuỳ ý)
-        StartCoroutine(DelayedDisable());
-    }
-
-    private System.Collections.IEnumerator DelayedDisable()
-    {
-        yield return new WaitForSeconds(2f); // thời gian animation chết
-
-        gameObject.SetActive(false); // hoặc Destroy(gameObject)
     }
 }

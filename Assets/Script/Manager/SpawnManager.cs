@@ -5,13 +5,13 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Enemy Spawn Config")]
-    public GameObject[] enemyPrefabs;
     public int numberToSpawn;
     public float spawnDelay;
 
     [Header("Timing Settings")]
-    public float respawnCheckInterval; // thời gian kiểm tra để respawn quái
-    public float deadEnemyClearDelay;  // thời gian delay để xóa quái đã chết
+    public float respawnCheckInterval;
+    public float deadEnemyClearDelay;
+    public float deathAnimationDuration;
 
     private Collider2D spawnArea;
     private List<GameObject> activeEnemies = new List<GameObject>();
@@ -19,6 +19,16 @@ public class EnemySpawner : MonoBehaviour
     private void Awake()
     {
         spawnArea = GetComponent<Collider2D>();
+    }
+
+    private void OnEnable()
+    {
+        EnemyHealth.OnEnemyDied += HandleEnemyDeath;
+    }
+
+    private void OnDisable()
+    {
+        EnemyHealth.OnEnemyDied -= HandleEnemyDeath;
     }
 
     private void Start()
@@ -42,13 +52,8 @@ public class EnemySpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(respawnCheckInterval);
 
-            // Đợi thời gian delay trước khi dọn dẹp quái chết
-            yield return new WaitForSeconds(deadEnemyClearDelay);
-
-            // Xóa enemy null hoặc bị disable (chết)
             activeEnemies.RemoveAll(e => e == null || !e.activeInHierarchy);
 
-            // Spawn thêm nếu thiếu
             int missing = numberToSpawn - activeEnemies.Count;
             for (int i = 0; i < missing; i++)
             {
@@ -65,9 +70,20 @@ public class EnemySpawner : MonoBehaviour
         if (activeEnemies.Count >= numberToSpawn) return;
 
         Vector2 spawnPos = GetRandomPositionInZone();
-        GameObject selectedEnemy = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-        GameObject enemy = Instantiate(selectedEnemy, spawnPos, Quaternion.identity);
+        GameObject enemy = EnemyPool.instance.GetEnemy(spawnPos);
         activeEnemies.Add(enemy);
+    }
+
+    private void HandleEnemyDeath(GameObject enemy)
+    {
+        StartCoroutine(DelayReturnToPool(enemy));
+    }
+
+    private IEnumerator DelayReturnToPool(GameObject enemy)
+    {
+        yield return new WaitForSeconds(deathAnimationDuration);
+        activeEnemies.Remove(enemy);
+        EnemyPool.instance.ReturnEnemy(enemy);
     }
 
     private Vector2 GetRandomPositionInZone()
