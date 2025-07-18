@@ -52,8 +52,8 @@ public class SelectionManager : MonoBehaviour
                 }
 
                 // Nếu enemy có máu ≤ 0 → gọi loot
-                if (enemyHealth != null && enemyHealth.mauhientai <= 0f)
-                {
+                if (enemyHealth != null && enemyHealth.CurrentHealth <= 0f)
+                {     
                     EnemyLoot enemyLoot = enemy.GetComponent<EnemyLoot>();
                     if (enemyLoot != null && enemyLoot.Items != null)
                     {

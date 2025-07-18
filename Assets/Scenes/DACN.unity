@@ -1414,6 +1414,8 @@ MonoBehaviour:
   - {fileID: 1077315866331300576, guid: e5781b975cf6b2443bdf6a239271d450, type: 3}
   numberToSpawn: 3
   spawnDelay: 1
+  respawnCheckInterval: 7
+  deadEnemyClearDelay: 18
 --- !u!61 &100931338
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16321,6 +16323,8 @@ MonoBehaviour:
   - {fileID: 4575315615417562854, guid: 36078338f64220e458ba6ade76105682, type: 3}
   numberToSpawn: 3
   spawnDelay: 1
+  respawnCheckInterval: 7
+  deadEnemyClearDelay: 18
 --- !u!61 &1234920165
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19404,6 +19408,8 @@ MonoBehaviour:
   - {fileID: 4950439976759534245, guid: ad9004792ff05424692618bc1200a2f3, type: 3}
   numberToSpawn: 3
   spawnDelay: 1
+  respawnCheckInterval: 7
+  deadEnemyClearDelay: 18
 --- !u!61 &1497647415
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72834,6 +72840,8 @@ MonoBehaviour:
   - {fileID: 2641031210449489580, guid: 22b3fb43eb341db4a9cc3b94ccbc5918, type: 3}
   numberToSpawn: 4
   spawnDelay: 1
+  respawnCheckInterval: 7
+  deadEnemyClearDelay: 18
 --- !u!61 &2066139546
 BoxCollider2D:
   m_ObjectHideFlags: 0
