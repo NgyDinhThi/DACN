@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 
 // Di chuyển NPC tự động giữa các điểm waypoint
 public class NPCmovement : MonoBehaviour
@@ -16,30 +13,26 @@ public class NPCmovement : MonoBehaviour
     private Animator animator;
     private Vector3 prePosition;
     private int currentPointIndex;
-    private bool isPaused;
-
-    private void OnEnable()
-    {
-        PauseManager.OnPauseChanged += HandlePauseChanged;
-    }
-
-    private void OnDisable()
-    {
-        PauseManager.OnPauseChanged -= HandlePauseChanged;
-    }
+    private NPCAnimation npcAnim;
 
     private void Awake()
     {
         wayPoint = GetComponent<Waypoint>();
         animator = GetComponent<Animator>();
+        npcAnim = GetComponent<NPCAnimation>();
     }
 
-    // Di chuyển NPC tới waypoint tiếp theo và cập nhật hướng di chuyển
     private void Update()
     {
-        if (isPaused) return;
+        if (PauseManager.IsPaused)
+        {
+            npcAnim?.SetMoving(false); // dừng animation khi pause
+            return;
+        }
+
         Vector3 nextPos = wayPoint.Layvitri(currentPointIndex);
         UpdateMoveValue(nextPos);
+
         transform.position = Vector3.MoveTowards(transform.position, nextPos, moveSpeed * Time.deltaTime);
 
         if (Vector3.Distance(transform.position, nextPos) <= 0.2f)
@@ -53,17 +46,14 @@ public class NPCmovement : MonoBehaviour
     private void UpdateMoveValue(Vector3 nextPos)
     {
         Vector2 dir = Vector2.zero;
+
         if (prePosition.x < nextPos.x) dir = new Vector2(1f, 0f);
-        if (prePosition.x > nextPos.x) dir = new Vector2(-1f, 0f);
-        if (prePosition.y < nextPos.y) dir = new Vector2(0f, 1f);
-        if (prePosition.y > nextPos.y) dir = new Vector2(0f, -1f);
+        else if (prePosition.x > nextPos.x) dir = new Vector2(-1f, 0f);
+        else if (prePosition.y < nextPos.y) dir = new Vector2(0f, 1f);
+        else if (prePosition.y > nextPos.y) dir = new Vector2(0f, -1f);
 
         animator.SetFloat(moveX, dir.x);
         animator.SetFloat(moveY, dir.y);
+        npcAnim?.SetMoving(true);
     }
-    private void HandlePauseChanged(bool pause)
-    {
-        isPaused = pause;
-    }
-
 }
