@@ -22,6 +22,7 @@ public class NPCAnimation : MonoBehaviour
     private void HandlePauseChanged(bool isPaused)
     {
         animator.speed = isPaused ? 0f : 1f;
+
     }
 
     public void SetMoving(bool isMoving)

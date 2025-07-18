@@ -111,6 +111,7 @@ public class UsingSaveSystem : MonoBehaviour
 
         // ❗ Chỉ sau khi đã set lại trạng thái accepted thì mới load panel
         questManager.LoadQuestToNPCPanel();
+        PauseManager.Resume(); 
 
-    }    
+    }
 }
