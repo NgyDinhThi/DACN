@@ -10,7 +10,13 @@ public class MainMenu : MonoBehaviour
         GameStateTracker.shouldResetOnNextScene = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
-    }    
+    }
+
+    public void LoadOtherScene()
+    {
+        GameStateTracker.shouldResetOnNextScene = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+    }
 
     public void QuitGame()
     {

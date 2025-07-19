@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadGameButton : MonoBehaviour
+public class ReturnMainmenu : MonoBehaviour
 {
     [Header("Tên class")]
     public string sceneToLoad = "GameScene";
@@ -23,6 +23,4 @@ public class LoadGameButton : MonoBehaviour
 
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
-
-      
 }

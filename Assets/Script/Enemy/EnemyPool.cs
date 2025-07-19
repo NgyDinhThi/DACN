@@ -10,7 +10,7 @@ public class EnemyPool : MonoBehaviour
 
     [Header("Pool Config")]
     public List<GameObject> enemyPrefabs;
-    public int poolSizePerType = 10;
+    public int poolSizePerType ;
 
     private Dictionary<string, Queue<GameObject>> pools = new Dictionary<string, Queue<GameObject>>();
 
