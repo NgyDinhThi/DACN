@@ -56,6 +56,9 @@ public class DataStore
     // coin info
     public float Coins;
 
+    // weapon info
+    public string equippedWeaponName;
+
     public DataStore(PlayerStats stats, Transform playerTransform, QuestManager questManager, Inventory inventory)
     {
         // Level & stats
@@ -100,6 +103,8 @@ public class DataStore
 
         // coin
         Coins = CoinsManager.instance.Coins;
+
+
 
         foreach (Quest quest in questManager.Quests)
         {
