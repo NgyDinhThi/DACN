@@ -6,4 +6,5 @@ using UnityEngine;
 public class GameContents : ScriptableObject
 {
     public InventoryItems[] GameItems; // Mảng chứa các item có sẵn trong game
+    public Weapon[] GameWeapons;
 }

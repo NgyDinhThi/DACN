@@ -94,6 +94,7 @@ public class UsingSaveSystem : MonoBehaviour
         questManager.ResetAllQuests();        // Chỉ reset trạng thái logic (KHÔNG load lại UI)
         questManager.ClearPlayerQuestUI();  // clear khung quest người chơi
         questManager.ClearNPCQuestUI();     // clear khung quest NPC
+        WeaponManager.instance.LoadWeaponByName(data.equippedWeaponName);// Load weapon
 
 
         // Set lại trạng thái của các quest đã nhận

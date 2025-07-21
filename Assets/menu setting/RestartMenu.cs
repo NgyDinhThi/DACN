@@ -81,7 +81,8 @@ public class RestartMenu : Singleton<RestartMenu>
         PanelDown();
         Time.timeScale = 1f;
         isDead = false;
-
+        // Reset vũ khí về mặc định
+        GameManager.instance.Player.playerAttack.ResetToInitialWeapon();
     }    
     
     private void RestartAgain()

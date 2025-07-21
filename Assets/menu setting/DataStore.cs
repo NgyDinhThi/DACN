@@ -132,5 +132,7 @@ public class DataStore
             }
         }
 
+        equippedWeaponName = WeaponManager.instance?.currentWeapon?.name ?? "";
+
     }
 }

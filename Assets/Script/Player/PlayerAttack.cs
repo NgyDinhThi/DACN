@@ -182,4 +182,10 @@ public class PlayerAttack : MonoBehaviour
         SelectionManager.OnnoselectionEvent -= NoEnemySelectionCallback;
         EnemyHealth.OnEnemyDeathEvent -= NoEnemySelectionCallback;
     }
+
+    public void ResetToInitialWeapon()
+    {
+        WeaponManager.instance.EquipWeapon(initialweapon);
+    }
+
 }
