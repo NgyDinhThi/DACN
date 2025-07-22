@@ -24,10 +24,7 @@ public class EnemyAnimation : MonoBehaviour
         animator.speed = isPaused ? 0f : 1f;
     }
 
-    public void SetMove(bool isMoving)
-    {
-        animator.SetBool("isMoving", isMoving);
-    }
+    
 
     public void Attack()
     {

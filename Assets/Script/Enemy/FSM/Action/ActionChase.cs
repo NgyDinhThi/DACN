@@ -21,7 +21,7 @@ public class ActionChase : FSMaction
     public override void Act()
     {
         if (isPaused) return;
-        enemyAnim?.SetMove(true); // Bật animation chạy
+       
         duoitheongchoi();  // Gọi hàm xử lý hành vi đuổi theo người chơi
     }
 

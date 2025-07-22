@@ -33,7 +33,7 @@ public class ActionPatrol : FSMaction
        
         transform.position = Vector3.MoveTowards(transform.position, vitrihientai(), speed * Time.deltaTime);
 
-        enemyAnim?.SetMove(true);
+       
 
 
         // Nếu đến gần đủ vị trí hiện tại thì cập nhật sang waypoint tiếp theo

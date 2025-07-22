@@ -38,12 +38,9 @@ public class ActionWander : FSMaction
         if (Vector3.Distance(transform.position, vitrihd) >= 0.5f)
         {
             transform.Translate(movement); // Di chuyển NPC
-            enemyAnim?.SetMove(true);            // Bật animation đi
+                    
         }
-        else
-        {
-            enemyAnim?.SetMove(false);           // Tắt animation khi đứng yên
-        }
+       
 
         // Nếu hết thời gian wander thì chọn điểm đích mới
         if (timer <= 0)
