@@ -12,7 +12,7 @@ public static class PauseManager
         if (IsPaused) return;
         IsPaused = true;
 
-        Time.timeScale = 0f; 
+        
         OnPauseChanged?.Invoke(true);
     }
 
@@ -21,7 +21,7 @@ public static class PauseManager
         if (!IsPaused) return;
         IsPaused = false;
 
-        Time.timeScale = 1f; 
+         
         OnPauseChanged?.Invoke(false);
     }
 

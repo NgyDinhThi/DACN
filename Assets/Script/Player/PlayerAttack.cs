@@ -83,7 +83,11 @@ public class PlayerAttack : MonoBehaviour
 
         float denkethu = Vector3.Distance(enemyTrget.transform.position, transform.position);
         if (denkethu <= khoangcachCt)
+        {
             enemyTrget.GetComponent<IdamageAble>()?.TakeDamage(GetAtkdmg());
+         
+
+        }    
     }
 
     private void MagicAtk()
@@ -95,6 +99,7 @@ public class PlayerAttack : MonoBehaviour
         projectiles.dmg = GetAtkdmg();
 
         playerMana.UseMana(currentWp.requiredMana);
+        
     }
 
     private float GetAtkdmg()

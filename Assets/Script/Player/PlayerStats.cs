@@ -19,10 +19,12 @@ public class PlayerStats : ScriptableObject
     [Header("Health info")]
     public float health;
     public float Max_health;
+    public float Base_health;
 
     [Header("Mana info")]
     public float mana;
     public float Max_mana;
+    public float Base_mana;
 
     [Header("Exp info")]
     public float CurrentExp;
@@ -47,8 +49,10 @@ public class PlayerStats : ScriptableObject
     // Đặt lại toàn bộ chỉ số nhân vật về trạng thái khởi đầu
     public void ResetPlayer()
     {
-        health = Max_health;
-        mana = Max_mana;
+        health = Base_health;
+        mana = Base_mana;
+        Max_health = Base_health;
+        Max_mana = Base_mana;
         level = 1;
         CurrentExp = 0f;
         NextLevelUp = InitialNextLevelExp;

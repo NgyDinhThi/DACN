@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour, IdamageAble
     [SerializeField] private PlayerStats stats; // Tham chiếu dữ liệu nhân vật
 
     private PlayerAnimation playerAnimation; // Điều khiển animation
+    private bool hasDied = false;
 
     private void Awake()
     {
@@ -15,9 +16,10 @@ public class PlayerHealth : MonoBehaviour, IdamageAble
 
     private void Update()
     {
-        if (stats.health <= 0f)
+        if (stats.health <= 0f && !hasDied)
         {
-            PlayerDeath(); // Gọi chết nếu máu về 0
+            hasDied = true;
+            PlayerDeath(); // Chỉ gọi đúng 1 lần
         }
     }
 
@@ -27,6 +29,7 @@ public class PlayerHealth : MonoBehaviour, IdamageAble
         if (stats.health <= 0f) return;
 
         stats.health -= amount;
+        AudioManager.instance.Play("EnemyHit");
         DmgManager.instance.hienSatthuong(amount, transform);
 
         if (stats.health <= 0f)
@@ -53,5 +56,7 @@ public class PlayerHealth : MonoBehaviour, IdamageAble
     private void PlayerDeath()
     {
         playerAnimation.SetDeadAni();
+        AudioManager.instance.Play("PlayerDeath");
     }
+
 }

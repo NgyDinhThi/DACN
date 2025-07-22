@@ -34,20 +34,20 @@ public class RestartMenu : Singleton<RestartMenu>
     public void PanelUp()
     {
         menu?.SetActive(true);
-        Time.timeScale = 1f;
+       
         isDead = true;
     }
 
     public void PanelDown()
     {
         menu?.SetActive(false);
-        Time.timeScale = 1f;
+     
         isDead = false;
     }
 
     public void NoButton()
     {
-        Time.timeScale = 1f;
+       
         SceneManager.LoadScene("Menu");
     }
 
@@ -79,7 +79,7 @@ public class RestartMenu : Singleton<RestartMenu>
         Inventory.instance.ResetInventory();
         // Tắt panel và tiếp tục game
         PanelDown();
-        Time.timeScale = 1f;
+       
         isDead = false;
         // Reset vũ khí về mặc định
         GameManager.instance.Player.playerAttack.ResetToInitialWeapon();

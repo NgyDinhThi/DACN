@@ -57,6 +57,8 @@ public class EnemyHealth : MonoBehaviour, IdamageAble
         {
             DmgManager.instance?.hienSatthuong(amount, transform);
         }
+        AudioManager.instance.Play("HitEnemy");
+
     }
 
     private void Die()
