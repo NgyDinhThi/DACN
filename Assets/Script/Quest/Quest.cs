@@ -9,6 +9,8 @@ public class Quest : ScriptableObject
     public string Name;
     public string ID;
     public int QuestGoal;
+    public QuestType Type;
+    public GameObject[] SpecificMonsters;
 
     [Header("Description")]
     [TextArea] public string Description;
@@ -40,11 +42,35 @@ public class Quest : ScriptableObject
     // Cập nhật tiến độ nhiệm vụ
     public void AddProgress(int amount)
     {
+        if (Type != QuestType.AnyMonster) return;
+
         CurrentStatus += amount;
         if (CurrentStatus >= QuestGoal)
         {
             CurrentStatus = QuestGoal;
             QuestIsCompleted();
+        }
+    }
+
+    
+    public void AddProgress(GameObject killedEnemy, int amount)
+    {
+        if (Type != QuestType.SpecificMonster || killedEnemy == null) return;
+        Debug.Log($"[Quest] Checking {killedEnemy.name}");
+
+        foreach (var enemy in SpecificMonsters)
+        {
+            if (enemy != null && killedEnemy.name.Contains(enemy.name))
+            {
+                CurrentStatus += amount;
+                if (CurrentStatus >= QuestGoal)
+                {
+                    CurrentStatus = QuestGoal;
+                    QuestIsCompleted();
+                    Debug.Log($"[Quest] Hoàn thành nhiệm vụ {Name}");
+                }
+                break;
+            }
         }
     }
 }

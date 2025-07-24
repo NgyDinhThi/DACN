@@ -28,6 +28,7 @@ public class CreditScript : MonoBehaviour
                 EndingSceneManager.Instance.NotifyTitleFinished();
             else if (role == CreditRole.CreditText)
                 EndingSceneManager.Instance.NotifyCreditFinished();
+            Destroy(gameObject);
         }
     }
 }

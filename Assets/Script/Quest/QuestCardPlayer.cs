@@ -44,10 +44,22 @@ public class QuestCardPlayer : QuestCard
     // Nhận phần thưởng và vô hiệu hóa card
     public void ClaimQuest()
     {
+       
         GameManager.instance.AddPlayerExp(QuestToComplete.ExpReward);
         Inventory.instance.AddItems(QuestToComplete.ItemReward.Items, QuestToComplete.ItemReward.Quantity);
-        CoinsManager.instance.AddCoin(QuestToComplete.GoldReWard);
+        CoinsManager.instance.AddCoin(QuestToComplete.GoldReWard);  
         gameObject.SetActive(false);
+
+        //Gọi QuestCompletionManager để chuyển scene nếu đủ điều kiện
+        QuestCompletionManager completionManager = FindFirstObjectByType<QuestCompletionManager>();
+        if (completionManager != null)
+        {
+            completionManager.TryCompleteQuestsAndLoadScene();
+        }
+        else
+        {
+            Debug.LogWarning("Không tìm thấy QuestCompletionManager trong scene.");
+        }
     }
 
     // Kiểm tra trạng thái hoàn thành nhiệm vụ

@@ -57,12 +57,18 @@ public class QuestManager : Singleton<QuestManager>
     public void AddProgress(string questID, int amount)
     {
         Quest questToUpdate = QuestExits(questID);
-        if (questToUpdate == null) return;
-        if (questToUpdate.QuestAccepted)
+        if (questToUpdate == null || !questToUpdate.QuestAccepted || questToUpdate.QuestCompleted) return;
+
+        if (questToUpdate.Type == QuestType.AnyMonster)
         {
-            questToUpdate.AddProgress(amount);
+            questToUpdate.AddProgress(amount); // Hàm này chỉ dùng cho AnyMonster
+        }
+        else
+        {
+            Debug.LogWarning($"Quest {questID} là loại SpecificMonster nên không dùng AddProgress(string, int). Dùng OnEnemyKilled(GameObject) thay vào.");
         }
     }
+
 
     // Đặt lại tất cả nhiệm vụ khi kích hoạt
     private void OnEnable()
@@ -72,14 +78,14 @@ public class QuestManager : Singleton<QuestManager>
             quests[i].ResetQuest();
         }
     }
-
+    
     public void ResetAllQuests()
     {
         for (int i = 0; i < quests.Length; i++)
         {
             quests[i].ResetQuest();
         }
-     
+
     }
 
     public void ClearPlayerQuestUI()
@@ -107,6 +113,24 @@ public class QuestManager : Singleton<QuestManager>
         foreach (Transform child in npcPanelContainer)
         {
             Destroy(child.gameObject);
+        }
+    }
+
+    public void OnEnemyKilled(GameObject killedEnemy)
+    {
+        foreach (Quest quest in quests)
+        {
+            if (!quest.QuestAccepted || quest.QuestCompleted)
+                continue;
+
+            if (quest.Type == QuestType.SpecificMonster)
+            {
+                quest.AddProgress(killedEnemy, 1);
+            }
+            else if (quest.Type == QuestType.AnyMonster)
+            {
+                quest.AddProgress(1);
+            }
         }
     }
 }
