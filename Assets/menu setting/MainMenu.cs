@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void LoadOtherScene()
+    public void LoadOtherScene() 
     {
         GameStateTracker.shouldResetOnNextScene = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);

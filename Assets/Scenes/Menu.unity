@@ -569,7 +569,7 @@ RectTransform:
   m_Father: {fileID: 1052940435}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1148,7 +1148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &615144253
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2325,7 +2325,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1333022882
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2796,6 +2796,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 4342163413338322566, guid: 130fd88b30570d149806834682f42019, type: 3}
+      propertyPath: sounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342163413338322566, guid: 130fd88b30570d149806834682f42019, type: 3}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c601edccfd7d5e443967ab88bd248049, type: 3}
+    - target: {fileID: 4342163413338322566, guid: 130fd88b30570d149806834682f42019, type: 3}
+      propertyPath: sounds.Array.data[2].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342163413338322566, guid: 130fd88b30570d149806834682f42019, type: 3}
+      propertyPath: sounds.Array.data[2].name
+      value: EnemyHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342163413338322566, guid: 130fd88b30570d149806834682f42019, type: 3}
+      propertyPath: sounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: a4a44d292d482f041b808975354e1205, type: 3}
+    - target: {fileID: 4342163413338322566, guid: 130fd88b30570d149806834682f42019, type: 3}
+      propertyPath: sounds.Array.data[3].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342163413338322566, guid: 130fd88b30570d149806834682f42019, type: 3}
+      propertyPath: sounds.Array.data[3].name
+      value: HitEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342163413338322566, guid: 130fd88b30570d149806834682f42019, type: 3}
+      propertyPath: sounds.Array.data[2].pitch
+      value: 1.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342163413338322566, guid: 130fd88b30570d149806834682f42019, type: 3}
+      propertyPath: sounds.Array.data[3].pitch
+      value: 1.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342163413338322566, guid: 130fd88b30570d149806834682f42019, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 0.219
+      objectReference: {fileID: 0}
+    - target: {fileID: 4342163413338322566, guid: 130fd88b30570d149806834682f42019, type: 3}
+      propertyPath: sounds.Array.data[3].volume
+      value: 0.219
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2879,7 +2923,7 @@ RectTransform:
   m_Father: {fileID: 378540652}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
