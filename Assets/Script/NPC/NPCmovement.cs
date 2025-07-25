@@ -24,9 +24,9 @@ public class NPCmovement : MonoBehaviour
 
     private void Update()
     {
-        if (PauseManager.IsPaused)
+        if (PauseManager.IsPaused || DialogManager.instance != null && DialogManager.instance.IsDialogActive)
         {
-            npcAnim?.SetMoving(false); // dừng animation khi pause
+            npcAnim?.SetMoving(false); // dừng animation
             return;
         }
 

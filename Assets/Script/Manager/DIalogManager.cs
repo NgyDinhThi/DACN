@@ -18,6 +18,7 @@ public class DialogManager : Singleton<DialogManager>
     private bool dialogStarted;
     private PlayerAction actions;
     private Queue<string> dialogQueue = new Queue<string>();
+    public bool IsDialogActive => dialogPanel != null && dialogPanel.activeSelf;
 
     // Khởi tạo input và giữ lại object khi chuyển scene
     protected override void Awake()

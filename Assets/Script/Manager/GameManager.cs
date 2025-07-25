@@ -36,10 +36,7 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         // Kiểm tra nếu người chơi nhấn phím R
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            player.ResetPlayer(); // Gọi hàm ResetPlayer để khôi phục trạng thái ban đầu của nhân vật
-        }
+        
     }
 
     public void ResetGame()

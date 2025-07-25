@@ -93,10 +93,7 @@ public class Inventory : Singleton<Inventory>
     // Cập nhật mỗi khung hình nếu người dùng nhấn phím H để thêm item
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            AddItems(testItem, 1);
-        }
+       
     }
 
     // Thêm item vào inventory, xử lý khi item có thể stack
@@ -139,10 +136,16 @@ public class Inventory : Singleton<Inventory>
     public void UseItems(int index)
     {
         if (inventoryItems[index] == null) return;
+
+        // Nếu item là weapon thì không dùng được
+        if (inventoryItems[index].itemtype == Itemtype.Weapon) return;
+
+        // Nếu sử dụng thành công thì giảm stack
         if (inventoryItems[index].UseItem())
         {
             DecreaseItemStack(index);
         }
+
         SaveInventory();
     }
 
