@@ -5,7 +5,7 @@ public class CreditScript : MonoBehaviour
     [Header("Setting")]
     [SerializeField] private float ScrollSpeed;
     [SerializeField] private float endY;
-    [SerializeField] private CreditRole role; // enum ở đây
+    [SerializeField] private CreditRole role; // enum: TitleText, CreditText
 
     private RectTransform rectTransform;
     private bool hasNotified = false;
@@ -23,11 +23,24 @@ public class CreditScript : MonoBehaviour
         {
             hasNotified = true;
 
-            // Gọi hàm theo enum
-            if (role == CreditRole.TitleText)
-                EndingSceneManager.Instance.NotifyTitleFinished();
-            else if (role == CreditRole.CreditText)
-                EndingSceneManager.Instance.NotifyCreditFinished();
+            // Gọi đến cả IntroManager hoặc EndingSceneManager tùy scene
+            switch (role)
+            {
+                case CreditRole.TitleText:
+                    if (IntroManager.Instance != null)
+                        IntroManager.Instance.NotifyTitleFinished();
+                    else if (EndingSceneManager.Instance != null)
+                        EndingSceneManager.Instance.NotifyTitleFinished();
+                    break;
+
+                case CreditRole.CreditText:
+                    if (IntroManager.Instance != null)
+                        IntroManager.Instance.NotifyCreditFinished();
+                    else if (EndingSceneManager.Instance != null)
+                        EndingSceneManager.Instance.NotifyCreditFinished();
+                    break;
+            }
+
             Destroy(gameObject);
         }
     }
